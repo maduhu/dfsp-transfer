@@ -1,0 +1,26 @@
+{
+  "implementation": "dfsp-transfer",
+  "repl": false,
+  "console": false,
+  "log": false,
+  "debug": true,
+  "workDir": "./tmp",
+  "masterBus": {
+    "logLevel": "error",
+    "socket": "dfsp-transfer"
+  },
+  "workerBus": {
+    "logLevel": "error"
+  },
+  "performance": {
+    "id": "dfsp-transfer",
+    "influx": {
+      "host": "influxdb",
+      "port": 4444
+    }
+  },
+  "script": {
+    "mock": true
+  },
+  "db": false
+}
