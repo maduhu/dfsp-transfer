@@ -5,6 +5,10 @@ module.exports = {
     require('../script')
   ],
   modules: {
-    identity: require('../service/identity')
+    identity: require('../service/identity'),
+    transfer: require('../service/transfer')
+  },
+  validations: {
+    transfer: require('../service/transfer/api')
   }
 }
