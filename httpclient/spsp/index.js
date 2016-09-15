@@ -1,10 +1,10 @@
 var errors = require('./errors')
 
 module.exports = {
-  id: 'ist',
+  id: 'spsp',
   createPort: require('ut-port-http'),
   url: 'http://ec2-52-37-54-209.us-west-2.compute.amazonaws.com:8081/spsp-client/v1',
-  namespace: ['ist/rule', 'interledger'],
+  namespace: ['spsp/rule', 'spsp/transfer'],
   raw: {
     json: true,
     jar: true,
@@ -38,13 +38,13 @@ module.exports = {
   'rule.decision.fetch.error.receive': function (err, $meta) {
     throw err
   },
-  'interledger.transfer.hold.request.send': function (msg, $meta) {
+  'transfer.transfer.hold.request.send': function (msg, $meta) {
     // /setup
   },
-  'interledger.transfer.get.request.send': function (msg, $meta) {
+  'transfer.transfer.get.request.send': function (msg, $meta) {
     // /setup
   },
-  'interledger.transfer.execute.request.send': function (msg, $meta) {
+  'transfer.transfer.execute.request.send': function (msg, $meta) {
     // /setup
   },
   'receive': function (msg, $meta) {

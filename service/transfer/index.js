@@ -8,7 +8,7 @@ module.exports = {
   'rule.fetch': function (msg, $meta) {
     return this.bus.importMethod('rule.decision.fetch')(msg, $meta)
       .then((resultLocal) => {
-        return this.bus.importMethod('ist/rule.decision.fetch')(msg, $meta)
+        return this.bus.importMethod('spsp/rule.decision.fetch')(msg, $meta)
           .then((resultRemote) => {
             // SPSP fee is (resultRemote.sourceAmount - msg.amount)
             return resultLocal
