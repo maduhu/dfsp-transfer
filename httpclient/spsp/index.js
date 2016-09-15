@@ -24,34 +24,27 @@ module.exports = {
       msg.destinationAmount = msg.amount
     }
     if (msg.sourceAmount) {
-      $meta.amount = msg.sourceAmount
       params.uri = '/quoteSourceAmount'
       params.qs.sourceAmount = msg.sourceAmount
     } else if (msg.destinationAmount) {
-      $meta.amount = msg.destinationAmount
       params.uri = '/quoteDestinationAmount'
       params.qs.destinationAmount = msg.destinationAmount
-    } else {
-      $meta.mtid = 'error'
-      params = new Error('At least one of the following parameters must be passed to ist/rule.decision.fetch: sourceAmount, destinationAmount')
     }
     return params
   },
   'rule.decision.fetch.response.receive': function (msg, $meta) {
-    return {
-      fee: Math.abs($meta.amount - (msg.payload.sourceAmount || 0) - (msg.payload.destinationAmount || 0))
-    }
+    return msg.payload
   },
-  'rule.decision.fetch.error.receive': function (msg) {
-    return msg
+  'rule.decision.fetch.error.receive': function (err, $meta) {
+    throw err
   },
-  'interledger.transfer.hold.request.send': {
+  'interledger.transfer.hold.request.send': function (msg, $meta) {
     // /setup
   },
-  'interledger.transfer.get.request.send': {
+  'interledger.transfer.get.request.send': function (msg, $meta) {
     // /setup
   },
-  'interledger.transfer.execute.request.send': {
+  'interledger.transfer.execute.request.send': function (msg, $meta) {
     // /setup
   },
   'receive': function (msg, $meta) {

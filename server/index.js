@@ -3,6 +3,7 @@ module.exports = {
     require('../db'),
     require('../httpserver'),
     require('../httpclient/spsp'),
+    require('../httpclient/rule'),
     require('../script')
   ],
   modules: {
