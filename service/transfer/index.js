@@ -10,7 +10,9 @@ module.exports = {
       .then((resultLocal) => {
         return this.bus.importMethod('spsp/rule.decision.fetch')(msg, $meta)
           .then((resultRemote) => {
-            // SPSP fee is (resultRemote.sourceAmount - msg.amount)
+            try {
+              resultLocal.connectorFee = resultRemote.sourceAmount - msg.amount
+            } catch (e) {}
             return resultLocal
           })
       })
