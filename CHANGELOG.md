@@ -1,3 +1,14 @@
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.1.1...v0.1.2) (2016-09-19)
+
+
+### Bug Fixes
+
+* fix dependencies ([ccb4100](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/ccb4100))
+* update configuration ([ed9401c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/ed9401c))
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.2.0...v0.1.1) (2016-09-19)
 
