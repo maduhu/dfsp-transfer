@@ -1,3 +1,13 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.1.0...v0.2.0) (2016-09-19)
+
+
+### Features
+
+* return connectorFee from transfer.rule.fetch ([23c205d](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/23c205d))
+
+
+
 <a name="0.1.0"></a>
 # 0.1.0 (2016-09-16)
 
