@@ -1,3 +1,13 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.3.1...v0.3.2) (2016-09-19)
+
+
+### Bug Fixes
+
+* fix console port settings ([317d54e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/317d54e))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.1.2...v0.3.1) (2016-09-19)
 
