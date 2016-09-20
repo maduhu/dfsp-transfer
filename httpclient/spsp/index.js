@@ -39,13 +39,41 @@ module.exports = {
     throw err
   },
   'transfer.transfer.hold.request.send': function (msg, $meta) {
-    // /setup
+    var params = {
+      uri: '/setup',
+      httpMethod: 'post',
+      payload: msg,
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    return params
+  },
+  'transfer.transfer.hold.response.receive': function (msg, $meta) {
+    return msg.payload
+  },
+  'transfer.transfer.hold.error.receive': function (err, $meta) {
+    throw err
   },
   'transfer.transfer.get.request.send': function (msg, $meta) {
     // /setup
   },
   'transfer.transfer.execute.request.send': function (msg, $meta) {
-    // /setup
+    var params = {
+      uri: '/payments/' + msg.id,
+      httpMethod: 'put',
+      payload: msg,
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    return params
+  },
+  'transfer.transfer.execute.response.receive': function (msg, $meta) {
+    return msg.payload
+  },
+  'transfer.transfer.execute.error.receive': function (err, $meta) {
+    throw err
   },
   'receive': function (msg, $meta) {
     if ($meta.mtid === 'error') {

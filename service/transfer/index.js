@@ -18,8 +18,12 @@ module.exports = {
       })
   },
   'push.execute': function (msg, $meta) {
-    return {
-      fulfillment: 'tx-mock'
-    }
+    return this.bus.importMethod('spsp/transfer.transfer.hold')(msg, $meta)
+      .then((setupResult) => {
+        return this.bus.importMethod('spsp/transfer.transfer.execute')(setupResult, $meta)
+          .then((executeResult) => {
+            return executeResult
+          })
+      })
   }
 }
