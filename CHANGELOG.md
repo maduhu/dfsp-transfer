@@ -1,3 +1,13 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.3.2...v0.4.0) (2016-09-21)
+
+
+### Features
+
+* update transfer.push.execute method to use the spsp-client-proxy methods for setup/execute ([442985c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/442985c))
+
+
+
 <a name="0.3.2"></a>
 ## [0.3.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.3.1...v0.3.2) (2016-09-19)
 
