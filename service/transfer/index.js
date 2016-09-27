@@ -18,7 +18,11 @@ module.exports = {
       })
   },
   'push.execute': function (msg, $meta) {
-    return this.bus.importMethod('spsp/transfer.transfer.hold')(msg, $meta)
+    return this.bus.importMethod('spsp/transfer.transfer.hold')({
+      receiver: msg.destinationAccount,
+      destinationAmount: msg.destinationAmount,
+      sourceIdentifier: msg.sourceAccount || '001'
+    }, $meta)
       .then((setupResult) => {
         return this.bus.importMethod('spsp/transfer.transfer.execute')(setupResult, $meta)
           .then((executeResult) => {
