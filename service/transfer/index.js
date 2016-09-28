@@ -20,6 +20,7 @@ module.exports = {
   'push.execute': function (msg, $meta) {
     return this.bus.importMethod('spsp/transfer.transfer.setup')({
       receiver: msg.destinationAccount,
+      sourceAccount: msg.sourceAccount,
       destinationAmount: msg.destinationAmount,
       memo: '',
       sourceIdentifier: msg.sourceName || ''
