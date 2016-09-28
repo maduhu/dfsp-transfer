@@ -1,3 +1,13 @@
+<a name="0.4.4"></a>
+## [0.4.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.4.3...v0.4.4) (2016-09-28)
+
+
+### Bug Fixes
+
+* fix transfer setup parameters ([f0b9835](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f0b9835))
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.4.2...v0.4.3) (2016-09-27)
 
