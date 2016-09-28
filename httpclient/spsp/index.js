@@ -38,7 +38,7 @@ module.exports = {
   'rule.decision.fetch.error.receive': function (err, $meta) {
     throw err
   },
-  'transfer.transfer.hold.request.send': function (msg, $meta) {
+  'transfer.transfer.setup.request.send': function (msg, $meta) {
     var params = {
       uri: '/setup',
       httpMethod: 'post',
@@ -49,10 +49,10 @@ module.exports = {
     }
     return params
   },
-  'transfer.transfer.hold.response.receive': function (msg, $meta) {
+  'transfer.transfer.setup.response.receive': function (msg, $meta) {
     return msg.payload
   },
-  'transfer.transfer.hold.error.receive': function (err, $meta) {
+  'transfer.transfer.setup.error.receive': function (err, $meta) {
     throw err
   },
   'transfer.transfer.get.request.send': function (msg, $meta) {

@@ -18,16 +18,17 @@ module.exports = {
       })
   },
   'push.execute': function (msg, $meta) {
-    return this.bus.importMethod('spsp/transfer.transfer.hold')({
+    return this.bus.importMethod('spsp/transfer.transfer.setup')({
       receiver: msg.destinationAccount,
       destinationAmount: msg.destinationAmount,
-      sourceIdentifier: msg.sourceAccount || '001'
+      memo: '',
+      sourceIdentifier: msg.sourceName || ''
     }, $meta)
-      .then((setupResult) => {
-        return this.bus.importMethod('spsp/transfer.transfer.execute')(setupResult, $meta)
-          .then((executeResult) => {
-            return executeResult
-          })
-      })
+    .then((setupResult) => {
+      return this.bus.importMethod('spsp/transfer.transfer.execute')(setupResult, $meta)
+        .then((executeResult) => {
+          return executeResult
+        })
+    })
   }
 }
