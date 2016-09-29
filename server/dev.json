@@ -37,6 +37,9 @@
       "requireSession": true
     }
   },
+  "transfer": {
+    "socketTimeout": 2222
+  },
   "script": {
     "#mock": true
   },

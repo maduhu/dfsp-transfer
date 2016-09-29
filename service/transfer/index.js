@@ -1,5 +1,7 @@
 // var error = require('./error')
 var path = require('path')
+var Ws = require('ws')
+
 module.exports = {
   schema: [{
     path: path.join(__dirname, 'schema'),
@@ -28,7 +30,25 @@ module.exports = {
     .then((setupResult) => {
       return this.bus.importMethod('spsp/transfer.transfer.execute')(setupResult, $meta)
         .then((executeResult) => {
-          return executeResult
+          return new Promise((resolve, reject) => {
+            var socket = new Ws(msg.sourceAccount.replace(/^https?:\/\//, 'ws://') + '/transfers')
+            var responded = false
+            var timeout = setTimeout(() => {
+              responded = true
+              resolve(executeResult)
+            }, (this.bus.config.transfer && this.bus.config.transfer.socketTimeout) || 2222)
+            socket.on('error', (err) => {
+              // handle error
+              if (err.code === 'ECONNREFUSED') {
+                // do nothing for now
+              }
+            })
+            socket.on('message', (data, flags) => {
+              clearTimeout(timeout)
+              socket.terminate()
+              !responded && resolve(data)
+            })
+          })
         })
     })
   }
