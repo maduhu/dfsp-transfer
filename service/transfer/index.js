@@ -32,13 +32,11 @@ module.exports = {
         .then((executeResult) => {
           return new Promise((resolve, reject) => {
             var socket = new Ws(msg.sourceAccount.replace(/^https?:\/\//, 'ws://') + '/transfers')
-            var responded = false
             var timeout = setTimeout(() => {
-              responded = true
+              socket && socket.terminate()
               resolve(executeResult)
             }, (this.bus.config.transfer && this.bus.config.transfer.socketTimeout) || 2222)
             socket.on('error', (err) => {
-              // handle error
               if (err.code === 'ECONNREFUSED') {
                 // do nothing for now
               }
@@ -46,7 +44,7 @@ module.exports = {
             socket.on('message', (data, flags) => {
               clearTimeout(timeout)
               socket.terminate()
-              !responded && resolve(data)
+              resolve(data)
             })
           })
         })
