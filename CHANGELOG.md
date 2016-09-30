@@ -1,3 +1,20 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.4.5...v0.5.0) (2016-09-30)
+
+
+### Bug Fixes
+
+* change spsp URL ([af15604](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/af15604))
+* fix circle ci build ([13676e0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/13676e0))
+* simplify socket client code ([1c3fb3b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/1c3fb3b))
+
+
+### Features
+
+* add prepare websocket client subscriptions for transfers ([0d0550b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0d0550b))
+
+
+
 <a name="0.4.5"></a>
 ## [0.4.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.4.4...v0.4.5) (2016-09-28)
 
