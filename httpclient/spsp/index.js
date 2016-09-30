@@ -3,7 +3,7 @@ var errors = require('./errors')
 module.exports = {
   id: 'spsp',
   createPort: require('ut-port-http'),
-  url: 'http://ec2-52-37-54-209.us-west-2.compute.amazonaws.com:8081/spsp/client/v1',
+  url: 'http://ec2-52-37-54-209.us-west-2.compute.amazonaws.com:8088/spsp/client/v1',
   namespace: ['spsp/rule', 'spsp/transfer'],
   raw: {
     json: true,
