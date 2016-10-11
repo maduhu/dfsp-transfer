@@ -1,3 +1,18 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.5.0...v0.6.0) (2016-10-11)
+
+
+### Bug Fixes
+
+* add .npmrc ([5dfaa54](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/5dfaa54))
+
+
+### Features
+
+* automate build ([be84fcc](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/be84fcc))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.4.5...v0.5.0) (2016-09-30)
 
