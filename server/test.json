@@ -22,5 +22,13 @@
   "script": {
     "mock": true
   },
-  "db": false
+  "db": {
+    "logLevel": "trace",
+    "db": {
+      "host": "postgres"
+    },
+    "permission": {
+      "requireSession": true
+    }
+  }
 }
