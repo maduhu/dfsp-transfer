@@ -1,3 +1,13 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.6.1...v0.7.0) (2016-10-13)
+
+
+### Features
+
+* changes related to requiring peer implementations from tests ([b734758](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b734758))
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.6.0...v0.6.1) (2016-10-13)
 
