@@ -1,3 +1,13 @@
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.7.0...v0.7.1) (2016-10-14)
+
+
+### Bug Fixes
+
+* fix publishing ([0a57f3a](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0a57f3a))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.6.1...v0.7.0) (2016-10-13)
 
