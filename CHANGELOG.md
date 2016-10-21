@@ -1,3 +1,13 @@
+<a name="0.7.2"></a>
+## [0.7.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.7.1...v0.7.2) (2016-10-21)
+
+
+### Bug Fixes
+
+* disable repl and prepare mock configuration ([4178829](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4178829))
+
+
+
 <a name="0.7.1"></a>
 ## [0.7.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.7.0...v0.7.1) (2016-10-14)
 
