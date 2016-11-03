@@ -41,7 +41,7 @@
   "transfer": {
     "socketTimeout": 2222
   },
-  "spsp": {
+  "#####spsp": {
     "url": "http://localhost:8021/spspclient"
   },
   "script": {
