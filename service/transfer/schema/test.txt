@@ -1,0 +1,31 @@
+select *from transfer."invoice.add"(
+	 CAST('aaaa' as "varchar"(100)),
+     CAST('sssss'as "varchar"(100)),
+     CAST('USD' as varchar(3)),
+     CAST(3 as numeric),
+     CAST('dasdasda'as "varchar"(100))
+)
+
+
+
+select * from transfer."invoice.edit"(
+	 CAST(28 as integer),
+     CAST('r'as char(5)))
+    
+    
+    
+select * from transfer."invoice.get"(CAST(28 as integer))
+     
+
+
+
+select *from transfer."invoiceNotification.add"('https://mail.google.com','5','test')
+
+ 
+select *from transfer."invoiceNotification.edit"(4,'r')
+
+select *from transfer."invoiceNotification.get"( 4)
+
+
+
+
