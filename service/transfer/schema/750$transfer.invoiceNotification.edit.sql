@@ -23,4 +23,4 @@ BEGIN
     SELECT * FROM transfer."invoiceNotification.get"("@invoiceNotificationId");
 END;
 $body$
-LANGUAGE 'plpgsql':
+LANGUAGE 'plpgsql';

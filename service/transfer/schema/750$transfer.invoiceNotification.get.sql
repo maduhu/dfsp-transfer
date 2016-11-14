@@ -15,10 +15,10 @@ BEGIN
     SELECT
         *,
         CAST(1 as BOOLEAN)
-    FROM 
+    FROM
         transfer."invoiceNotification"
     WHERE
         "invoiceNotificationId" = "@invoiceNotificationId";
 END;
 $body$
-LANGUAGE 'plpgsql':
+LANGUAGE 'plpgsql';
