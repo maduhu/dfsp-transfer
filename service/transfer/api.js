@@ -27,5 +27,12 @@ module.exports = {
     notes: 'Transfer rule fetch',
     params: joi.any(),
     result: joi.any()
+  },
+  'invoice.add': {
+    auth: false,
+    description: 'Transfer add invoice',
+    notes: 'Transfer add invoice',
+    params: joi.any(),
+    result: joi.any()
   }
 }

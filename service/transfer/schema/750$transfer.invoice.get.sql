@@ -7,8 +7,9 @@ RETURNS TABLE (
     "name" varchar,
     "currencyCode" varchar,
     "amount" numeric,
-    "status" char,
-    "invoiceInfo" varchar,
+    "statusCode" char,
+    "userNumber" varchar,
+    "invoiceinfo" varchar,
     "isSingleResult" boolean
 ) AS
 $body$
@@ -16,9 +17,10 @@ BEGIN
   RETURN QUERY
     SELECT
         *,
-        CAST(1 AS BOOLEAN) FROM transfer."invoice"
+        CAST(1 AS BOOLEAN) 
+    FROM transfer."invoice" AS t
     WHERE
-        "invoiceId" = "@invoiceId";
+        t."invoiceId" = "@invoiceId";
 END;
 $body$
 LANGUAGE 'plpgsql';

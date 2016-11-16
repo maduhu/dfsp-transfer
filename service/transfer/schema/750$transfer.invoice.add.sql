@@ -3,6 +3,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@name" varchar,
     "@currencyCode" varchar,
     "@amount" numeric,
+    "@userNumber" varchar,
     "@invoiceInfo" varchar
 )
 RETURNS TABLE (
@@ -11,33 +12,35 @@ RETURNS TABLE (
     "name" varchar,
     "currencyCode" varchar,
     "amount" numeric,
-    "status" char,
-    "invoiceInfo" varchar,
+    "statusCode" char,
+    "userNumber" varchar,
+    "invoiceinfo" varchar,
     "isSingleResult" boolean
 ) AS
-$body$
+$BODY$
 	DECLARE "@invoiceId" int;
 
     BEGIN
         INSERT INTO transfer.invoice (
-            account,
-            name,
+            "account",
+            "name",
             "currencyCode",
-            amount,
+            "amount",
+            "userNumber",
             "statusCode",
-            invoiceinfo
+            "invoiceinfo"
         )
         SELECT
             "@account"
             ,"@name"
             ,"@currencyCode"
             ,"@amount"
+            ,"@userNumber"
             ,'p'
             ,"@invoiceInfo";
 
-        "@invoiceId" := (SELECT currval('transfer."invoice_id_seq"'));
+        "@invoiceId" := (SELECT currval('transfer."invoice_invoiceId_seq"'));
 
-        RETURN QUERY SELECT * FROM transfer."invoice.get"  ("@invoiceId") ;
-    END;
-$body$
-LANGUAGE 'plpgsql';
+        RETURN QUERY SELECT * FROM transfer."invoice.get" ("@invoiceId");
+    END
+$BODY$ LANGUAGE plpgsql
