@@ -6,10 +6,11 @@ RETURNS TABLE (
     "account" varchar,
     "name" varchar,
     "currencyCode" varchar,
+    "currencySymbol" varchar,
     "amount" numeric,
-    "statusCode" char,
+    "status" varchar,
     "userNumber" varchar,
-    "invoiceinfo" varchar,
+    "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
 $body$
@@ -17,7 +18,7 @@ BEGIN
   RETURN QUERY
     SELECT
         *,
-        CAST(1 AS BOOLEAN) 
+        CAST(1 AS BOOLEAN)
     FROM transfer."invoice" AS t
     WHERE
         t."invoiceId" = "@invoiceId";

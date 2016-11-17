@@ -5,7 +5,7 @@ RETURNS TABLE (
     "invoiceNotificationId" integer,
     "invoiceUrl" varchar,
     "userNumber" varchar,
-    "status" char,
+    "status" varchar,
     "memo" varchar,
     "isSingleResult" boolean
 ) AS
@@ -13,12 +13,12 @@ $body$
 BEGIN
     RETURN QUERY
     SELECT
-        *,
+        t.*,
         CAST(1 as BOOLEAN)
     FROM
-        transfer."invoiceNotification"
+        transfer."invoiceNotification" AS t
     WHERE
-        "invoiceNotificationId" = "@invoiceNotificationId";
+        t."invoiceNotificationId" = "@invoiceNotificationId";
 END;
 $body$
 LANGUAGE 'plpgsql';

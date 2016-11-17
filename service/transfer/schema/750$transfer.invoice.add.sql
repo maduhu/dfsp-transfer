@@ -2,6 +2,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@account" varchar,
     "@name" varchar,
     "@currencyCode" varchar,
+    "@currencySymbol" varchar,
     "@amount" numeric,
     "@userNumber" varchar,
     "@invoiceInfo" varchar
@@ -11,10 +12,11 @@ RETURNS TABLE (
     "account" varchar,
     "name" varchar,
     "currencyCode" varchar,
+    "currencySymbol" varchar,
     "amount" numeric,
-    "statusCode" char,
+    "status" varchar,
     "userNumber" varchar,
-    "invoiceinfo" varchar,
+    "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
 $BODY$
@@ -25,15 +27,17 @@ $BODY$
             "account",
             "name",
             "currencyCode",
+            "currencySymbol",
             "amount",
             "userNumber",
-            "statusCode",
-            "invoiceinfo"
+            "status",
+            "invoiceInfo"
         )
         SELECT
             "@account"
             ,"@name"
             ,"@currencyCode"
+            ,"@currencySymbol"
             ,"@amount"
             ,"@userNumber"
             ,'p'

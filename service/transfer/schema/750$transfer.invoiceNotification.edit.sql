@@ -6,7 +6,7 @@ RETURNS TABLE (
     "invoiceNotificationId" integer,
     "invoiceUrl" varchar,
     "userNumber" varchar,
-    "status" char,
+    "status" varchar,
     "memo" varchar,
     "isSingleResult" boolean
 ) AS
@@ -15,7 +15,7 @@ BEGIN
     UPDATE
         transfer."invoiceNotification"
     SET
-        "statusCode" = "@status"
+        "status" = "@status"
     WHERE
         "invoiceNotificationId" = "@invoiceNotificationId";
 

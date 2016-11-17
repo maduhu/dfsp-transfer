@@ -7,7 +7,7 @@ RETURNS TABLE (
     "invoiceNotificationId" integer,
     "invoiceUrl" varchar,
     "userNumber" varchar,
-    "status" char,
+    "status" varchar,
     "memo" varchar,
     "isSingleResult" boolean
 ) AS
@@ -19,7 +19,7 @@ BEGIN
     transfer."invoiceNotification" (
         "invoiceUrl",
         "userNumber",
-        "statusCode",
+        "status",
         "memo"
     )
     SELECT
@@ -28,10 +28,10 @@ BEGIN
         ,'p'
         ,"@memo";
 
-    "@invoiceNotificationId" := (SELECT currval('transfer.invoicenotification_id_seq'));
+    "@invoiceNotificationId" := (SELECT currval('transfer."invoiceNotification_invoiceNotificationId_seq"'));
 
     RETURN QUERY
-    SELECT * FROM transfer."invoiceNotificationId.get"("@invoiceNotificationId") ;
+    SELECT * FROM transfer."invoiceNotification.get"("@invoiceNotificationId") ;
 END;
 $body$
 LANGUAGE 'plpgsql';

@@ -7,6 +7,7 @@ RETURNS TABLE (
     "account" varchar,
     "name" varchar,
     "currencyCode" varchar,
+    "currencySymbol" varchar,
     "amount" numeric,
     "status" char,
     "invoiceInfo" varchar,
@@ -17,8 +18,8 @@ BEGIN
     UPDATE
         transfer."invoice"
     SET
-        "statusCode"="@status"
-    WHERE 
+        "status"="@status"
+    WHERE
         "invoiceId"="@invoiceId";
 
     RETURN QUERY

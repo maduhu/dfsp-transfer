@@ -34,5 +34,26 @@ module.exports = {
     notes: 'Transfer add invoice',
     params: joi.any(),
     result: joi.any()
+  },
+  'invoiceNotification.add': {
+    auth: false,
+    description: 'Transfer add invoice',
+    notes: 'Transfer add invoice',
+    params: joi.object().keys({
+      invoiceUrl: joi.string().required(),
+      userNumber: joi.string().required(),
+      memo: joi.string().required()
+    }),
+    result: joi.any()
+  },
+  'invoice.get': {
+    auth: false,
+    description: 'Get invoice',
+    notes: 'Get invoice',
+    params: joi.object().keys({
+      invoiceId: joi.string().required()
+    }),
+    result: joi.any()
   }
 }
+
