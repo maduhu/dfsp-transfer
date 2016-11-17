@@ -54,6 +54,15 @@ module.exports = {
       invoiceId: joi.string().required()
     }),
     result: joi.any()
+  },
+  'invoice.edit': {
+    auth: false,
+    description: 'Get invoice',
+    notes: 'Get invoice',
+    params: joi.object().keys({
+      invoiceId: joi.string().required(),
+      status: joi.string().required()
+    }),
+    result: joi.any()
   }
 }
-

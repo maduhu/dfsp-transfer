@@ -9,18 +9,19 @@ RETURNS TABLE (
     "currencyCode" varchar,
     "currencySymbol" varchar,
     "amount" numeric,
-    "status" char,
+    "status" varchar,
+    "userNumber" varchar,
     "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
 $body$
 BEGIN
     UPDATE
-        transfer."invoice"
+        transfer."invoice" AS t
     SET
-        "status"="@status"
+        "status" = "@status"
     WHERE
-        "invoiceId"="@invoiceId";
+        t."invoiceId" = "@invoiceId";
 
     RETURN QUERY
         SELECT * FROM  transfer."invoice.get"("@invoiceId");

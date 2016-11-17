@@ -13,11 +13,11 @@ RETURNS TABLE (
 $body$
 BEGIN
     UPDATE
-        transfer."invoiceNotification"
+        transfer."invoiceNotification" AS t
     SET
         "status" = "@status"
     WHERE
-        "invoiceNotificationId" = "@invoiceNotificationId";
+        t."invoiceNotificationId" = "@invoiceNotificationId";
 
     RETURN QUERY
     SELECT * FROM transfer."invoiceNotification.get"("@invoiceNotificationId");
