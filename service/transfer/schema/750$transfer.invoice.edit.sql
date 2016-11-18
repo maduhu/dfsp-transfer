@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION transfer."invoice.edit" (
     "@invoiceId" integer,
-    "@status" char
+    "@statusCode" char
 )
 RETURNS TABLE (
     "invoiceId" integer,
@@ -19,7 +19,7 @@ BEGIN
     UPDATE
         transfer."invoice" AS t
     SET
-        "status" = "@status"
+        "statusCode" = "@statusCode"
     WHERE
         t."invoiceId" = "@invoiceId";
 

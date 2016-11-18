@@ -19,7 +19,7 @@ BEGIN
     transfer."invoiceNotification" (
         "invoiceUrl",
         "userNumber",
-        "status",
+        "statusCode",
         "memo"
     )
     SELECT

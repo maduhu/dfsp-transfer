@@ -15,13 +15,27 @@ RETURNS TABLE (
 ) AS
 $body$
 BEGIN
+  IF NOT EXISTS (SELECT 1 FROM transfer."invoice" AS t WHERE t."invoiceId" = "@invoiceId") THEN
+    RAISE EXCEPTION 'transfer.infoiceNotFound';
+  END IF;
   RETURN QUERY
     SELECT
-        *,
-        CAST(1 AS BOOLEAN)
-    FROM transfer."invoice" AS t
+        ti."invoiceId" AS "invoiceId",
+        ti."account" AS "account",
+        ti."name" AS "name",
+        ti."currencyCode" AS "currencyCode",
+        ti."currencySymbol" AS "currencySymbol",
+        ti."amount" AS "amount",
+        tis."description" AS "status",
+        ti."userNumber" AS "userNumber",
+        ti."invoiceInfo" AS "invoiceInfo",
+        CAST(1 AS BOOLEAN) AS "isSingleResult"
+    FROM
+        transfer."invoice" AS ti
+    JOIN
+        transfer."invoiceStatus" tis ON ti."statusCode" = tis."code"
     WHERE
-        t."invoiceId" = "@invoiceId";
+        ti."invoiceId" = "@invoiceId";
 END;
 $body$
 LANGUAGE 'plpgsql';

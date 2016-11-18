@@ -2,6 +2,13 @@
 INSERT INTO
   transfer."invoiceStatus" ("code", "description")
 SELECT
+  'e', 'executed'
+WHERE
+  NOT EXISTS (SELECT 1 FROM transfer."invoiceStatus" WHERE code='e');
+
+INSERT INTO
+  transfer."invoiceStatus" ("code", "description")
+SELECT
   'a', 'approved'
 WHERE
   NOT EXISTS (SELECT 1 FROM transfer."invoiceStatus" WHERE code='a');

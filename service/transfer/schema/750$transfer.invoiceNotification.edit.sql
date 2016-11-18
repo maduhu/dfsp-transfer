@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.edit" (
     "@invoiceNotificationId" integer,
-    "@status" char
+    "@statusCode" char
 )
 RETURNS TABLE (
     "invoiceNotificationId" integer,
@@ -15,7 +15,7 @@ BEGIN
     UPDATE
         transfer."invoiceNotification" AS t
     SET
-        "status" = "@status"
+        "statusCode" = "@statusCode"
     WHERE
         t."invoiceNotificationId" = "@invoiceNotificationId";
 

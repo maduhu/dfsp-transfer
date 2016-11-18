@@ -11,14 +11,23 @@ RETURNS TABLE (
 ) AS
 $body$
 BEGIN
+    IF NOT EXISTS (SELECT 1 FROM transfer."invoiceNotification" AS t WHERE t."invoiceNotificationId" = "@invoiceNotificationId") THEN
+        RAISE EXCEPTION 'transfer.infoiceNotificationNotFound';
+    END IF;
     RETURN QUERY
     SELECT
-        t.*,
+        tin."invoiceNotificationId" AS "invoiceNotificationId",
+        tin."invoiceUrl" AS "invoiceUrl",
+        tin."userNumber" AS "userNumber",
+        tis."description" AS "status",
+        tin."memo" AS "memo",
         CAST(1 as BOOLEAN)
     FROM
-        transfer."invoiceNotification" AS t
+        transfer."invoiceNotification" AS tin
+    JOIN
+        transfer."invoiceStatus" tis ON tin."statusCode" = tis."code"
     WHERE
-        t."invoiceNotificationId" = "@invoiceNotificationId";
+       tin."invoiceNotificationId" = "@invoiceNotificationId";
 END;
 $body$
 LANGUAGE 'plpgsql';

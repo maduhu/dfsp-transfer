@@ -57,11 +57,11 @@ module.exports = {
   },
   'invoice.edit': {
     auth: false,
-    description: 'Get invoice',
-    notes: 'Get invoice',
+    description: 'Edit invoice',
+    notes: 'Edit invoice',
     params: joi.object().keys({
       invoiceId: joi.string().required(),
-      status: joi.string().required()
+      statusCode: joi.string().required()
     }),
     result: joi.any()
   }

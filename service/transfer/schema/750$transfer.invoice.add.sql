@@ -30,7 +30,7 @@ $BODY$
             "currencySymbol",
             "amount",
             "userNumber",
-            "status",
+            "statusCode",
             "invoiceInfo"
         )
         SELECT
