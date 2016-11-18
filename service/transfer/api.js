@@ -35,17 +35,6 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
-  'invoiceNotification.add': {
-    auth: false,
-    description: 'Transfer add invoice',
-    notes: 'Transfer add invoice',
-    params: joi.object().keys({
-      invoiceUrl: joi.string().required(),
-      userNumber: joi.string().required(),
-      memo: joi.string().required()
-    }),
-    result: joi.any()
-  },
   'invoice.get': {
     auth: false,
     description: 'Get invoice',
@@ -62,6 +51,26 @@ module.exports = {
     params: joi.object().keys({
       invoiceId: joi.string().required(),
       statusCode: joi.string().required()
+    }),
+    result: joi.any()
+  },
+  'invoiceNotification.add': {
+    auth: false,
+    description: 'Transfer add invoice',
+    notes: 'Transfer add invoice',
+    params: joi.object().keys({
+      invoiceUrl: joi.string().required(),
+      userNumber: joi.string().required(),
+      memo: joi.string().required()
+    }),
+    result: joi.any()
+  },
+  'invoiceNotification.fetch': {
+    auth: false,
+    description: 'Transfer invoiceNotification fetch',
+    notes: 'TraTransfer invoiceNotification fetch',
+    params: joi.object().keys({
+      userNumber: joi.string().required()
     }),
     result: joi.any()
   }
