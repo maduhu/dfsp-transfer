@@ -75,6 +75,23 @@ module.exports = {
   'transfer.transfer.execute.error.receive': function (err, $meta) {
     throw err
   },
+  'transfer.invoiceNotification.add.request.send': function (msg, $meta) {
+    var params = {
+      uri: '/receivers/invoices',
+      httpMethod: 'post',
+      payload: msg,
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    return params
+  },
+  'transfer.invoiceNotification.add.response.receive': function (msg, $meta) {
+    return msg.payload
+  },
+  'transfer.invoiceNotification.add.error.receive': function (err, $meta) {
+    throw err
+  },
   'receive': function (msg, $meta) {
     if ($meta.mtid === 'error') {
       return msg

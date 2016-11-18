@@ -49,5 +49,30 @@ module.exports = {
           })
         })
     })
+  },
+  'invoice.add.response.receive': function (msg, $meta) {
+    // {
+    //   "invoiceId": 3,
+    //   "account": "http://localhost:8014/ledger/accounts/uuu",
+    //   "name": "Chris Griffin",
+    //   "currencyCode": "USD",
+    //   "currencySymbol": "$",
+    //   "amount": "123",
+    //   "status": "pending",
+    //   "userNumber": "qqq",
+    //   "invoiceInfo": "Invoice from uuu for 123 USD"
+    // }
+    $meta.method = 'transfer.invoiceNotification.add';
+    return this.bus.importMethod($meta.method)({
+      invoiceUrl: 'http://dfsp/receivers/invoices/' + msg.invoiceId,
+      memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
+      userNumber: msg.userNumber
+    }, $meta)
+    // uncomment code below to integrate with spsp
+    // return this.bus.importMethod('spsp/transfer.invoiceNotification.add')({
+    //   invoiceId: msg.invoiceId,
+    //   memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
+    //   clientUserNumber: msg.userNumber
+    // }, $meta)
   }
 }
