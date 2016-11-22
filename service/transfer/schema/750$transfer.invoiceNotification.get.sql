@@ -12,7 +12,7 @@ RETURNS TABLE (
 $body$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM transfer."invoiceNotification" AS t WHERE t."invoiceNotificationId" = "@invoiceNotificationId") THEN
-        RAISE EXCEPTION 'transfer.infoiceNotificationNotFound';
+        RAISE EXCEPTION 'transfer.invoiceNotificationNotFound';
     END IF;
     RETURN QUERY
     SELECT

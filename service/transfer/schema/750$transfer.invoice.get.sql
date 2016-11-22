@@ -16,7 +16,7 @@ RETURNS TABLE (
 $body$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM transfer."invoice" AS t WHERE t."invoiceId" = "@invoiceId") THEN
-    RAISE EXCEPTION 'transfer.infoiceNotFound';
+    RAISE EXCEPTION 'transfer.invoiceNotFound';
   END IF;
   RETURN QUERY
     SELECT
