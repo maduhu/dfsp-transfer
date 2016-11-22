@@ -62,7 +62,7 @@ module.exports = {
     //   "userNumber": "qqq",
     //   "invoiceInfo": "Invoice from uuu for 123 USD"
     // }
-    $meta.method = 'transfer.invoiceNotification.add';
+    $meta.method = 'transfer.invoiceNotification.add'
     return this.bus.importMethod($meta.method)({
       invoiceUrl: 'http://dfsp/receivers/invoices/' + msg.invoiceId,
       memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
