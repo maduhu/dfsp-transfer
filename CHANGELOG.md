@@ -1,3 +1,31 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.7.2...v0.8.0) (2016-11-22)
+
+
+### Bug Fixes
+
+* add invoice.edit method and fix db functions ([fd5bc21](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/fd5bc21))
+* add mock config to external rc file ([be4a5d3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/be4a5d3))
+* changes for invoice.add method ([46763c1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/46763c1))
+* comment spsp mock back ([cb08e3a](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/cb08e3a))
+* db structure refactoring ([a196b74](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a196b74))
+* issue [#283](https://github.com/LevelOneProject/dfsp-transfer/issues/283) - DFSP License files are incorrect ([f6f0130](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f6f0130))
+* lint errors ([a2be48f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a2be48f))
+* prepare invoice notification integration with spsp ([8d714d3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/8d714d3))
+* refactor db ([f6f11e1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f6f11e1))
+* transfer.invoiceNotification.fetch db function and backend method implemented ([98ee6d5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/98ee6d5))
+* typos ([9de76f9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/9de76f9))
+* update dependencies ([3fcfe1e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/3fcfe1e))
+* update spsp client endpoint ([c416816](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c416816))
+* validations ([11d7d15](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/11d7d15))
+
+
+### Features
+
+* add postgre functions initial version ([b0f8818](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b0f8818))
+
+
+
 <a name="0.7.2"></a>
 ## [0.7.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.7.1...v0.7.2) (2016-10-21)
 
