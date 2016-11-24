@@ -1,3 +1,13 @@
+<a name="0.8.2"></a>
+## [0.8.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.1...v0.8.2) (2016-11-24)
+
+
+### Bug Fixes
+
+* change clientUserNumber with senderIdentifier ([b5e8e90](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b5e8e90))
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.0...v0.8.1) (2016-11-22)
 
