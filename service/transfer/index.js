@@ -72,7 +72,7 @@ module.exports = {
     // return this.bus.importMethod('spsp/transfer.invoiceNotification.add')({
     //   invoiceId: msg.invoiceId,
     //   memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
-    //   clientUserNumber: msg.userNumber
+    //   senderIdentifier: msg.userNumber
     // }, $meta)
   }
 }
