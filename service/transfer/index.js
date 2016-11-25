@@ -50,29 +50,39 @@ module.exports = {
         })
     })
   },
+  'invoiceNotification.add.request.send': function (msg, $meta) {
+    msg.userNumber = msg.senderIdentifier
+    return msg
+  },
+  'invoice.add.request.send': function (msg, $meta) {
+    $meta.submissionUrl = msg.submissionUrl
+    return msg
+  },
   'invoice.add.response.receive': function (msg, $meta) {
     // {
-    //   "invoiceId": 3,
-    //   "account": "http://localhost:8014/ledger/accounts/uuu",
-    //   "name": "Chris Griffin",
-    //   "currencyCode": "USD",
-    //   "currencySymbol": "$",
-    //   "amount": "123",
-    //   "status": "pending",
-    //   "userNumber": "qqq",
-    //   "invoiceInfo": "Invoice from uuu for 123 USD"
+    // account:"http://localhost:8014/ledger/accounts/kkk"
+    // amount:"32"
+    // currencyCode:"USD"
+    // currencySymbol:"$"
+    // invoiceId:34
+    // invoiceInfo:"Invoice from kkk for 32 USD"
+    // name:"kkk"
+    // status:"pending"
+    // userNumber:"80989354"
     // }
     $meta.method = 'transfer.invoiceNotification.add'
     return this.bus.importMethod($meta.method)({
       invoiceUrl: 'http://localhost:8010/receivers/invoices/' + msg.invoiceId,
       memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
-      userNumber: msg.userNumber
+      senderIdentifier: msg.userNumber,
+      submissionUrl: $meta.submissionUrl + '/receivers/invoices'
     }, $meta)
     // uncomment code below to integrate with spsp
     // return this.bus.importMethod('spsp/transfer.invoiceNotification.add')({
     //   invoiceId: msg.invoiceId,
     //   memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
-    //   senderIdentifier: msg.userNumber
+    //   senderIdentifier: msg.userNumber,
+    //   submissionUrl: $meta.submissionUrl + '/receivers/invoices'
     // }, $meta)
   }
 }
