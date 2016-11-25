@@ -1,3 +1,13 @@
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.2...v0.8.3) (2016-11-25)
+
+
+### Bug Fixes
+
+* change mock data ([2bbb3d4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/2bbb3d4))
+
+
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.1...v0.8.2) (2016-11-24)
 
