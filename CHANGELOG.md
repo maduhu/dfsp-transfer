@@ -1,3 +1,13 @@
+<a name="0.9.1"></a>
+## [0.9.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.0...v0.9.1) (2016-11-28)
+
+
+### Bug Fixes
+
+* extra check for spsp configuration ([f717e62](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f717e62))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.4...v0.9.0) (2016-11-28)
 
