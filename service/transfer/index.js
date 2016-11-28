@@ -75,7 +75,7 @@ module.exports = {
       senderIdentifier: msg.userNumber,
       submissionUrl: $meta.submissionUrl + '/receivers/invoices'
     }
-    if (this.bus.config.spsp.url.startsWith('http://localhost')) {
+    if (this.bus.config.spsp && this.bus.config.spsp.url && this.bus.config.spsp.url.startsWith('http://localhost')) {
       $meta.method = 'transfer.invoiceNotification.add'
       params.invoiceUrl = 'http://localhost:8010/receivers/invoices/' + msg.invoiceId
     } else {
