@@ -1,3 +1,13 @@
+<a name="0.9.3"></a>
+## [0.9.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.2...v0.9.3) (2016-11-28)
+
+
+### Bug Fixes
+
+* submissionUrl ([44b355c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/44b355c))
+
+
+
 <a name="0.9.2"></a>
 ## [0.9.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.1...v0.9.2) (2016-11-28)
 
