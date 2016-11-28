@@ -70,19 +70,18 @@ module.exports = {
     // status:"pending"
     // userNumber:"80989354"
     // }
-    $meta.method = 'transfer.invoiceNotification.add'
-    return this.bus.importMethod($meta.method)({
-      invoiceUrl: 'http://localhost:8010/receivers/invoices/' + msg.invoiceId,
+    var params = {
       memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
       senderIdentifier: msg.userNumber,
       submissionUrl: $meta.submissionUrl + '/receivers/invoices'
-    }, $meta)
-    // uncomment code below to integrate with spsp
-    // return this.bus.importMethod('spsp/transfer.invoiceNotification.add')({
-    //   invoiceId: msg.invoiceId,
-    //   memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
-    //   senderIdentifier: msg.userNumber,
-    //   submissionUrl: $meta.submissionUrl + '/receivers/invoices'
-    // }, $meta)
+    }
+    if (this.bus.config.spsp.url.startsWith('http://localhost')) {
+      $meta.method = 'transfer.invoiceNotification.add'
+      params.invoiceUrl = 'http://localhost:8010/receivers/invoices/' + msg.invoiceId
+    } else {
+      $meta.method = 'spsp/transfer.invoiceNotification.add'
+      params.invoiceId = msg.invoiceId
+    }
+    return this.bus.importMethod($meta.method)(params, $meta)
   }
 }
