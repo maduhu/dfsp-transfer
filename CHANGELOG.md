@@ -1,3 +1,13 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.4...v0.9.0) (2016-11-28)
+
+
+### Features
+
+* call spsp/transfer.invoiceNotification.add or directly transfer.invoiceNotification.add depending on cofiguration" ([5b01973](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/5b01973))
+
+
+
 <a name="0.8.4"></a>
 ## [0.8.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.3...v0.8.4) (2016-11-25)
 
