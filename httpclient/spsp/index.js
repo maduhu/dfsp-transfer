@@ -77,7 +77,7 @@ module.exports = {
   },
   'transfer.invoiceNotification.add.request.send': function (msg, $meta) {
     var params = {
-      uri: '/invoices',
+      uri: '/receivers/invoices',
       httpMethod: 'post',
       payload: msg,
       headers: {

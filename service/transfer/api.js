@@ -60,7 +60,7 @@ module.exports = {
     notes: 'Transfer add invoice',
     params: joi.object().keys({
       invoiceUrl: joi.string().required(),
-      senderIdentifier: joi.string().required(),
+      senderIdentifier: joi.string(),
       memo: joi.string().required()
     }).unknown(),
     result: joi.any()
