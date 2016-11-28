@@ -1,3 +1,13 @@
+<a name="0.8.4"></a>
+## [0.8.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.3...v0.8.4) (2016-11-25)
+
+
+### Bug Fixes
+
+* transfer.invoice.add and transfer.invoiceNotification.add fixes ([02c3423](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/02c3423))
+
+
+
 <a name="0.8.3"></a>
 ## [0.8.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.8.2...v0.8.3) (2016-11-25)
 
