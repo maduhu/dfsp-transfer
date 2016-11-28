@@ -62,7 +62,7 @@ module.exports = {
       invoiceUrl: joi.string().required(),
       senderIdentifier: joi.string().required(),
       memo: joi.string().required()
-    }),
+    }).unknown(),
     result: joi.any()
   },
   'invoiceNotification.fetch': {
