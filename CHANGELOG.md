@@ -1,3 +1,13 @@
+<a name="0.9.4"></a>
+## [0.9.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.3...v0.9.4) (2016-11-28)
+
+
+### Bug Fixes
+
+* fix invoiceNotification method validation ([94487e4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/94487e4))
+
+
+
 <a name="0.9.3"></a>
 ## [0.9.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.2...v0.9.3) (2016-11-28)
 
