@@ -50,10 +50,6 @@ module.exports = {
         })
     })
   },
-  'invoiceNotification.add.request.send': function (msg, $meta) {
-    msg.userNumber = msg.senderIdentifier
-    return msg
-  },
   'invoice.add.request.send': function (msg, $meta) {
     $meta.submissionUrl = msg.submissionUrl
     return msg
@@ -72,14 +68,15 @@ module.exports = {
     // }
     var params = {
       memo: 'Invoice from ' + msg.name + ' for ' + msg.amount + ' ' + msg.currencyCode,
-      senderIdentifier: msg.userNumber,
       submissionUrl: $meta.submissionUrl + '/invoices'
     }
     if (this.bus.config.spsp && this.bus.config.spsp.url && this.bus.config.spsp.url.startsWith('http://localhost')) {
       $meta.method = 'transfer.invoiceNotification.add'
+      params.userNumber = msg.userNumber
       params.invoiceUrl = 'http://localhost:8010/receivers/invoices/' + msg.invoiceId
     } else {
       $meta.method = 'spsp/transfer.invoiceNotification.add'
+      params.senderIdentifier = msg.userNumber
       params.invoiceId = '' + msg.invoiceId
     }
     return this.bus.importMethod($meta.method)(params, $meta)
