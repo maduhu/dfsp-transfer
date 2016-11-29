@@ -1,3 +1,13 @@
+<a name="0.9.6"></a>
+## [0.9.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.5...v0.9.6) (2016-11-29)
+
+
+### Bug Fixes
+
+* mock fix when obtaining info about pending transactions ([50d732a](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/50d732a))
+
+
+
 <a name="0.9.5"></a>
 ## [0.9.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.4...v0.9.5) (2016-11-29)
 
