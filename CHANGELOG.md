@@ -1,3 +1,13 @@
+<a name="0.9.5"></a>
+## [0.9.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.4...v0.9.5) (2016-11-29)
+
+
+### Bug Fixes
+
+* change /receivers/invoices to /invoices ([d1d8f91](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d1d8f91))
+
+
+
 <a name="0.9.4"></a>
 ## [0.9.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.3...v0.9.4) (2016-11-28)
 
