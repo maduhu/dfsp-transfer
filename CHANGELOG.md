@@ -1,3 +1,13 @@
+<a name="0.9.7"></a>
+## [0.9.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.6...v0.9.7) (2016-11-29)
+
+
+### Bug Fixes
+
+* improve consistency between mock and spsp-client ([d8b7cac](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d8b7cac))
+
+
+
 <a name="0.9.6"></a>
 ## [0.9.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.5...v0.9.6) (2016-11-29)
 
