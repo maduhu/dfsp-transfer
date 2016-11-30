@@ -2,6 +2,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.get" (
     "@invoiceId" integer
 )
 RETURNS TABLE (
+    "type" varchar,
     "invoiceId" integer,
     "account" varchar,
     "name" varchar,
@@ -20,6 +21,7 @@ BEGIN
   END IF;
   RETURN QUERY
     SELECT
+        CAST('invoice' AS varchar) AS "type",
         ti."invoiceId" AS "invoiceId",
         ti."account" AS "account",
         ti."name" AS "name",
