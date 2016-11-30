@@ -1,3 +1,13 @@
+<a name="0.11.1"></a>
+## [0.11.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.11.0...v0.11.1) (2016-11-30)
+
+
+### Bug Fixes
+
+* fix db functions to return invoice type ([07ceb2f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/07ceb2f))
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.10.0...v0.11.0) (2016-11-30)
 
