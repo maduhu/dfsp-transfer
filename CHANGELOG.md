@@ -1,3 +1,13 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.7...v0.10.0) (2016-11-30)
+
+
+### Features
+
+* add more detailed logging to http clients ([ab7027f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/ab7027f))
+
+
+
 <a name="0.9.7"></a>
 ## [0.9.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.9.6...v0.9.7) (2016-11-29)
 
