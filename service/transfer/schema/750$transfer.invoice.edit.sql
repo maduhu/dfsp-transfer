@@ -3,6 +3,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.edit" (
     "@statusCode" char
 )
 RETURNS TABLE (
+    "type" varchar,
     "invoiceId" integer,
     "account" varchar,
     "name" varchar,

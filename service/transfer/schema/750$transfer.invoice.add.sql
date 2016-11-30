@@ -8,6 +8,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@invoiceInfo" varchar
 )
 RETURNS TABLE (
+    "type" varchar,
     "invoiceId" integer,
     "account" varchar,
     "name" varchar,
