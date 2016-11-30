@@ -12,6 +12,7 @@ module.exports = {
   },
   parseResponse: false,
   requestTimeout: 300000,
+  logLevel: 'debug',
   method: 'post',
   'rule.decision.fetch.request.send': function (msg, $meta) {
     var params = {
