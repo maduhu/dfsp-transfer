@@ -1,3 +1,13 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.11.1...v0.12.0) (2016-12-07)
+
+
+### Features
+
+* add utility methods for adding sample data ([12a7d64](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/12a7d64))
+
+
+
 <a name="0.11.1"></a>
 ## [0.11.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.11.0...v0.11.1) (2016-11-30)
 
