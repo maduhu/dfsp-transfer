@@ -88,7 +88,7 @@ module.exports = {
     return params
   },
   'transfer.invoiceNotification.add.response.receive': function (msg, $meta) {
-    return msg.payload
+    return msg.payload || {}
   },
   'transfer.invoiceNotification.add.error.receive': function (err, $meta) {
     throw err
