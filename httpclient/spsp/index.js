@@ -1,4 +1,10 @@
 var errors = require('./errors')
+var snakeToCamelRegExp = /_\w/g
+function snakeToCamel (value) {
+  return value.replace(snakeToCamelRegExp, function (m) {
+    return m[1].toUpperCase()
+  })
+}
 
 module.exports = {
   id: 'spsp',
@@ -71,7 +77,10 @@ module.exports = {
     return params
   },
   'transfer.transfer.execute.response.receive': function (msg, $meta) {
-    return msg.payload
+    return msg.payload && Object.keys(msg.payload).reduce((obj, key) => {
+      obj[snakeToCamel(key)] = msg.payload[key]
+      return obj
+    }, {})
   },
   'transfer.transfer.execute.error.receive': function (err, $meta) {
     throw err
