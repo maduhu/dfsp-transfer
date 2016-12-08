@@ -1,3 +1,13 @@
+<a name="0.12.1"></a>
+## [0.12.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.0...v0.12.1) (2016-12-07)
+
+
+### Bug Fixes
+
+* add utility function for converting snake_case to camelCase ([bd393ab](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/bd393ab))
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.11.1...v0.12.0) (2016-12-07)
 
