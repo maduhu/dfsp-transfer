@@ -1,3 +1,13 @@
+<a name="0.12.3"></a>
+## [0.12.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.2...v0.12.3) (2016-12-08)
+
+
+### Bug Fixes
+
+* temporarily set more loose validations ([3581dc9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/3581dc9))
+
+
+
 <a name="0.12.2"></a>
 ## [0.12.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.1...v0.12.2) (2016-12-08)
 
