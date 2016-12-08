@@ -18,16 +18,6 @@ module.exports = {
       fulfillment: joi.string().required()
     }).unknown()
   },
-  'rule.fetch': {
-    // description: 'some description of the method',
-    // notes: ['some notes about the method'],
-    // tags: ['tag1', 'tag2'],
-    auth: false,
-    description: 'Transfer rule fetch',
-    notes: 'Transfer rule fetch',
-    params: joi.any(),
-    result: joi.any()
-  },
   'invoice.add': {
     auth: false,
     description: 'Transfer add invoice',
