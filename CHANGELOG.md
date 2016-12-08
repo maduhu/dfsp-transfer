@@ -1,3 +1,13 @@
+<a name="0.12.2"></a>
+## [0.12.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.1...v0.12.2) (2016-12-08)
+
+
+### Bug Fixes
+
+* remove spsp and dfsp-rule http clients as they have been moved to dfsp-api for consistency ([795526a](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/795526a))
+
+
+
 <a name="0.12.1"></a>
 ## [0.12.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.0...v0.12.1) (2016-12-07)
 
