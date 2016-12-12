@@ -1,3 +1,13 @@
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.3...v0.13.0) (2016-12-12)
+
+
+### Features
+
+* add statusCode parameter to transfer.invoiceNotification.fetch db function ([542c569](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/542c569))
+
+
+
 <a name="0.12.3"></a>
 ## [0.12.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.12.2...v0.12.3) (2016-12-08)
 
