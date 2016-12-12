@@ -1,5 +1,6 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.fetch" (
-    "@userNumber" varchar
+    "@userNumber" varchar,
+    "@statusCode" varchar(5)
 )
 RETURNS TABLE (
     "invoiceNotificationId" integer,
@@ -22,7 +23,8 @@ BEGIN
     JOIN
         transfer."invoiceStatus" tis ON tin."statusCode" = tis."code"
     WHERE
-        tin."userNumber" = "@userNumber";
+        tin."userNumber" = "@userNumber"
+        AND ("@statusCode" IS NULL OR tis."code" = "@statusCode");
 END;
 $body$
 LANGUAGE 'plpgsql';
