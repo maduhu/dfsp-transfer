@@ -44,5 +44,12 @@ module.exports = {
     notes: 'TraTransfer invoiceNotification fetch',
     params: joi.any(),
     result: joi.any()
+  },
+  'invoiceNotification.edit': {
+    auth: false,
+    description: 'Transfer invoiceNotification edit',
+    notes: 'TraTransfer invoiceNotification edit',
+    params: joi.any(),
+    result: joi.any()
   }
 }
