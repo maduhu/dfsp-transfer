@@ -1,3 +1,13 @@
+<a name="0.13.2"></a>
+## [0.13.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.1...v0.13.2) (2016-12-16)
+
+
+### Bug Fixes
+
+* update dependencies ([cc51fde](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/cc51fde))
+
+
+
 <a name="0.13.1"></a>
 ## [0.13.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.0...v0.13.1) (2016-12-12)
 
