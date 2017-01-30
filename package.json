@@ -7,6 +7,8 @@
     "changelog": "ut-changelog",
     "check": "ut-check",
     "circleci:build": "ut-circleci-build",
+    "circleci:cover": "ut-circleci-cover",
+    "circleci:tag": "ut-circleci-tag",
     "circleci:push": "ut-circleci-push",
     "circleci:test": "ut-circleci-test",
     "cover": "ut-cover",
@@ -49,7 +51,7 @@
   "devDependencies": {
     "blue-tape": "1.0.0",
     "tap-xunit": "1.4.0",
-    "ut-tools": "^5.12.0"
+    "ut-tools": "^5.13.5"
   },
   "repository": {
     "type": "git",
