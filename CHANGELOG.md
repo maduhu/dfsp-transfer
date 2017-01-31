@@ -1,3 +1,13 @@
+<a name="0.13.4"></a>
+## [0.13.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.3...v0.13.4) (2017-01-31)
+
+
+### Bug Fixes
+
+* circleci settings and npm commands ([4d79739](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4d79739))
+
+
+
 <a name="0.13.3"></a>
 ## [0.13.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.2...v0.13.3) (2017-01-25)
 
