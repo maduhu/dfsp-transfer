@@ -4,6 +4,7 @@ module.exports = {
   createTT: false,
   retry: false,
   imports: [
-    'transfer'
+    'transfer',
+    'bulk'
   ]
 }
