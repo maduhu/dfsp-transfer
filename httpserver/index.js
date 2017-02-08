@@ -3,7 +3,7 @@ module.exports = {
   id: 'httpserver',
   createPort: require('ut-port-httpserver'),
   logLevel: 'trace',
-  api: ['transfer'],
+  api: ['transfer', 'bulk'],
   port: 8018,
   bundle: 'transfer',
   dist: path.resolve(__dirname, '../dist'),

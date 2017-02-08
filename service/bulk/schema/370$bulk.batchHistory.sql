@@ -2,7 +2,7 @@ CREATE TABLE bulk."batchHistory"  (
     "batchHistoryId" SERIAL,
     "batchId" INTEGER,
     "statusId" SMALLINT,
-    "actorId" character varying(25) NOT NULL,
+    "actorId" VARCHAR(25) NOT NULL,
     "info" TEXT,
     "createdAt" timestamp without time zone NOT NULL,
     CONSTRAINT "pkBulkBatchHistory" PRIMARY KEY ("batchHistoryId"),
