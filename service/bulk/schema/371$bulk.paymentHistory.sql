@@ -1,6 +1,6 @@
 CREATE TABLE bulk."paymentHistory"  (
     "paymentHistoryId" BIGSERIAL,
-    "actorId" INTEGER,
+    "actorId" VARCHAR(25) NOT NULL,
     "paymentId" BIGINT,
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
