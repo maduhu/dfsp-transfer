@@ -23,41 +23,63 @@ RETURNS TABLE (
     "originalFileName" varchar(256)
 ) AS
 $body$
-DECLARE 
-    "@lastStatusId" smallint:=(SELECT bh."statusId" FROM bulk."batchHistory" bh WHERE bh."batchId" = "@batchId" ORDER BY bh."createdAt" DESC LIMIT 1);
-    "@lastHistoryInfo" text:=(SELECT bh."info" FROM bulk."batchHistory" bh WHERE bh."batchId" = "@batchId" ORDER BY bh."createdAt" DESC LIMIT 1);
 BEGIN
     IF "@actorId" IS NULL THEN
         RAISE EXCEPTION 'bulk.actorIdMissing';
-     END IF;
+    END IF;
     IF "@batchId" IS NULL THEN
         RAISE EXCEPTION 'bulk.batchIdMissing';
-     END IF;
+    END IF;
     IF NOT EXISTS (SELECT 1 FROM bulk."batch" AS b WHERE b."batchId" = "@batchId") THEN
         RAISE EXCEPTION 'bulk.batchNotFound';
-     END IF;
+    END IF;
     IF "@statusId" IS NOT NULL THEN
         IF NOT EXISTS (SELECT 1 FROM bulk."status" AS s WHERE s."statusId" = "@statusId") THEN
             RAISE EXCEPTION 'bulk.statusIdNotFound';
-         END IF;
+        END IF;
      END IF;
+
+    INSERT INTO bulk."batchHistory" (
+        "name",
+        "accountNumber",
+        "expirationDate",
+        "batchId",
+        "statusId",
+        "actorId",
+        "info",
+        "createdAt"
+    )
+    SELECT
+        b."name",
+        b."accountNumber",
+        b."expirationDate",
+        b."batchId",
+        b."statusId",
+        "@actorId",
+        b."info",
+        NOW()
+    FROM
+        bulk."batch" AS b
+    WHERE
+        b."batchId" = "@batchId";
 
     UPDATE
         bulk."batch" AS b
     SET
         "accountNumber" = COALESCE("@accountNumber", b."accountNumber"),
         "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
-        "name" = COALESCE("@name", b."name")
+        "name" = COALESCE("@name", b."name"),
+        "statusId" = COALESCE("@statusId", b."statusId"),
+        "info" = COALESCE("@historyInfo", b."info")
     WHERE
         b."batchId" = "@batchId";
 
     IF "@fileName" IS NOT NULL THEN 
         IF "@originalFileName" IS NULL THEN
             RAISE EXCEPTION 'bulk.missingOriginalFileName';
-         END IF;
+        END IF;
         INSERT INTO
-            bulk."upload"
-            (
+            bulk."upload" (
                 "batchId",
                 "fileName",
                 "originalFileName",
@@ -86,47 +108,23 @@ BEGIN
                 );
          END IF;
     END IF;
-
-    INSERT INTO
-        bulk."batchHistory"
-    (
-        "batchId",
-        "statusId",
-        "actorId",
-        "info",
-        "createdAt"
-    )
-    VALUES (
-        "@batchId",
-        COALESCE("@statusId", "@lastStatusId"),
-        "@actorId",
-        COALESCE("@historyInfo", "@lastHistoryInfo"),
-        now()
-    );
     
     RETURN QUERY
     SELECT 
-        bh."batchId" as "batchId",
+        b."batchId" as "batchId",
         b."accountNumber" as "accountNumber",
         b."expirationDate" as "expirationDate",
         b."name" as "name",
-        bh."statusId" as "statusId", 
-        bh."info" as "historyInfo",
+        b."statusId" as "statusId", 
+        b."info" as "historyInfo",
         u."info" as "uploadInfo",
-        bh."actorId" as "actorId", 
+        "@actorId" as "actorId", 
         u."fileName" as "fileName",
         u."originalFileName" as "originalFileName"
     FROM 
-        bulk."batchHistory" bh
+        bulk."batch" b
     JOIN 
-        bulk."batch" as b ON b."batchId" = bh."batchId"
-        AND bh."batchHistoryId" = (
-            SELECT MAX("batchHistoryId")
-	        FROM bulk."batchHistory" h
-	        WHERE h."batchId" = b."batchId"
-        )
-    JOIN 
-        bulk."upload" as u ON u."batchId" = bh."batchId"
+        bulk."upload" as u ON u."batchId" = b."batchId"
         AND u."uploadId" = (
             SELECT MAX("uploadId")
             FROM bulk."upload" up
