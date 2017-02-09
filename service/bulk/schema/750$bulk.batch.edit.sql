@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.edit" (
     "@accountNumber" varchar(25),
     "@expirationDate" timestamp,
     "@name" varchar(100),
-    "@statusId" smallint,
+    "@statusId" integer,
     "@historyInfo" text,
     "@uploadInfo" text,
     "@actorId" varchar(25),
@@ -76,7 +76,14 @@ BEGIN
             SET
                 "info" = "@uploadInfo"
             WHERE
-                u."batchId" = "@batchId";
+                u."uploadId" = (
+                    SELECT 
+                        MAX(up."uploadId") 
+                    FROM 
+                        bulk."upload" up 
+                    WHERE
+                        up."batchId" = "@batchId"
+                );
          END IF;
     END IF;
 
@@ -124,7 +131,8 @@ BEGIN
             SELECT MAX("uploadId")
             FROM bulk."upload" up
             WHERE up."batchId" = u."batchId"
-    );
+    )
+    WHERE b."batchId" = "@batchId";
 END;
 $body$
 LANGUAGE 'plpgsql';
