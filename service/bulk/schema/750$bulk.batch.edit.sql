@@ -45,15 +45,15 @@ BEGIN
     UPDATE
         bulk."batch" AS b
     SET
-        "accountNumber" = COALESCE("@accountNumber", "accountNumber"),
-        "expirationDate" = COALESCE("@expirationDate", "expirationDate"),
-        "name" = COALESCE("@name", "name")
+        "accountNumber" = COALESCE("@accountNumber", b."accountNumber"),
+        "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
+        "name" = COALESCE("@name", b."name")
     WHERE
         b."batchId" = "@batchId";
 
     IF "@fileName" IS NOT NULL THEN 
         IF "@originalFileName" IS NULL THEN
-            RAISE EXCEPTION 'bulk.statusIdNotFound';
+            RAISE EXCEPTION 'bulk.missingOriginalFileName';
          END IF;
         INSERT INTO
             bulk."upload"
@@ -105,9 +105,10 @@ BEGIN
         b."name" as "name",
         bh."statusId" as "statusId", 
         bh."info" as "historyInfo",
+        u."info" as "uploadInfo",
         bh."actorId" as "actorId", 
         u."fileName" as "fileName",
-        u."info" as "uploadInfo"
+        u."originalFileName" as "originalFileName"
     FROM 
         bulk."batchHistory" bh
     JOIN 

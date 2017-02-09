@@ -24,6 +24,12 @@ module.exports = [
     type: 'bulk.statusIdNotFound',
     message: 'Status with the given statusId does not exist',
     statusCode: 422
+  },
+  {
+    id: 'MissingOriginalFileName',
+    type: 'bulk.missingOriginalFileName',
+    message: 'Can not create new upload record without original file name',
+    statusCode: 422
   }
 ].reduce((exporting, error) => {
   var typePath = error.type.split('.')
