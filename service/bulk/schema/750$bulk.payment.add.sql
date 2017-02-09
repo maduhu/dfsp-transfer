@@ -8,7 +8,7 @@ RETURNS TABLE (
 ) AS
 $BODY$
 
-    DECLARE "@statusId" SMALLINT:= (SELECT bulk."status"."statusId" FROM bulk."status" WHERE bulk."status"."name" = 'pending');
+    DECLARE "@paymentStatusId" SMALLINT:= (SELECT "paymentStatusId" FROM bulk."paymentStatus" WHERE "name" = 'new');
     DECLARE "@count" INT;
 
     BEGIN
@@ -23,13 +23,13 @@ $BODY$
                 "dob",
                 "nationalId",
                 "amount",
-                "statusId",
+                "paymentStatusId",
                 "createdAt",
                 "updatedAt"
             )
             SELECT 
                 *,
-                "@statusId" as statusId,
+                "@paymentStatusId" as "paymentStatusId",
                 NOW() as "createdAt",
                 NOW() as "updatedAt"
             FROM
@@ -56,7 +56,7 @@ $BODY$
                 "dob",
                 "nationalId",
                 "amount",
-                "statusId",
+                "paymentStatusId",
                 "createdAt"
             )
             SELECT
@@ -70,7 +70,7 @@ $BODY$
                 "dob",
                 "nationalId",
                 "amount",
-                "statusId",
+                "paymentStatusId",
                 "createdAt"
             FROM
                 p

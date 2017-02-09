@@ -7,26 +7,26 @@ CREATE OR REPLACE FUNCTION bulk."batch.add" (
 RETURNS TABLE (
     "batchId" INTEGER,
     "name" VARCHAR(100),
-    "statusId" SMALLINT,
+    "batchStatusId" SMALLINT,
     "actorId" VARCHAR(25),
     "isSingleResult" boolean
 ) AS
 $BODY$
 
     DECLARE "@batchId" INTEGER;
-    DECLARE "@statusId" SMALLINT:= (SELECT bulk."status"."statusId" FROM bulk."status" WHERE bulk."status"."name" = 'processing');
+    DECLARE "@batchStatusId" SMALLINT:= (SELECT "batchStatusId" FROM bulk."paymentStatus" WHERE "name" = 'uploading');
 
     BEGIN
         INSERT INTO bulk."batch" (
             "name",
-            "statusId",
+            "batchStatusId",
             "actorId",
             "info",
             "createdAt"
         )
         VALUES (
             "@name",
-            "@statusId",
+            "@batchStatusId",
             "@actorId",
             '',
             NOW()
@@ -52,7 +52,7 @@ $BODY$
         SELECT
             b."batchId",
             b."name",
-            b."statusId",
+            b."batchStatusId",
             b."actorId",
             true as "isSingleResult"
         FROM 

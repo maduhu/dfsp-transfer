@@ -3,7 +3,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.edit" (
     "@accountNumber" varchar(25),
     "@expirationDate" timestamp,
     "@name" varchar(100),
-    "@statusId" integer,
+    "@batchStatusId" integer,
     "@historyInfo" text,
     "@uploadInfo" text,
     "@actorId" varchar(25),
@@ -15,7 +15,7 @@ RETURNS TABLE (
     "accountNumber" varchar(25),
     "expirationDate" timestamp,
     "name" varchar(100),
-    "statusId" smallint,
+    "batchStatusId" smallint,
     "historyInfo" text,
     "uploadInfo" text,
     "actorId" varchar(25),
@@ -33,8 +33,8 @@ BEGIN
     IF NOT EXISTS (SELECT 1 FROM bulk."batch" AS b WHERE b."batchId" = "@batchId") THEN
         RAISE EXCEPTION 'bulk.batchNotFound';
     END IF;
-    IF "@statusId" IS NOT NULL THEN
-        IF NOT EXISTS (SELECT 1 FROM bulk."status" AS s WHERE s."statusId" = "@statusId") THEN
+    IF "@batchStatusId" IS NOT NULL THEN
+        IF NOT EXISTS (SELECT 1 FROM bulk."batchStatus" AS bs WHERE bs."batchStatusId" = "@batchStatusId") THEN
             RAISE EXCEPTION 'bulk.statusIdNotFound';
         END IF;
      END IF;
@@ -44,7 +44,7 @@ BEGIN
         "accountNumber",
         "expirationDate",
         "batchId",
-        "statusId",
+        "batchStatusId",
         "actorId",
         "info",
         "createdAt"
@@ -54,7 +54,7 @@ BEGIN
         b."accountNumber",
         b."expirationDate",
         b."batchId",
-        b."statusId",
+        b."batchStatusId",
         "@actorId",
         b."info",
         NOW()
@@ -69,7 +69,7 @@ BEGIN
         "accountNumber" = COALESCE("@accountNumber", b."accountNumber"),
         "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
         "name" = COALESCE("@name", b."name"),
-        "statusId" = COALESCE("@statusId", b."statusId"),
+        "batchStatusId" = COALESCE("@batchStatusId", b."batchStatusId"),
         "info" = COALESCE("@historyInfo", b."info")
     WHERE
         b."batchId" = "@batchId";
@@ -115,7 +115,7 @@ BEGIN
         b."accountNumber" as "accountNumber",
         b."expirationDate" as "expirationDate",
         b."name" as "name",
-        b."statusId" as "statusId", 
+        b."batchStatusId" as "batchStatusId", 
         b."info" as "historyInfo",
         u."info" as "uploadInfo",
         "@actorId" as "actorId", 

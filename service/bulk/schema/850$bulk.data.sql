@@ -1,69 +1,107 @@
-﻿INSERT INTO
-   bulk."status" ("statusId", "name")
+﻿-- Insert batch statuses 
+INSERT INTO
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  1, 'processing'
+  1, 'uploading', 'Batch is uploading'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=1);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=1);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  2, 'pending'
+  2, 'verifying', 'Batch file is in process of structure verification'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=2);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=2);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  3, 'verified'
+  3, 'pending', 'Batch is awating to be approved by maker'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=3);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=3);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  4, 'rejected'
+  4, 'ready', 'Batch has been approved from the maker and it is ready for the checker'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=4);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=4);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  5, 'returned'
+  5, 'rejected', 'Batch has been rejected from the checker'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=5);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=5);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  6, 'ready'
+  6, 'returned', 'Batch has been returned to the maker for additional modifications'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=6);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=6);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  7, 'sent'
+  7, 'approved', 'Batch has been approved and it is ready for processing'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=7);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=7);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  8, 'new'
+  8, 'processing', 'Batch is in process of processing the payments'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=8);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=8);
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
-  9, 'paid'
+  9, 'done', 'All the necessary payments in the batch have been processed'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=9);
+  NOT EXISTS (SELECT 1 FROM bulk."batchStatus" WHERE "batchStatusId"=9);
+
+-- insert payment statuses
 
 INSERT INTO
-   bulk."status" ("statusId", "name")
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
 SELECT
-  10, 'disabled'
+  1, 'new ', 'Payment is newly created'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."status" WHERE "statusId"=10);
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+
+INSERT INTO
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
+SELECT
+  2, 'modified', 'Payment has been modified - need additional checks'
+WHERE
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+
+INSERT INTO
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
+SELECT
+  3, 'disabled', 'Payment has been disabled - will not be processed'
+WHERE
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+
+INSERT INTO
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
+SELECT
+  4, 'verified', 'Payment has been verified and it is ready to be processed'
+WHERE
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+
+INSERT INTO
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
+SELECT
+  5, 'paid', 'Payment is paid'
+WHERE
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+
+INSERT INTO
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
+SELECT
+  6, 'failed', 'Payment failed'
+WHERE
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);

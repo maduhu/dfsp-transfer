@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION bulk."batch.fetch" (
     "@name" VARCHAR,
-    "@statusId" SMALLINT,
+    "@batchStatusId" SMALLINT,
     "@fromDate" TIMESTAMP,
     "@toDate" TIMESTAMP
 )
@@ -9,7 +9,7 @@ RETURNS TABLE (
     "name" VARCHAR(100),
     "accountNumber" VARCHAR(25),
     "expirationDate" TIMESTAMP,
-    "statusId" SMALLINT,
+    "batchStatusId" SMALLINT,
     "actorId" VARCHAR(25),
     "info" TEXT,
     "createdAt" TIMESTAMP
@@ -22,7 +22,7 @@ BEGIN
         b."name",
         b."accountNumber",
         b."expirationDate",
-        b."statusId",
+        b."batchStatusId",
         b."actorId",
         b."info",
         b."createdAt"
@@ -30,7 +30,7 @@ BEGIN
         bulk."batch" AS b
     WHERE
         ("@name" IS NULL OR b."name" = "@name")
-        AND ("@statusId" IS NULL OR b."statusId" = "@statusId")
+        AND ("@batchStatusId" IS NULL OR b."batchStatusId" = "@batchStatusId")
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
         AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate");
 END;

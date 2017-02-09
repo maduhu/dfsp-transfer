@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION bulk."payment.fetch" (
     "@batchId" INTEGER,
-    "@statusId" INTEGER,
+    "@paymentStatusId" INTEGER,
     "@fromDate" TIMESTAMP,
     "@toDate" TIMESTAMP,
     "@sequenceNumber" INTEGER,
@@ -16,7 +16,7 @@ RETURNS TABLE (
     "dob" timestamp,
     "nationalId" VARCHAR(255),
     "amount" numeric(19,2),
-    "statusId" SMALLINT,
+    "paymentStatusId" SMALLINT,
     "name" VARCHAR(100),
     "createdAt" timestamp,
     "updatedAt" timestamp
@@ -34,7 +34,7 @@ BEGIN
         p."dob",
         p."nationalId",
         p."amount",
-        p."statusId",
+        p."paymentStatusId",
         b."name",
         p."createdAt",
         p."updatedAt"
@@ -44,7 +44,7 @@ BEGIN
         bulk."batch" b ON b."batchId" = p."batchId"
     WHERE
         ("@batchId" IS NULL OR p."batchId" = "@batchId")
-        AND ("@statusId" IS NULL OR p."statusId" = "@statusId")
+        AND ("@paymentStatusId" IS NULL OR p."paymentStatusId" = "@paymentStatusId")
         AND ("@fromDate" IS NULL OR p."createdAt" >= "@fromDate")
         AND ("@toDate" IS NULL OR p."createdAt" <= "@toDate")
         AND ("@sequenceNumber" IS NULL OR p."sequenceNumber" = "@sequenceNumber")
