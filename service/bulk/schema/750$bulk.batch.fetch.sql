@@ -22,19 +22,17 @@ BEGIN
         b."name",
         b."accountNumber",
         b."expirationDate",
-        bh."statusId",
-        bh."actorId",
-        bh."info",
-        bh."createdAt"
+        b."statusId",
+        b."actorId",
+        b."info",
+        b."createdAt"
     FROM 
         bulk."batch" AS b
-    JOIN
-        bulk."batchHistory" bh ON b."batchId" = bh."batchId"
     WHERE
         ("@name" IS NULL OR b."name" = "@name")
-        AND ("@statusId" IS NULL OR bh."statusId" = "@statusId")
-        AND ("@fromDate" IS NULL OR bh."createdAt" >= "@fromDate")
-        AND ("@toDate" IS NULL OR bh."createdAt" <= "@toDate");
+        AND ("@statusId" IS NULL OR b."statusId" = "@statusId")
+        AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
+        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate");
 END;
 $body$
 LANGUAGE 'plpgsql';

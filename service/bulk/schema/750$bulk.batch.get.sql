@@ -23,15 +23,13 @@ BEGIN
         b."name",
         b."accountNumber",
         b."expirationDate",
-        bh."statusId",
-        bh."actorId",
-        bh."info",
-        bh."createdAt",
+        b."statusId",
+        b."actorId",
+        b."info",
+        b."createdAt",
         true as "isSingleResult"
     FROM 
         bulk."batch" AS b
-    JOIN
-        bulk."batchHistory" bh ON b."batchId" = bh."batchId"
     WHERE
         b."batchId" = "@batchId";
 END;

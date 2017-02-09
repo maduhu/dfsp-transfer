@@ -18,27 +18,20 @@ $BODY$
 
     BEGIN
         INSERT INTO bulk."batch" (
-            "name"
-        )
-        VALUES (
-            "@name"
-        )
-        RETURNING bulk."batch"."batchId" INTO "@batchId";
-
-        INSERT INTO bulk."batchHistory" (
-            "batchId",
+            "name",
             "statusId",
             "actorId",
             "info",
             "createdAt"
         )
         VALUES (
-            "@batchId",
+            "@name",
             "@statusId",
             "@actorId",
             '',
             NOW()
-        );
+        )
+        RETURNING bulk."batch"."batchId" INTO "@batchId";
 
         INSERT INTO bulk."upload" (
             "batchId",
@@ -59,13 +52,11 @@ $BODY$
         SELECT
             b."batchId",
             b."name",
-            bh."statusId",
-            bh."actorId",
+            b."statusId",
+            b."actorId",
             true as "isSingleResult"
         FROM 
             bulk."batch" AS b
-        JOIN
-            bulk."batchHistory" bh ON b."batchId" = bh."batchId"
         WHERE
             b."batchId" = "@batchId";
 END;
