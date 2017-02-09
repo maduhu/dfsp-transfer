@@ -1,7 +1,8 @@
 CREATE OR REPLACE FUNCTION bulk."batch.add" (
     "@name" varchar,
     "@actorId" varchar,
-    "@fileName" varchar
+    "@fileName" varchar,
+    "@originalFileName" varchar
 )
 RETURNS TABLE (
     "batchId" INTEGER,
@@ -42,12 +43,14 @@ $BODY$
         INSERT INTO bulk."upload" (
             "batchId",
             "fileName",
+            "originalFileName",
             "info",
             "createdAt"
         )
         VALUES (
             "@batchId",
             "@fileName",
+            "@originalFileName",
             '',
             NOW()
         );
