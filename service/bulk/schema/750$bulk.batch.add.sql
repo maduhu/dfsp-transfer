@@ -15,7 +15,7 @@ $BODY$
 
 DECLARE
     "@batchId" INTEGER;
-    "@batchStatusId" SMALLINT:= (SELECT "batchStatusId" FROM bulk."batchStatus" ps WHERE ps."name" = 'uploading');
+    "@batchStatusId" SMALLINT:= (SELECT ps."batchStatusId" FROM bulk."batchStatus" ps WHERE ps."name" = 'uploading');
 BEGIN
     IF "@name" IS NULL THEN
         RAISE EXCEPTION 'bulk.nameIsMissing';

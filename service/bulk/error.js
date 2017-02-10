@@ -21,8 +21,8 @@ module.exports = [
   },
   {
     id: 'StatusIdNotFoundError',
-    type: 'bulk.statusIdNotFound',
-    message: 'Status with the given statusId does not exist',
+    type: 'bulk.batchStatusIdNotFound',
+    message: 'Batch status with the given batchStatusId does not exist',
     statusCode: 422
   },
   {
@@ -41,6 +41,12 @@ module.exports = [
     id: 'MissingName',
     type: 'bulk.nameIsMissing',
     message: 'Missing input name',
+    statusCode: 422
+  },
+  {
+    id: 'MissingPayments',
+    type: 'bulk.paymentsMissing',
+    message: 'Missing input payments',
     statusCode: 422
   }
 ].reduce((exporting, error) => {

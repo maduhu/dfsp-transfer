@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.edit" (
     "@expirationDate" timestamp,
     "@name" varchar(100),
     "@batchStatusId" integer,
-    "@historyInfo" text,
+    "@batchInfo" text,
     "@uploadInfo" text,
     "@actorId" varchar(25),
     "@fileName" varchar(256),
@@ -16,7 +16,7 @@ RETURNS TABLE (
     "expirationDate" timestamp,
     "name" varchar(100),
     "batchStatusId" smallint,
-    "historyInfo" text,
+    "batchInfo" text,
     "uploadInfo" text,
     "actorId" varchar(25),
     "fileName" varchar(256),
@@ -70,7 +70,7 @@ BEGIN
         "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
         "name" = COALESCE("@name", b."name"),
         "batchStatusId" = COALESCE("@batchStatusId", b."batchStatusId"),
-        "info" = COALESCE("@historyInfo", b."info")
+        "info" = COALESCE("@batchInfo", b."info")
     WHERE
         b."batchId" = "@batchId";
 
@@ -116,7 +116,7 @@ BEGIN
         b."expirationDate" as "expirationDate",
         b."name" as "name",
         b."batchStatusId" as "batchStatusId", 
-        b."info" as "historyInfo",
+        b."info" as "batchInfo",
         u."info" as "uploadInfo",
         "@actorId" as "actorId", 
         u."fileName" as "fileName",

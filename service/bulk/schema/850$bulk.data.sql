@@ -67,7 +67,7 @@ WHERE
 INSERT INTO
    bulk."paymentStatus" ("paymentStatusId", "name", "description")
 SELECT
-  1, 'new ', 'Payment is newly created'
+  1, 'new', 'Payment is newly created'
 WHERE
   NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
 
@@ -76,32 +76,32 @@ INSERT INTO
 SELECT
   2, 'modified', 'Payment has been modified - need additional checks'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=2);
 
 INSERT INTO
    bulk."paymentStatus" ("paymentStatusId", "name", "description")
 SELECT
   3, 'disabled', 'Payment has been disabled - will not be processed'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=3);
 
 INSERT INTO
    bulk."paymentStatus" ("paymentStatusId", "name", "description")
 SELECT
   4, 'verified', 'Payment has been verified and it is ready to be processed'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=4);
 
 INSERT INTO
    bulk."paymentStatus" ("paymentStatusId", "name", "description")
 SELECT
   5, 'paid', 'Payment is paid'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=5);
 
 INSERT INTO
    bulk."paymentStatus" ("paymentStatusId", "name", "description")
 SELECT
   6, 'failed', 'Payment failed'
 WHERE
-  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=1);
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=6);

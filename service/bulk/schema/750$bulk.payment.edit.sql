@@ -8,7 +8,17 @@ RETURNS TABLE (
 $body$
 DECLARE 
     "@paymentIds" BIGINT[];
+    "@paymentsCount" INT:= json_array_length("@payments");
 BEGIN
+    IF "@actorId" IS NULL THEN
+        RAISE EXCEPTION 'bulk.actorIdMissing';
+    END IF;
+    IF "@payments" IS NULL THEN
+        RAISE EXCEPTION 'bulk.paymentsMissing';
+    END IF;
+    IF "@paymentsCount" = 0 THEN
+        RAISE EXCEPTION 'bulk.emptyPayments';
+    END IF;
 
     INSERT INTO bulk."paymentHistory" (
         "actorId",
