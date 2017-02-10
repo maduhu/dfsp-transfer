@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION bulk."batch.fetch" (
     "@name" VARCHAR,
-    "@batchStatusId" SMALLINT,
+    "@batchStatusId" INTEGER,
     "@fromDate" TIMESTAMP,
     "@toDate" TIMESTAMP
 )

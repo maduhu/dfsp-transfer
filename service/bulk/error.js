@@ -26,9 +26,21 @@ module.exports = [
     statusCode: 422
   },
   {
+    id: 'MissingFileName',
+    type: 'bulk.missingFileName',
+    message: 'Missing file name',
+    statusCode: 422
+  },
+  {
     id: 'MissingOriginalFileName',
     type: 'bulk.missingOriginalFileName',
-    message: 'Can not create new upload record without original file name',
+    message: 'Missing original file name',
+    statusCode: 422
+  },
+  {
+    id: 'MissingName',
+    type: 'bulk.nameIsMissing',
+    message: 'Missing input name',
     statusCode: 422
   }
 ].reduce((exporting, error) => {
