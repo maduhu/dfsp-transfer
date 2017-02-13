@@ -1,6 +1,7 @@
 CREATE OR REPLACE FUNCTION bulk."payment.add" (
     "@actorId" varchar,
-    "@payments" json
+    "@payments" json,
+    "@batchId" INT
 )
 RETURNS TABLE (
     "insertedRows" INTEGER,
@@ -17,6 +18,9 @@ BEGIN
     END IF;
     IF "@payments" IS NULL THEN
         RAISE EXCEPTION 'bulk.paymentsMissing';
+    END IF;
+    IF "@batchId" IS NULL THEN
+        RAISE EXCEPTION 'bulk.batchIdMissing';
     END IF;
     IF "@paymentsCount" = 0 THEN
         RAISE EXCEPTION 'bulk.emptyPayments';
@@ -38,13 +42,13 @@ BEGIN
             "updatedAt"
         )
         SELECT 
+            "@batchId",
             *,
             "@paymentStatusId" as "paymentStatusId",
             NOW() as "createdAt",
             NOW() as "updatedAt"
         FROM
             json_to_recordset("@payments") AS x(
-                "batchId" INTEGER,
                 "sequenceNumber" INTEGER,
                 "userNumber" VARCHAR(25),
                 "firstName" VARCHAR(255),

@@ -28,6 +28,13 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
+  'batchStatus.fetch': {
+    auth: false,
+    description: 'Bulk batch status',
+    notes: 'Bulk batch status',
+    params: joi.any(),
+    result: joi.any()
+  },
   'payment.add': {
     auth: false,
     description: 'Bulk batch add',
