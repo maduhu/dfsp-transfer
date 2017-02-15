@@ -48,5 +48,19 @@ module.exports = {
     notes: 'Bulk batch add',
     params: joi.any(),
     result: joi.any()
+  },
+  'payment.fetch': {
+    auth: false,
+    description: 'Bulk payment fetch',
+    notes: 'Bulk payment fetch',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'paymentStatus.fetch': {
+    auth: false,
+    description: 'Bulk payment status fetch',
+    notes: 'Bulk payment status fetch',
+    params: joi.any(),
+    result: joi.any()
   }
 }
