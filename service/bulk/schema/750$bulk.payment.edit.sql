@@ -32,6 +32,7 @@ BEGIN
         "nationalId",
         "amount",
         "paymentStatusId",
+        "info",
         "createdAt"
     )
     SELECT
@@ -46,6 +47,7 @@ BEGIN
         p."nationalId",
         p."amount",
         p."paymentStatusId",
+        p."info",
         NOW()
     FROM bulk."payment" AS p
     WHERE "paymentId" IN (SELECT jp."paymentId" FROM json_to_recordset("@payments") AS jp("paymentId" INTEGER));
@@ -62,6 +64,7 @@ WITH
             "nationalId" = COALESCE(jp."nationalId", p."nationalId"),
             "amount" = COALESCE(jp."amount", p."amount"),
             "paymentStatusId" = COALESCE(jp."paymentStatusId", p."paymentStatusId"),
+            "info" = COALESCE(jp."info", p."info"),
             "updatedAt" = NOW()
         FROM
             json_to_recordset("@payments") AS jp(
@@ -74,7 +77,8 @@ WITH
                 "dob" TIMESTAMP,
                 "nationalId" VARCHAR(255),
                 "amount" NUMERIC(19,2),
-                "paymentStatusId" INTEGER
+                "paymentStatusId" INTEGER,
+                "info" TEXT
             )
         WHERE jp."paymentId" = p."paymentId"
         RETURNING p.*

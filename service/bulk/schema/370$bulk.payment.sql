@@ -9,6 +9,7 @@ CREATE TABLE bulk."payment"  (
     "nationalId" VARCHAR(255),
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
+    "info" TEXT,
     "createdAt" timestamp without time zone NOT NULL,
     "updatedAt" timestamp without time zone NOT NULL,
     CONSTRAINT "pkBulkPayment" PRIMARY KEY ("paymentId"),

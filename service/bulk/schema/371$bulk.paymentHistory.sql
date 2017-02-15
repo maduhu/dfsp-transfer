@@ -11,6 +11,7 @@ CREATE TABLE bulk."paymentHistory"  (
     "nationalId" VARCHAR(255),
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
+    "info" TEXT,
     "createdAt" timestamp without time zone NOT NULL,
     CONSTRAINT "pkBulkPaymentHistory" PRIMARY KEY ("paymentHistoryId"),
     CONSTRAINT "fkBulkPaymentHistory_bulkPayment" FOREIGN KEY ("paymentId") REFERENCES bulk."payment"("paymentId"),

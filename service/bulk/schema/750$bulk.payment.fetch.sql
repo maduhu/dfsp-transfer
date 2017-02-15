@@ -21,6 +21,7 @@ RETURNS TABLE (
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
     "status" VARCHAR(100),
+    "info" TEXT,
     "name" VARCHAR(100),
     "createdAt" timestamp,
     "updatedAt" timestamp
@@ -40,6 +41,7 @@ BEGIN
         p."amount",
         p."paymentStatusId",
         (SELECT ps."name" FROM bulk."paymentStatus" ps WHERE ps."paymentStatusId" = p."paymentStatusId") AS "status",
+        p."info",
         b."name",
         p."createdAt",
         p."updatedAt"
