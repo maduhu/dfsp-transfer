@@ -1,4 +1,4 @@
-﻿-- Insert batch statuses 
+﻿-- Insert batch statuses
 INSERT INTO
    bulk."batchStatus" ("batchStatusId", "name", "description")
 SELECT
@@ -105,3 +105,10 @@ SELECT
   6, 'failed', 'Payment failed'
 WHERE
   NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=6);
+
+INSERT INTO
+   bulk."paymentStatus" ("paymentStatusId", "name", "description")
+SELECT
+  7, 'mismatch', 'Payment has mismatching properties'
+WHERE
+  NOT EXISTS (SELECT 1 FROM bulk."paymentStatus" WHERE "paymentStatusId"=7);
