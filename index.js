@@ -17,9 +17,7 @@ module.exports = require('ut-run')
         return promise
       })
       .then(function () {
-        setTimeout(function () {
-          pay()
-        }, 10000)
+        setTimeout(pay, app.config.schedulePayments.interval || 10000)
       })
   }
   if (app.config.schedulePayments) {
