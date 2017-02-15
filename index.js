@@ -1,14 +1,17 @@
 module.exports = require('ut-run')
 .run({}, module)
 .then(function (app) {
-  return app;
-  (function pay () {
-    app.bus.importMethod('bulk.x')()
+  function pay () {
+    app.bus.importMethod('bulk.payment.getForProcessing')()
       .then(function (payments) {
         var promise = Promise.resolve()
         payments.forEach(function (payment) {
           promise = promise.then(function () {
-            return app.bus.importMethod('bulk.y')(payment).catch(function () {})
+            return new Promise(function (resolve) {
+              process.nextTick(function () {
+                resolve(app.bus.importMethod('bulk.payment.process')(payment))
+              })
+            })
           })
         })
         return promise
@@ -18,5 +21,9 @@ module.exports = require('ut-run')
           pay()
         }, 10000)
       })
-  })()
+  }
+  if (app.config.schedulePayments) {
+    process.nextTick(pay)
+  }
+  return app
 })

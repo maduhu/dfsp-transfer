@@ -5,7 +5,7 @@ module.exports = {
     path: path.join(__dirname, 'schema'),
     linkSP: true
   }],
-  'x': function (msg) {
+  'payment.getForProcessing': function (msg) {
     return [{
       paymentId: '1',
       queueId: 1
@@ -17,7 +17,7 @@ module.exports = {
       queueId: 1
     }]
   },
-  'y': function (msg) {
+  'payment.process': function (msg) {
     return msg
   }
 }
