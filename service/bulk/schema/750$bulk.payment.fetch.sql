@@ -5,7 +5,9 @@ CREATE OR REPLACE FUNCTION bulk."payment.fetch" (
     "@fromDate" TIMESTAMP,
     "@toDate" TIMESTAMP,
     "@sequenceNumber" INTEGER,
-    "@name" VARCHAR(100)
+    "@name" VARCHAR(100),
+    "@pageSize" INTEGER,
+    "@pageNumber" INTEGER
 )
 RETURNS TABLE (
     "paymentId" BIGINT,
@@ -52,7 +54,9 @@ BEGIN
         AND ("@fromDate" IS NULL OR p."createdAt" >= "@fromDate")
         AND ("@toDate" IS NULL OR p."createdAt" <= "@toDate")
         AND ("@sequenceNumber" IS NULL OR p."sequenceNumber" = "@sequenceNumber")
-        AND ("@name" IS NULL OR b."name" = "@name");
+        AND ("@name" IS NULL OR b."name" = "@name")
+    ORDER BY p."paymentId"
+    LIMIT "@pageSize" OFFSET ("@pageNumber" - 1) * "@pageSize";
 END;
 $body$
 LANGUAGE 'plpgsql';
