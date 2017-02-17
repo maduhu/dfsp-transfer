@@ -1,4 +1,5 @@
 CREATE OR REPLACE FUNCTION bulk."payment.fetch" (
+    "@paymentId" BIGINT[],
     "@batchId" INTEGER,
     "@nationalId" VARCHAR(255),
     "@paymentStatusId" INTEGER,
@@ -50,13 +51,18 @@ BEGIN
     JOIN
         bulk."batch" b ON b."batchId" = p."batchId"
     WHERE
-        ("@batchId" IS NULL OR p."batchId" = "@batchId")
-        AND ("@nationalId" IS NULL OR p."nationalId" = "@nationalId")
-        AND ("@paymentStatusId" IS NULL OR p."paymentStatusId" = "@paymentStatusId")
-        AND ("@fromDate" IS NULL OR p."createdAt" >= "@fromDate")
-        AND ("@toDate" IS NULL OR p."createdAt" <= "@toDate")
-        AND ("@sequenceNumber" IS NULL OR p."sequenceNumber" = "@sequenceNumber")
-        AND ("@name" IS NULL OR b."name" = "@name")
+    	(CASE 
+         	WHEN "@paymentId" IS NOT NULL THEN 
+         		p."paymentId" IN (SELECT UNNEST("@paymentId"))
+         	ELSE 
+                ("@batchId" IS NULL OR p."batchId" = "@batchId")
+                AND ("@nationalId" IS NULL OR p."nationalId" = "@nationalId")
+                AND ("@paymentStatusId" IS NULL OR p."paymentStatusId" = "@paymentStatusId")
+                AND ("@fromDate" IS NULL OR p."createdAt" >= "@fromDate")
+                AND ("@toDate" IS NULL OR p."createdAt" <= "@toDate")
+                AND ("@sequenceNumber" IS NULL OR p."sequenceNumber" = "@sequenceNumber")
+                AND ("@name" IS NULL OR b."name" = "@name")
+        END)
     ORDER BY p."paymentId"
     LIMIT "@pageSize" OFFSET ("@pageNumber" - 1) * "@pageSize";
 END;
