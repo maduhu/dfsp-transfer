@@ -14,6 +14,7 @@ RETURNS TABLE (
     "actorId" VARCHAR(25),
     "info" TEXT,
     "fileName" VARCHAR(256),
+    "originalFileName" VARCHAR(256),
     "createdAt" TIMESTAMP,
     "lastValidation" TIMESTAMP,
     "paymentsCount" BIGINT
@@ -37,6 +38,7 @@ BEGIN
         b."actorId",
         b."info",
         u."fileName",
+        u."originalFileName",
         b."createdAt",
         (
             SELECT MAX(x."date")
