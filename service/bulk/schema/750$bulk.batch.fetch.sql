@@ -13,6 +13,7 @@ RETURNS TABLE (
     "status" VARCHAR(100),
     "actorId" VARCHAR(25),
     "info" TEXT,
+    "fileName" VARCHAR(256),
     "createdAt" TIMESTAMP,
     "lastValidation" TIMESTAMP,
     "paymentsCount" BIGINT
@@ -35,6 +36,7 @@ BEGIN
         bs."name" AS "status",
         b."actorId",
         b."info",
+        u."fileName",
         b."createdAt",
         (
             SELECT MAX(x."date")
@@ -61,11 +63,24 @@ BEGIN
         bulk."batch" AS b
     JOIN
         bulk."batchStatus" AS bs ON bs."batchStatusId" = b."batchStatusId"
+    JOIN 
+        bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
         ("@name" IS NULL OR b."name" = "@name")
         AND ("@batchStatusId" IS NULL OR b."batchStatusId" = "@batchStatusId")
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
-        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate");
+        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate")
+        AND u."uploadId" = (
+            SELECT 
+                up."uploadId"
+            FROM 
+                bulk."upload" up
+            WHERE
+                up."batchId" = b."batchId"
+            ORDER BY 
+                up."uploadId" DESC
+            LIMIT 1
+        );
 END;
 $body$
 LANGUAGE 'plpgsql';
