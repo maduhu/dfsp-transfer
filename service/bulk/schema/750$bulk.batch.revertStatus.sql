@@ -12,7 +12,8 @@ RETURNS TABLE (
     "uploadInfo" text,
     "actorId" varchar(25),
     "fileName" varchar(256),
-    "originalFileName" varchar(256)
+    "originalFileName" varchar(256),
+    "isSingleResult" boolean
 ) AS
 $body$
 BEGIN

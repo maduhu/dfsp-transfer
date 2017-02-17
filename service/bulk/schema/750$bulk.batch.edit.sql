@@ -20,7 +20,8 @@ RETURNS TABLE (
     "uploadInfo" text,
     "actorId" varchar(25),
     "fileName" varchar(256),
-    "originalFileName" varchar(256)
+    "originalFileName" varchar(256),
+    "isSingleResult" boolean
 ) AS
 $body$
 BEGIN
@@ -120,7 +121,8 @@ BEGIN
         u."info" as "uploadInfo",
         "@actorId" as "actorId", 
         u."fileName" as "fileName",
-        u."originalFileName" as "originalFileName"
+        u."originalFileName" as "originalFileName",
+        true as "isSingleResult"
     FROM 
         bulk."batch" b
     JOIN 
