@@ -1,3 +1,47 @@
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.4...v0.14.0) (2017-02-17)
+
+
+### Bug Fixes
+
+* add all data to batch table and use batchHistory as full copy ([d4cd1b3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d4cd1b3))
+* add fileName in the return statement ([6d3a3d7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6d3a3d7))
+* add httpserver validations skeleton ([dc79b0f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/dc79b0f))
+* add info column in payment and paymentHistory ([a048cf5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a048cf5))
+* add input validations to the procedures ([e5abb08](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e5abb08))
+* add input verifications to the procedures ([3ce5e92](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/3ce5e92))
+* add mismatch status for payments and define bulk.batch.revertStatus backend api method ([6971e7b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6971e7b))
+* add original file name in return statement ([59edeb1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/59edeb1))
+* add originalFileName to batch.add ([5e8bc5e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/5e8bc5e))
+* add paging ([16babab](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/16babab))
+* add paymentId:Array as input for payment fetch ([0aa1901](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0aa1901))
+* add revert batch status ([8b1df5b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/8b1df5b))
+* apply db structure changes to have different statuses for batch and payments ([dd37aec](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/dd37aec))
+* bulk.batch.edit - move all data to batch table and make ull copy to history table on edit ([4bbac4e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4bbac4e))
+* folder restructuring ([3b2e98f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/3b2e98f))
+* prepare cron ([324bdc3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/324bdc3))
+* refactor bulk.batch.edit procedure ([f9276eb](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f9276eb))
+* return single result from batch.edit ([43e3d8b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/43e3d8b))
+* update batch and payment status nomenclatures ([899dad1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/899dad1))
+* update upload where clause ([3c09697](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/3c09697))
+
+
+### Features
+
+* add bulk payment fetch procedure ([f74ce79](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f74ce79))
+* add bulk payment schema ([16943c2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/16943c2))
+* add bulk.batch.edit procedure ([a37b9ef](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a37b9ef))
+* add bulk.payment.edit function ([f796259](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f796259))
+* add payment status fetch function ([6d95369](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6d95369))
+* bulk payments - add batch.add function ([970b72f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/970b72f))
+* bulk payments - add batch.fetch function ([de3f9ec](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/de3f9ec))
+* bulk payments - add batch.get function ([70cf109](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/70cf109))
+* bulk payments - add payment.add function ([bfbbb4e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/bfbbb4e))
+* list bulk payments to admin view with filter functionality ([d6d7562](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d6d7562))
+* prepare bulk payment scheduler to initialize with configuration upon start ([6970a0d](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6970a0d))
+
+
+
 <a name="0.13.4"></a>
 ## [0.13.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.3...v0.13.4) (2017-01-31)
 
