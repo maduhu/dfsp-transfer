@@ -64,7 +64,12 @@ BEGIN
     JOIN 
         bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
-        b."batchId" = "@batchId";
+        b."batchId" = "@batchId"
+        AND u."uploadId" = (
+            SELECT MAX("uploadId")
+            FROM bulk."upload" up
+            WHERE up."batchId" = "@batchId"
+    );
 END;
 $body$
 LANGUAGE 'plpgsql';
