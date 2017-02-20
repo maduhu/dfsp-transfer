@@ -7,14 +7,14 @@ CREATE OR REPLACE FUNCTION bulk."batch.fetch" (
 RETURNS TABLE (
     "batchId" INTEGER,
     "name" VARCHAR(100),
-    "accountNumber" VARCHAR(25),
-    "expirationDate" TIMESTAMP,
+    -- "accountNumber" VARCHAR(25),
+    -- "expirationDate" TIMESTAMP,
     "batchStatusId" SMALLINT,
     "status" VARCHAR(100),
-    "actorId" VARCHAR(25),
-    "info" TEXT,
-    "fileName" VARCHAR(256),
-    "originalFileName" VARCHAR(256),
+    -- "actorId" VARCHAR(25),
+    -- "info" TEXT,
+    -- "fileName" VARCHAR(256),
+    -- "originalFileName" VARCHAR(256),
     "createdAt" TIMESTAMP,
     "lastValidation" TIMESTAMP,
     "paymentsCount" BIGINT
@@ -31,14 +31,14 @@ BEGIN
     SELECT
         b."batchId",
         b."name",
-        b."accountNumber",
-        b."expirationDate",
+        -- b."accountNumber",
+        -- b."expirationDate",
         b."batchStatusId",
         bs."name" AS "status",
-        b."actorId",
-        b."info",
-        u."fileName",
-        u."originalFileName",
+        -- b."actorId",
+        -- b."info",
+        -- u."fileName",
+        -- u."originalFileName",
         b."createdAt",
         (
             SELECT MAX(x."date")
@@ -65,24 +65,24 @@ BEGIN
         bulk."batch" AS b
     JOIN
         bulk."batchStatus" AS bs ON bs."batchStatusId" = b."batchStatusId"
-    JOIN 
-        bulk."upload" as u on u."batchId" = b."batchId"
+    -- JOIN 
+    --     bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
         ("@name" IS NULL OR b."name" = "@name")
         AND ("@batchStatusId" IS NULL OR b."batchStatusId" = "@batchStatusId")
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
-        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate")
-        AND u."uploadId" = (
-            SELECT 
-                up."uploadId"
-            FROM 
-                bulk."upload" up
-            WHERE
-                up."batchId" = b."batchId"
-            ORDER BY 
-                up."uploadId" DESC
-            LIMIT 1
-        );
+        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate");
+        -- AND u."uploadId" = (
+        --     SELECT 
+        --         up."uploadId"
+        --     FROM 
+        --         bulk."upload" up
+        --     WHERE
+        --         up."batchId" = b."batchId"
+        --     ORDER BY 
+        --         up."uploadId" DESC
+        --     LIMIT 1
+        -- );
 END;
 $body$
 LANGUAGE 'plpgsql';

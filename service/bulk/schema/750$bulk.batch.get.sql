@@ -9,8 +9,13 @@ RETURNS TABLE (
     "batchStatusId" SMALLINT,
     "actorId" VARCHAR(25),
     "info" TEXT,
+    "fileName" VARCHAR(256),
+    "originalFileName" VARCHAR(256),
     "createdAt" TIMESTAMP,
-    "isSingleResult" boolean
+    "status" VARCHAR(100),
+    "isSingleResult" boolean,
+    "lastValidation" TIMESTAMP,
+    "paymentsCount" BIGINT
 ) AS
 $body$
 BEGIN
@@ -26,10 +31,38 @@ BEGIN
         b."batchStatusId",
         b."actorId",
         b."info",
+        u."fileName",
+        u."originalFileName",
         b."createdAt",
-        true as "isSingleResult"
+        bs."name" AS "status",
+        true as "isSingleResult",
+        (
+            SELECT MAX(x."date")
+            FROM (
+                (
+                    SELECT bh."createdAt" as "date"
+                    FROM bulk."batchHistory" bh
+                    WHERE bh."batchId" = b."batchId" 
+                )
+                UNION
+                (
+                    SELECT bb."createdAt" as "date"
+                    FROM bulk."batch" AS bb
+                    WHERE bb."batchId" = b."batchId"
+                )
+            ) AS x
+        ) AS "lastValidation",
+        (
+            SELECT COUNT(p."paymentId")
+            FROM bulk."payment" p
+            WHERE p."batchId" = b."batchId"
+        ) as "paymentsCount"
     FROM 
         bulk."batch" AS b
+    JOIN
+        bulk."batchStatus" AS bs ON bs."batchStatusId" = b."batchStatusId"
+    JOIN 
+        bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
         b."batchId" = "@batchId";
 END;
