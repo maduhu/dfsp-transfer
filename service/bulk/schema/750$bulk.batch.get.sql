@@ -14,7 +14,7 @@ RETURNS TABLE (
     "createdAt" TIMESTAMP,
     "status" VARCHAR(100),
     "isSingleResult" boolean,
-    "lastValidation" TIMESTAMP,
+    "updatedAt" TIMESTAMP,
     "paymentsCount" BIGINT
 ) AS
 $body$
@@ -37,21 +37,16 @@ BEGIN
         bs."name" AS "status",
         true as "isSingleResult",
         (
-            SELECT MAX(x."date")
-            FROM (
-                (
-                    SELECT bh."createdAt" as "date"
-                    FROM bulk."batchHistory" bh
-                    WHERE bh."batchId" = b."batchId" 
-                )
-                UNION
-                (
-                    SELECT bb."createdAt" as "date"
-                    FROM bulk."batch" AS bb
-                    WHERE bb."batchId" = b."batchId"
-                )
-            ) AS x
-        ) AS "lastValidation",
+            SELECT
+                bh."createdAt"
+            FROM
+                bulk."batchHistory" bh
+            WHERE
+                bh."batchId" = "@batchId"
+            ORDER BY 
+                bh."batchHistoryId" DESC
+            LIMIT 1
+        ) AS "updatedAt",
         (
             SELECT COUNT(p."paymentId")
             FROM bulk."payment" p
