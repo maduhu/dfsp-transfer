@@ -53,7 +53,7 @@ BEGIN
     -- JOIN 
     --     bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
-        ("@name" IS NULL OR b."name" = "@name")
+        ("@name" IS NULL OR b."name" ~* "@name")
         AND ("@batchStatusId" IS NULL OR b."batchStatusId" = "@batchStatusId")
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
         AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate");
