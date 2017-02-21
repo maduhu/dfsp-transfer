@@ -1,3 +1,21 @@
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.14.0...v0.15.0) (2017-02-21)
+
+
+### Bug Fixes
+
+* get the info about the latest uploaded file ([6701d38](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6701d38))
+* last validated on date on batch.fetch ([c1b215d](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c1b215d))
+* procedures for get and fetch changes ([ea4cbff](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/ea4cbff))
+* replace "lastValidation" with "updatedAt" ([c2319f7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c2319f7))
+
+
+### Features
+
+* add batch.ready function ([c9229c1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c9229c1))
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.13.4...v0.14.0) (2017-02-17)
 
