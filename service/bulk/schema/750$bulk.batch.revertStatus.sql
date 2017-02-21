@@ -1,6 +1,7 @@
 CREATE OR REPLACE FUNCTION bulk."batch.revertStatus" (
     "@batchId" INTEGER,
-    "@actorId" VARCHAR(25)
+    "@actorId" VARCHAR(25),
+    "@partial" BOOLEAN
 )
 RETURNS TABLE (
     "batchId" integer,
@@ -19,23 +20,23 @@ RETURNS TABLE (
 $body$
 BEGIN
    RETURN QUERY
-    SELECT * 
-    FROM 
+    SELECT *
+    FROM
         bulk."batch.edit"(
             "@batchId",
             NULL,
             NULL,
             NULL,
             (
-                SELECT 
+                SELECT
                     bh."batchStatusId"
                 FROM
-                    bulk."batchHistory" bh 
-                WHERE 
-                    bh."batchId" = "@batchId" 
-                ORDER BY 
+                    bulk."batchHistory" bh
+                WHERE
+                    bh."batchId" = "@batchId"
+                ORDER BY
                     bh."batchHistoryId" DESC
-                LIMIT 
+                LIMIT
                     1
             ),
             NULL,
@@ -43,7 +44,7 @@ BEGIN
             "@actorId",
             NULL,
             NULL,
-            NOW()
+            CASE "@partial" WHEN TRUE THEN NULL ELSE NOW() END
         );
 END;
 $body$

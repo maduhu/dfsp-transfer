@@ -46,28 +46,29 @@ BEGIN
             FROM bulk."payment" p
             WHERE p."batchId" = b."batchId"
         ) AS "paymentsCount"
-    FROM 
+    FROM
         bulk."batch" AS b
     JOIN
         bulk."batchStatus" AS bs ON bs."batchStatusId" = b."batchStatusId"
-    -- JOIN 
+    -- JOIN
     --     bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
         ("@name" IS NULL OR b."name" ~* "@name")
         AND ("@batchStatusId" IS NULL OR b."batchStatusId" = "@batchStatusId")
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
-        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate");
+        AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate")
         -- AND u."uploadId" = (
-        --     SELECT 
+        --     SELECT
         --         up."uploadId"
-        --     FROM 
+        --     FROM
         --         bulk."upload" up
         --     WHERE
         --         up."batchId" = b."batchId"
-        --     ORDER BY 
+        --     ORDER BY
         --         up."uploadId" DESC
         --     LIMIT 1
         -- );
+    ORDER BY b."batchId" DESC;
 END;
 $body$
 LANGUAGE 'plpgsql';
