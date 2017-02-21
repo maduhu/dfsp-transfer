@@ -13,6 +13,7 @@ RETURNS TABLE (
     "actorId" varchar(25),
     "fileName" varchar(256),
     "originalFileName" varchar(256),
+    "validatedAt" timestamp,
     "isSingleResult" boolean
 ) AS
 $body$
@@ -36,12 +37,13 @@ BEGIN
                     bh."batchHistoryId" DESC
                 LIMIT 
                     1
-            ),
+            )::integer,
             NULL,
             NULL,
             "@actorId",
             NULL,
-            NULL
+            NULL,
+            NOW()
         );
 END;
 $body$
