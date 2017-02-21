@@ -9,8 +9,13 @@ RETURNS TABLE (
     "batchStatusId" SMALLINT,
     "actorId" VARCHAR(25),
     "info" TEXT,
+    "fileName" VARCHAR(256),
+    "originalFileName" VARCHAR(256),
     "createdAt" TIMESTAMP,
-    "isSingleResult" boolean
+    "status" VARCHAR(100),
+    "isSingleResult" boolean,
+    "updatedAt" TIMESTAMP,
+    "paymentsCount" BIGINT
 ) AS
 $body$
 BEGIN
@@ -26,12 +31,40 @@ BEGIN
         b."batchStatusId",
         b."actorId",
         b."info",
+        u."fileName",
+        u."originalFileName",
         b."createdAt",
-        true as "isSingleResult"
+        bs."name" AS "status",
+        true as "isSingleResult",
+        (
+            SELECT
+                bh."createdAt"
+            FROM
+                bulk."batchHistory" bh
+            WHERE
+                bh."batchId" = "@batchId"
+            ORDER BY 
+                bh."batchHistoryId" DESC
+            LIMIT 1
+        ) AS "updatedAt",
+        (
+            SELECT COUNT(p."paymentId")
+            FROM bulk."payment" p
+            WHERE p."batchId" = b."batchId"
+        ) as "paymentsCount"
     FROM 
         bulk."batch" AS b
+    JOIN
+        bulk."batchStatus" AS bs ON bs."batchStatusId" = b."batchStatusId"
+    JOIN 
+        bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
-        b."batchId" = "@batchId";
+        b."batchId" = "@batchId"
+        AND u."uploadId" = (
+            SELECT MAX("uploadId")
+            FROM bulk."upload" up
+            WHERE up."batchId" = "@batchId"
+    );
 END;
 $body$
 LANGUAGE 'plpgsql';

@@ -28,6 +28,13 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
+  'batch.ready': {
+    auth: false,
+    description: 'Bulk batch ready',
+    notes: 'Bulk batch ready',
+    params: joi.any(),
+    result: joi.any()
+  },
   'batch.revertStatus': {
     auth: false,
     description: 'Bulk batch revert status',
