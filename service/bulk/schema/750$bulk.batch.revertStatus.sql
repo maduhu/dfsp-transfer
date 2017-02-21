@@ -37,7 +37,7 @@ BEGIN
                     bh."batchHistoryId" DESC
                 LIMIT 
                     1
-            )::integer,
+            ),
             NULL,
             NULL,
             "@actorId",

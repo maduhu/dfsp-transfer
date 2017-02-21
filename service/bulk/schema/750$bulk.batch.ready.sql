@@ -19,7 +19,8 @@ RETURNS TABLE (
 $body$
 BEGIN
     RETURN QUERY
-    SELECT 
+    SELECT *
+    FROM
        bulk."batch.edit"("@batchId", NULL, NULL, NULL, (SELECT bs."batchStatusId" FROM bulk."batchStatus" bs WHERE bs."name" = 'ready'), NULL, NULL, "@actorId", NULL, NULL, NULL);
 END;
 $body$
