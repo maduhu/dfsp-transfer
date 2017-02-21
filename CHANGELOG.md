@@ -1,3 +1,14 @@
+<a name="0.15.1"></a>
+## [0.15.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.0...v0.15.1) (2017-02-21)
+
+
+### Bug Fixes
+
+* add validatedAt row in batch and batchHistory table ([f7428a2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f7428a2))
+* fix casting ([e6fc5e5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e6fc5e5))
+
+
+
 <a name="0.15.0"></a>
 # [0.15.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.14.0...v0.15.0) (2017-02-21)
 
