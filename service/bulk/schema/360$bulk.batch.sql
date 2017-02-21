@@ -6,6 +6,7 @@ CREATE TABLE bulk."batch"  (
     "batchStatusId" SMALLINT,
     "actorId" VARCHAR(25) NOT NULL,
     "info" TEXT,
+    "validatedAt" timestamp,
     "createdAt" timestamp without time zone NOT NULL,
     CONSTRAINT "pkBulkBatch" PRIMARY KEY ("batchId"),
     CONSTRAINT "fkBulkBatchHistory_bulkBatchStatus" FOREIGN KEY ("batchStatusId") REFERENCES bulk."batchStatus"("batchStatusId")

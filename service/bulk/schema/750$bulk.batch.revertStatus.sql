@@ -13,6 +13,7 @@ RETURNS TABLE (
     "actorId" varchar(25),
     "fileName" varchar(256),
     "originalFileName" varchar(256),
+    "validatedAt" timestamp,
     "isSingleResult" boolean
 ) AS
 $body$
@@ -41,7 +42,8 @@ BEGIN
             NULL,
             "@actorId",
             NULL,
-            NULL
+            NULL,
+            NOW()
         );
 END;
 $body$

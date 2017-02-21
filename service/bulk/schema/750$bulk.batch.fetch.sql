@@ -40,41 +40,7 @@ BEGIN
         -- u."fileName",
         -- u."originalFileName",
         b."createdAt",
-        (
-            SELECT MAX(x."createdAt")
-            FROM (
-                WITH orderedhistory AS
-                (
-                    SELECT
-                        row_number() over(ORDER BY bulk."batchHistory"."createdAt") AS "RowNum",
-                        bulk."batchHistory".*
-                    FROM bulk."batchHistory"
-                    WHERE bulk."batchHistory"."batchId" = b."batchId"
-                )
-                (
-                    SELECT
-                        orderedhistory1."batchStatusId",
-                        orderedhistory2."createdAt"
-                    FROM orderedhistory orderedhistory1
-                    JOIN orderedhistory orderedhistory2
-                        ON orderedhistory1."RowNum" = orderedhistory2."RowNum" + 1
-                )
-                UNION
-                (
-                    SELECT
-                        bb."batchStatusId",
-                        (
-                            SELECT max(bh."createdAt")
-                            FROM bulk."batchHistory" bh
-                            WHERE bh."batchId" = bb."batchId" AND bb."batchStatusId" <> bh."batchStatusId"
-                        ) AS "createdAt"
-                    FROM bulk."batch" bb
-                    WHERE bb."batchId" = b."batchId"
-                )
-                ORDER BY "createdAt"
-            ) AS x
-            WHERE x."batchStatusId" = ANY("@validationStatuses")
-        ) AS "lastValidation",
+        b."validatedAt" AS "lastValidation",
         (
             SELECT COUNT(p."paymentId")
             FROM bulk."payment" p

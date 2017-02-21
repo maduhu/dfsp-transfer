@@ -8,7 +8,8 @@ CREATE OR REPLACE FUNCTION bulk."batch.edit" (
     "@uploadInfo" text,
     "@actorId" varchar(25),
     "@fileName" varchar(256),
-    "@originalFileName" varchar(256)
+    "@originalFileName" varchar(256),
+    "@validatedAt" timestamp with time zone
 )
 RETURNS TABLE (
     "batchId" integer,
@@ -21,6 +22,7 @@ RETURNS TABLE (
     "actorId" varchar(25),
     "fileName" varchar(256),
     "originalFileName" varchar(256),
+    "validatedAt" timestamp,
     "isSingleResult" boolean
 ) AS
 $body$
@@ -48,6 +50,7 @@ BEGIN
         "batchStatusId",
         "actorId",
         "info",
+        "validatedAt",
         "createdAt"
     )
     SELECT
@@ -58,6 +61,7 @@ BEGIN
         b."batchStatusId",
         "@actorId",
         b."info",
+        b."validatedAt",
         NOW()
     FROM
         bulk."batch" AS b
@@ -71,7 +75,8 @@ BEGIN
         "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
         "name" = COALESCE("@name", b."name"),
         "batchStatusId" = COALESCE("@batchStatusId", b."batchStatusId"),
-        "info" = COALESCE("@batchInfo", b."info")
+        "info" = COALESCE("@batchInfo", b."info"),
+        "validatedAt" = COALESCE("@validatedAt", b."validatedAt")
     WHERE
         b."batchId" = "@batchId";
 
@@ -122,6 +127,7 @@ BEGIN
         "@actorId" as "actorId", 
         u."fileName" as "fileName",
         u."originalFileName" as "originalFileName",
+        b."validatedAt",
         true as "isSingleResult"
     FROM 
         bulk."batch" b
