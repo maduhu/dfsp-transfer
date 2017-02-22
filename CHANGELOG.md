@@ -1,3 +1,15 @@
+<a name="0.15.2"></a>
+## [0.15.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.1...v0.15.2) (2017-02-22)
+
+
+### Bug Fixes
+
+* add default sorting to batch.fetch ([aac53be](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/aac53be))
+* make search by name with pattern and case insensitive ([5b848ed](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/5b848ed))
+* set last validated on only if the whole batch is being checked ([901419b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/901419b))
+
+
+
 <a name="0.15.1"></a>
 ## [0.15.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.0...v0.15.1) (2017-02-21)
 
