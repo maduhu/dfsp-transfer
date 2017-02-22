@@ -61,7 +61,7 @@ BEGIN
                 AND ("@fromDate" IS NULL OR p."createdAt" >= "@fromDate")
                 AND ("@toDate" IS NULL OR p."createdAt" <= "@toDate")
                 AND ("@sequenceNumber" IS NULL OR p."sequenceNumber" = "@sequenceNumber")
-                AND ("@name" IS NULL OR b."name" = "@name")
+                AND ("@name" IS NULL OR p."firstName" ~* "@name" OR p."lastName" ~* "@name")
         END)
     ORDER BY p."paymentId"
     LIMIT "@pageSize" OFFSET ("@pageNumber" - 1) * "@pageSize";
