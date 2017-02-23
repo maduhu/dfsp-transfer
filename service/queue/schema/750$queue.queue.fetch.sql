@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION queue."queue.fetch" (
 RETURNS TABLE (
     "queueId" BIGINT,
     "recordId" BIGINT,
-    "retryId" INTEGER,
+    "retryId" SMALLINT,
     "expirationDate" timestamp without time zone,
     "updatedAt" timestamp without time zone
 ) AS

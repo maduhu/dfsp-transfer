@@ -1,5 +1,5 @@
 CREATE TABLE queue."retry"  (
-    "retryId" SERIAL,
+    "retryId" SMALLINT,
     "period" INTEGER,
     CONSTRAINT "pkQueueRetry" PRIMARY KEY ("retryId")
 )
