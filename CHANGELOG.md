@@ -1,3 +1,13 @@
+<a name="0.15.3"></a>
+## [0.15.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.2...v0.15.3) (2017-02-23)
+
+
+### Bug Fixes
+
+* rework bulk.payment.fetch by name to search by payment first or last name ([0c7e86c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0c7e86c))
+
+
+
 <a name="0.15.2"></a>
 ## [0.15.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.1...v0.15.2) (2017-02-22)
 
