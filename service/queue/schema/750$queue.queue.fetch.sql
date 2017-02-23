@@ -2,21 +2,13 @@ CREATE OR REPLACE FUNCTION queue."queue.fetch" (
     "@count" INTEGER
 )
 RETURNS TABLE (
-    "queueId" BIGINT,
-    "recordId" BIGINT,
-    "retryId" SMALLINT,
-    "expirationDate" timestamp without time zone,
-    "updatedAt" timestamp without time zone
+    "recordId" BIGINT
 ) AS
 $body$
 BEGIN
     RETURN QUERY
     SELECT
-        q."queueId",
-        q."recordId",
-        q."retryId",
-        q."expirationDate",
-        q."updatedAt"
+        DISTINCT q."recordId"
     FROM 
         queue."queue" AS q
     JOIN
@@ -24,7 +16,7 @@ BEGIN
     WHERE
         LEAST(q."expirationDate", q."updatedAt" + (qr.period * interval '1 minute')) < NOW()
         OR (qr."retryId" = (SELECT MAX(queue."retry"."retryId") FROM queue."retry") AND q."expirationDate" < NOW())
-    ORDER BY q."queueId"
+    ORDER BY q."recordId"
     LIMIT "@count";
 END;
 $body$

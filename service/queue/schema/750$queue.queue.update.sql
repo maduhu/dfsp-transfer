@@ -11,7 +11,12 @@ DECLARE
 BEGIN
     WITH rows AS (
         UPDATE queue."queue" SET
-            "retryId" = (CASE WHEN("retryId" + 1 > (SELECT MAX(qr."retryId") FROM queue."retry" qr)) THEN NULL ELSE "retryId" + 1 END),
+            "retryId" = (
+                CASE
+                WHEN("retryId" + 1 > (SELECT MAX(qr."retryId") FROM queue."retry" qr) OR "expirationDate" < NOW())
+                THEN NULL
+                ELSE "retryId" + 1 END
+            ),
             "updatedAt" = NOW()
         WHERE "recordId" = "@recordId"
         RETURNING 1

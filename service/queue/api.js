@@ -21,4 +21,11 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
+  'queue.remove': {
+    auth: false,
+    description: 'Queue remove',
+    notes: 'Queue remove',
+    params: joi.any(),
+    result: joi.any()
+  }
 }
