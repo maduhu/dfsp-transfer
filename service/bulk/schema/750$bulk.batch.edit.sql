@@ -59,7 +59,7 @@ BEGIN
         b."expirationDate",
         b."batchId",
         b."batchStatusId",
-        "@actorId",
+        b."actorId",
         b."info",
         b."validatedAt",
         NOW()
@@ -76,6 +76,7 @@ BEGIN
         "name" = COALESCE("@name", b."name"),
         "batchStatusId" = COALESCE("@batchStatusId", b."batchStatusId"),
         "info" = COALESCE("@batchInfo", b."info"),
+        "actorId" = "@actorId",
         "validatedAt" = COALESCE("@validatedAt", b."validatedAt")
     WHERE
         b."batchId" = "@batchId";

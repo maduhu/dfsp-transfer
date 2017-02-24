@@ -17,7 +17,9 @@ RETURNS TABLE (
     "createdAt" timestamp,
     "updatedAt" timestamp,
     "account" VARCHAR(100),
-    "expirationDate" timestamp without time zone
+    "expirationDate" timestamp without time zone,
+    "actorId" VARCHAR(25),
+    "isSingleResult" boolean
 ) AS
 $body$
 BEGIN
@@ -38,7 +40,9 @@ BEGIN
         p."createdAt",
         p."updatedAt",
         b."account",
-        b."expirationDate"
+        b."expirationDate",
+        b."actorId",
+        true
     FROM
         bulk."payment" AS p
     JOIN

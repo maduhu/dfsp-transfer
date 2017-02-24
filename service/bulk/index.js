@@ -18,14 +18,14 @@ module.exports = {
       })
       .then((payments) => {
         if (!payments.length) {
-          return count
+          return {queued: count}
         }
         return this.bus.importMethod('queue.queue.add')({
-          actorId: msg.actorId,
-          recordId: payments.map(payment => payment.paymentId)
+          recordId: payments.map(payment => Number(payment.paymentId)),
+          expirationDate: msg.expirationDate
         })
         .then((inserted) => {
-          count += inserted
+          count += inserted.inserted
           return queue()
         })
       })
@@ -67,12 +67,16 @@ module.exports = {
         info: msg.error
       }]
     })
-    .then(() => {
+    .then((result) => {
+      var promise = Promise.resolve()
       if (!msg.error) {
-        return this.bus.importMethod('queue.queue.remove')({
-          recordId: msg.paymentId
+        promise = promise.then(() => {
+          return this.bus.importMethod('queue.queue.remove')({
+            recordId: msg.paymentId
+          })
         })
       }
+      return promise.then(() => result)
     })
   }
 }
