@@ -48,12 +48,12 @@ module.exports = {
   },
   // actorId, paymentId
   'payment.preProcess': function (msg) {
-    return this.bus.importMethod('bulk.payment.fetch')({
-      paymentId: [msg.paymentId]
+    return this.bus.importMethod('bulk.payment.get')({
+      paymentId: msg.paymentId
     })
     .then((payment) => {
       return this.bus.importMethod('queue.queue.update')({
-        recordId: payment[0].paymentId
+        recordId: payment.paymentId
       })
       .then(() => payment)
     })
