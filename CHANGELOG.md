@@ -1,3 +1,24 @@
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.3...v0.16.0) (2017-02-24)
+
+
+### Bug Fixes
+
+* change retryId type to smallint ([f90a9ca](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f90a9ca))
+* rename accountNumber to account ([6d8b055](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6d8b055))
+* review comments: remove excess data from fetch and fix update query ([a814e9f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a814e9f))
+* typo ([c8b9963](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c8b9963))
+
+
+### Features
+
+* add bulk.payment.get method ([0ac4fa7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0ac4fa7))
+* add queue schema ([267aef6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/267aef6))
+* add validations for bulk payment methods, improve bulk.batch.process and bulk.payment.process methods ([032d513](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/032d513))
+* remove scheduler and add methods 'bulk.batch.process', 'bulk.payment.getForProcessing', 'bulk.payment.preProcess' and 'bulk.payment.process' ([7f9a1a8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/7f9a1a8))
+
+
+
 <a name="0.15.3"></a>
 ## [0.15.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.2...v0.15.3) (2017-02-23)
 
