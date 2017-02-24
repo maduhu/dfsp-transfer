@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION bulk."payment.fetch" (
+CREATE OR REPLACE FUNCTION bulk."payment.get" (
     "@paymentId" BIGINT
 )
 RETURNS TABLE (
