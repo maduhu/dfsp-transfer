@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.get" (
 RETURNS TABLE (
     "batchId" INTEGER,
     "name" VARCHAR(100),
-    "accountNumber" VARCHAR(25),
+    "account" VARCHAR(100),
     "expirationDate" TIMESTAMP,
     "batchStatusId" SMALLINT,
     "actorId" VARCHAR(25),
@@ -26,7 +26,7 @@ BEGIN
     SELECT
         b."batchId",
         b."name",
-        b."accountNumber",
+        b."account",
         b."expirationDate",
         b."batchStatusId",
         b."actorId",
@@ -43,7 +43,7 @@ BEGIN
                 bulk."batchHistory" bh
             WHERE
                 bh."batchId" = "@batchId"
-            ORDER BY 
+            ORDER BY
                 bh."batchHistoryId" DESC
             LIMIT 1
         ) AS "updatedAt",
@@ -52,11 +52,11 @@ BEGIN
             FROM bulk."payment" p
             WHERE p."batchId" = b."batchId"
         ) as "paymentsCount"
-    FROM 
+    FROM
         bulk."batch" AS b
     JOIN
         bulk."batchStatus" AS bs ON bs."batchStatusId" = b."batchStatusId"
-    JOIN 
+    JOIN
         bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
         b."batchId" = "@batchId"

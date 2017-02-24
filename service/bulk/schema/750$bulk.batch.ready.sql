@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.ready" (
 )
 RETURNS TABLE (
     "batchId" integer,
-    "accountNumber" varchar(25),
+    "account" varchar(100),
     "expirationDate" timestamp,
     "name" varchar(100),
     "batchStatusId" smallint,
