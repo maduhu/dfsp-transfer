@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION bulk."batch.edit" (
     "@batchId" integer,
-    "@accountNumber" varchar(25),
+    "@account" varchar(100),
     "@expirationDate" timestamp,
     "@name" varchar(100),
     "@batchStatusId" integer,
@@ -13,7 +13,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.edit" (
 )
 RETURNS TABLE (
     "batchId" integer,
-    "accountNumber" varchar(25),
+    "account" varchar(100),
     "expirationDate" timestamp,
     "name" varchar(100),
     "batchStatusId" smallint,
@@ -44,7 +44,7 @@ BEGIN
 
     INSERT INTO bulk."batchHistory" (
         "name",
-        "accountNumber",
+        "account",
         "expirationDate",
         "batchId",
         "batchStatusId",
@@ -55,7 +55,7 @@ BEGIN
     )
     SELECT
         b."name",
-        b."accountNumber",
+        b."account",
         b."expirationDate",
         b."batchId",
         b."batchStatusId",
@@ -71,7 +71,7 @@ BEGIN
     UPDATE
         bulk."batch" AS b
     SET
-        "accountNumber" = COALESCE("@accountNumber", b."accountNumber"),
+        "account" = COALESCE("@account", b."account"),
         "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
         "name" = COALESCE("@name", b."name"),
         "batchStatusId" = COALESCE("@batchStatusId", b."batchStatusId"),
@@ -80,7 +80,7 @@ BEGIN
     WHERE
         b."batchId" = "@batchId";
 
-    IF "@fileName" IS NOT NULL THEN 
+    IF "@fileName" IS NOT NULL THEN
         IF "@originalFileName" IS NULL THEN
             RAISE EXCEPTION 'bulk.missingOriginalFileName';
         END IF;
@@ -105,33 +105,33 @@ BEGIN
                 "info" = "@uploadInfo"
             WHERE
                 u."uploadId" = (
-                    SELECT 
-                        MAX(up."uploadId") 
-                    FROM 
-                        bulk."upload" up 
+                    SELECT
+                        MAX(up."uploadId")
+                    FROM
+                        bulk."upload" up
                     WHERE
                         up."batchId" = "@batchId"
                 );
          END IF;
     END IF;
-    
+
     RETURN QUERY
-    SELECT 
+    SELECT
         b."batchId" as "batchId",
-        b."accountNumber" as "accountNumber",
+        b."account" as "account",
         b."expirationDate" as "expirationDate",
         b."name" as "name",
-        b."batchStatusId" as "batchStatusId", 
+        b."batchStatusId" as "batchStatusId",
         b."info" as "batchInfo",
         u."info" as "uploadInfo",
-        "@actorId" as "actorId", 
+        "@actorId" as "actorId",
         u."fileName" as "fileName",
         u."originalFileName" as "originalFileName",
         b."validatedAt",
         true as "isSingleResult"
-    FROM 
+    FROM
         bulk."batch" b
-    JOIN 
+    JOIN
         bulk."upload" as u ON u."batchId" = b."batchId"
         AND u."uploadId" = (
             SELECT MAX("uploadId")

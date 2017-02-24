@@ -7,7 +7,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.fetch" (
 RETURNS TABLE (
     "batchId" INTEGER,
     "name" VARCHAR(100),
-    -- "accountNumber" VARCHAR(25),
+    -- "account" VARCHAR(25),
     -- "expirationDate" TIMESTAMP,
     "batchStatusId" SMALLINT,
     "status" VARCHAR(100),
@@ -31,7 +31,7 @@ BEGIN
     SELECT
         b."batchId",
         b."name",
-        -- b."accountNumber",
+        -- b."account",
         -- b."expirationDate",
         b."batchStatusId",
         bs."name" AS "status",

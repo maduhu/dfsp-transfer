@@ -5,10 +5,11 @@ module.exports = {
     path: path.join(__dirname, 'schema'),
     linkSP: true
   }],
+  // msg.batchId, msg.actorId, msg.expirationDate, msg.account
   'batch.process': function (msg, $meta) {
     var count = 0
     var pageNumber = 1
-    var get = () => {
+    var queue = () => {
       return this.bus.importMethod('bulk.payment.fetch')({
         pageSize: 100,
         batchId: msg.batchId,
@@ -25,15 +26,19 @@ module.exports = {
         })
         .then((inserted) => {
           count += inserted
-          return get()
+          return queue()
         })
       })
     }
     return new Promise((resolve, reject) => {
-      return get()
-      .then(count => {
-        return resolve(count)
+      return this.bus.importMethod('bulk.batch.edit')({
+        actorId: msg.actorId,
+        expirationDate: msg.expirationDate,
+        account: msg.account,
+        batchId: msg.batchId
       })
+      .then(queue)
+      .then(resolve)
     })
   },
   'payment.getForProcessing': function (msg) {
