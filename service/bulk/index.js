@@ -10,7 +10,7 @@ module.exports = {
     var count = 0
     var pageNumber = 1
     var queue = () => {
-      return this.bus.importMethod('bulk.payment.fetch')({
+      return this.bus.importMethod('bulk.payment.fetchForProcessing')({
         pageSize: 100,
         batchId: msg.batchId,
         actorId: msg.actorId,
@@ -31,7 +31,7 @@ module.exports = {
       })
     }
     return new Promise((resolve, reject) => {
-      return this.bus.importMethod('bulk.batch.edit')({
+      return this.bus.importMethod('bulk.batch.pay')({
         actorId: msg.actorId,
         expirationDate: msg.expirationDate,
         account: msg.account,

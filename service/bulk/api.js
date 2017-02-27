@@ -49,6 +49,13 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
+  'batch.pay': {
+    auth: false,
+    description: 'Bulk batch pay',
+    notes: 'Bulk batch pay',
+    params: joi.any(),
+    result: joi.any()
+  },
   'batchStatus.fetch': {
     auth: false,
     description: 'Bulk batch status',
@@ -74,6 +81,13 @@ module.exports = {
     auth: false,
     description: 'Bulk payment fetch',
     notes: 'Bulk payment fetch',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'payment.fetchForProcessing': {
+    auth: false,
+    description: 'Bulk payment fetch for processing',
+    notes: 'Bulk payment fetch for processing',
     params: joi.any(),
     result: joi.any()
   },
