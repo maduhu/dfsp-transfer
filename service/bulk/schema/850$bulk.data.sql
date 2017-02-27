@@ -7,11 +7,12 @@ VALUES
   (3, 'new', 'Batch is awating to be approved by maker'),
   (4, 'verifying', 'Batch file is in process of structure verification'),
   (5, 'ready', 'Batch has been approved from the maker and it is ready for the checker'),
-  (6, 'rejected', 'Batch has been rejected from the checker'),
-  (7, 'returned', 'Batch has been returned to the maker for additional modifications'),
+  (6, 'rejected', 'Batch has been rejected to the maker for additional modifications'),
+  (7, 'disabled', 'Batch has been disabled'),
   (8, 'approved', 'Batch has been approved and it is ready for processing'),
   (9, 'processing', 'Batch is in process of processing the payments'),
-  (10, 'done', 'dAll the necessary payments in the batch have been processedsa')
+  (10, 'done', 'All the necessary payments in the batch have been processedsa'),
+  (11, 'deleted', 'Batch has been deleted and can not be edited anymore')
 ON CONFLICT ("batchStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
 
 -- insert payment statuses
@@ -24,5 +25,6 @@ VALUES
   (4, 'verified', 'Payment has been verified and it is ready to be processed'),
   (5, 'paid', 'Payment is paid'),
   (6, 'failed', 'Payment failed'),
-  (7, 'mismatch', 'Payment has mismatching properties')
+  (7, 'mismatch', 'Payment has mismatching properties'),
+  (8, 'temporary error', 'Payment has temporary error')
 ON CONFLICT ("paymentStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
