@@ -5,7 +5,6 @@ module.exports = {
   retry: false,
   imports: [
     'transfer',
-    'bulk',
-    'queue'
+    'bulk'
   ]
 }
