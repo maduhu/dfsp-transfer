@@ -1,3 +1,18 @@
+<a name="0.16.1"></a>
+## [0.16.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.16.0...v0.16.1) (2017-02-28)
+
+
+### Bug Fixes
+
+* batch process queries ([76f304c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/76f304c))
+* move queue to bulk schema ([fc576cf](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/fc576cf))
+* remove non existing api calls ([b1b55b8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b1b55b8))
+* remove unused method ([2663506](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/2663506))
+* rework payment and batch statuses ([69e14e6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/69e14e6))
+* update batch status to processing on batch pay ([66023f1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/66023f1))
+
+
+
 <a name="0.16.0"></a>
 # [0.16.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.15.3...v0.16.0) (2017-02-24)
 
