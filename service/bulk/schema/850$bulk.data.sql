@@ -25,6 +25,18 @@ VALUES
   (4, 'verified', 'Payment has been verified and it is ready to be processed'),
   (5, 'paid', 'Payment is paid'),
   (6, 'failed', 'Payment failed'),
-  (7, 'mismatch', 'Payment has mismatching properties'),
-  (8, 'temporary error', 'Payment has temporary error')
+  (7, 'mismatch', 'Payment has mismatching properties')
 ON CONFLICT ("paymentStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
+
+-- Insert queue retry
+INSERT INTO
+   bulk."retry" ("retryId", "interval")
+VALUES
+  (1, 0),
+  (2, 20),
+  (3, 60),
+  (4, 120),
+  (5, 240),
+  (6, 480),
+  (7, null)
+ON CONFLICT ("retryId") DO UPDATE SET "interval" = EXCLUDED.interval;
