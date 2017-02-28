@@ -45,8 +45,8 @@ BEGIN
         bulk."batch" b ON b."batchId" = p."batchId"
     WHERE
     	LEAST(b."expirationDate", q."updatedAt" + (r.interval * interval '1 minute')) < NOW()
-        OR (r."retryId" < "@maxRetry" AND q."expirationDate" < NOW())
-        OR (r."retryId" = "@maxRetry" AND q."expirationDate" > NOW())
+        OR (r."retryId" < "@maxRetry" AND b."expirationDate" < NOW())
+        OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW())
     ORDER BY
         p."paymentId", q."queueId"
     LIMIT "@count";

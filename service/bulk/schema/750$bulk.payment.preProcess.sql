@@ -23,22 +23,41 @@ RETURNS TABLE (
 ) AS
 $body$
 DECLARE
-    "@payment" bulk."payment";
+    "@payment" record;
 BEGIN
-	SELECT bulk."payment.get"("@paymentId") INTO "@payment";
-    UPDATE bulk."queue" q SET
-        q."retryId" = (
+    SELECT * INTO "@payment" FROM bulk."payment.get"("@paymentId");
+    UPDATE bulk."queue" SET
+        "retryId" = (
             CASE
             WHEN("retryId" + 1 > (SELECT MAX(r."retryId") FROM bulk."retry" r) OR "@payment"."expirationDate" < NOW())
             THEN NULL
             ELSE "retryId" + 1 END
         ),
-        q."updatedAt" = NOW()
+        "updatedAt" = NOW()
     WHERE
-        q."paymentId" = "@paymentId";
+        bulk."queue"."paymentId" = "@paymentId";
 
     RETURN QUERY
-    SELECT "@payment";
+    VALUES (
+        "@payment"."paymentId",
+        "@payment"."batchId",
+        "@payment"."sequenceNumber",
+        "@payment"."userNumber",
+        "@payment"."firstName",
+        "@payment"."lastName",
+        "@payment"."dob" ,
+        "@payment"."nationalId",
+        "@payment"."amount",
+        "@payment"."paymentStatusId",
+        "@payment"."info",
+        "@payment"."name",
+        "@payment"."createdAt",
+        "@payment"."updatedAt",
+        "@payment"."account",
+        "@payment"."expirationDate",
+        "@payment"."actorId",
+        "@payment"."isSingleResult"
+    );
 END;
 $body$
 LANGUAGE 'plpgsql';
