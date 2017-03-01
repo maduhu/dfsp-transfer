@@ -44,7 +44,8 @@ BEGIN
     JOIN
         bulk."batch" b ON b."batchId" = p."batchId"
     WHERE
-    	LEAST(b."expirationDate", q."updatedAt" + (r.interval * interval '1 minute')) < NOW()
+        p."paymentStatusId" = ANY(SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE NOT ps."name" = ANY(ARRAY['paid', 'disabled']))
+        AND LEAST(b."expirationDate", q."updatedAt" + (r.interval * interval '1 minute')) < NOW()
         OR (r."retryId" < "@maxRetry" AND b."expirationDate" < NOW())
         OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW())
     ORDER BY
