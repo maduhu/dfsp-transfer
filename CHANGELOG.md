@@ -1,3 +1,13 @@
+<a name="0.16.3"></a>
+## [0.16.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.16.2...v0.16.3) (2017-03-01)
+
+
+### Bug Fixes
+
+* query references wrong schema ([46b4ded](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/46b4ded))
+
+
+
 <a name="0.16.2"></a>
 ## [0.16.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.16.1...v0.16.2) (2017-03-01)
 
