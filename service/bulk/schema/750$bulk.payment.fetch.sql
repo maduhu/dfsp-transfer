@@ -2,7 +2,7 @@ CREATE OR REPLACE FUNCTION bulk."payment.fetch" (
     "@paymentId" BIGINT[],
     "@batchId" INTEGER,
     "@nationalId" VARCHAR(255),
-    "@paymentStatusId" INTEGER,
+    "@paymentStatusId" INTEGER[],
     "@fromDate" TIMESTAMP,
     "@toDate" TIMESTAMP,
     "@sequenceNumber" INTEGER,
@@ -57,7 +57,7 @@ BEGIN
          	ELSE 
                 ("@batchId" IS NULL OR p."batchId" = "@batchId")
                 AND ("@nationalId" IS NULL OR p."nationalId" = "@nationalId")
-                AND ("@paymentStatusId" IS NULL OR p."paymentStatusId" = "@paymentStatusId")
+                AND ("@paymentStatusId" IS NULL OR p."paymentStatusId" = ANY("@paymentStatusId"))
                 AND ("@fromDate" IS NULL OR p."createdAt" >= "@fromDate")
                 AND ("@toDate" IS NULL OR p."createdAt" <= "@toDate")
                 AND ("@sequenceNumber" IS NULL OR p."sequenceNumber" = "@sequenceNumber")

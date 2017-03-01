@@ -8,10 +8,11 @@ VALUES
   (4, 'verifying', 'Batch file is in process of structure verification'),
   (5, 'ready', 'Batch has been approved from the maker and it is ready for the checker'),
   (6, 'rejected', 'Batch has been rejected to the maker for additional modifications'),
-  (7, 'disabled', 'Batch has been disabled and can not be edited anymore'),
+  (7, 'disabled', 'Batch has been disabled'),
   (8, 'approved', 'Batch has been approved and it is ready for processing'),
   (9, 'processing', 'Batch is in process of processing the payments'),
-  (10, 'done', 'All the necessary payments in the batch have been processedsa')
+  (10, 'done', 'All the necessary payments in the batch have been processedsa'),
+  (11, 'deleted', 'Batch has been deleted and can not be edited anymore')
 ON CONFLICT ("batchStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
 
 -- insert payment statuses
@@ -26,3 +27,16 @@ VALUES
   (6, 'failed', 'Payment failed'),
   (7, 'mismatch', 'Payment has mismatching properties')
 ON CONFLICT ("paymentStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
+
+-- Insert queue retry
+INSERT INTO
+   bulk."retry" ("retryId", "interval")
+VALUES
+  (1, 0),
+  (2, 20),
+  (3, 60),
+  (4, 120),
+  (5, 240),
+  (6, 480),
+  (7, null)
+ON CONFLICT ("retryId") DO UPDATE SET "interval" = EXCLUDED.interval;
