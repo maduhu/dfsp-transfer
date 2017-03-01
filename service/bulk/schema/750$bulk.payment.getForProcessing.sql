@@ -18,7 +18,7 @@ RETURNS TABLE (
 ) AS
 $body$
 DECLARE
-    "@maxRetry" INTEGER := (SELECT MAX(queue."retry"."retryId") FROM queue."retry");
+    "@maxRetry" INTEGER := (SELECT MAX(bulk."retry"."retryId") FROM bulk."retry");
 BEGIN
     RETURN QUERY
     SELECT DISTINCT ON (p."paymentId")
