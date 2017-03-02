@@ -1,3 +1,13 @@
+<a name="0.17.0"></a>
+# [0.17.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.16.4...v0.17.0) (2017-03-02)
+
+
+### Features
+
+* retry every monute for the purpose of demo and debug ([f7cd005](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f7cd005))
+
+
+
 <a name="0.16.4"></a>
 ## [0.16.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.16.3...v0.16.4) (2017-03-01)
 
