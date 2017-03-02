@@ -1,3 +1,13 @@
+<a name="0.18.0"></a>
+# [0.18.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.17.0...v0.18.0) (2017-03-02)
+
+
+### Features
+
+* do no show deleted batches ([72b50c2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/72b50c2))
+
+
+
 <a name="0.17.0"></a>
 # [0.17.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.16.4...v0.17.0) (2017-03-02)
 
