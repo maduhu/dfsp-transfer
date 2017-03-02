@@ -29,14 +29,27 @@ VALUES
 ON CONFLICT ("paymentStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
 
 -- Insert queue retry
+-- INSERT INTO
+--    bulk."retry" ("retryId", "interval")
+-- VALUES
+--   (1, 0),
+--   (2, 20),
+--   (3, 60),
+--   (4, 120),
+--   (5, 240),
+--   (6, 480),
+--   (7, null)
+-- ON CONFLICT ("retryId") DO UPDATE SET "interval" = EXCLUDED.interval;
+
+-- FOR DEMO PURPOSES
 INSERT INTO
    bulk."retry" ("retryId", "interval")
 VALUES
   (1, 0),
-  (2, 20),
-  (3, 60),
-  (4, 120),
-  (5, 240),
-  (6, 480),
+  (2, 1),
+  (3, 1),
+  (4, 1),
+  (5, 1),
+  (6, 1),
   (7, null)
 ON CONFLICT ("retryId") DO UPDATE SET "interval" = EXCLUDED.interval;
