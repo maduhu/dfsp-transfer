@@ -54,7 +54,12 @@ BEGIN
     --     bulk."upload" as u on u."batchId" = b."batchId"
     WHERE
         ("@name" IS NULL OR b."name" ~* "@name")
-        AND ("@batchStatusId" IS NULL OR b."batchStatusId" = "@batchStatusId")
+        AND (
+            CASE WHEN "@batchStatusId" IS NOT NULL
+            THEN b."batchStatusId" = "@batchStatusId"
+            ELSE b."batchStatusId" IN (SELECT bs."batchStatusId" FROM bulk."batchStatus" bs WHERE bs.name <> 'deleted')
+            END
+            )
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
         AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate")
         -- AND u."uploadId" = (
