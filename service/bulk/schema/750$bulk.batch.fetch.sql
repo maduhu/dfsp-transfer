@@ -39,7 +39,7 @@ BEGIN
         -- b."actorId",
         -- b."info",
         -- u."fileName",
-        -- u."originalFileName",    
+        -- u."originalFileName",
         b."createdAt",
         b."validatedAt" AS "lastValidation",
         (
