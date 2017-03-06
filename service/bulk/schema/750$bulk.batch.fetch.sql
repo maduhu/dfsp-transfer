@@ -1,4 +1,5 @@
 CREATE OR REPLACE FUNCTION bulk."batch.fetch" (
+    "@actorId" VARCHAR(25),
     "@name" VARCHAR,
     "@batchStatusId" INTEGER,
     "@fromDate" TIMESTAMP,
@@ -38,7 +39,7 @@ BEGIN
         -- b."actorId",
         -- b."info",
         -- u."fileName",
-        -- u."originalFileName",
+        -- u."originalFileName",    
         b."createdAt",
         b."validatedAt" AS "lastValidation",
         (
@@ -62,6 +63,7 @@ BEGIN
             )
         AND ("@fromDate" IS NULL OR b."createdAt" >= "@fromDate")
         AND ("@toDate" IS NULL OR b."createdAt" <= "@toDate")
+        AND ("@actorId" IS NULL OR b."actorId" = "@actorId")
         -- AND u."uploadId" = (
         --     SELECT
         --         up."uploadId"
