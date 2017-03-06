@@ -1,3 +1,14 @@
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.0...v0.18.1) (2017-03-06)
+
+
+### Bug Fixes
+
+* add actorId in fetch query ([9fa1d56](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/9fa1d56))
+* remove extra spaces on the line ([ca98af4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/ca98af4))
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.17.0...v0.18.0) (2017-03-02)
 
