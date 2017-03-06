@@ -24,6 +24,8 @@ RETURNS TABLE (
     "isSingleResult" boolean
 ) AS
 $body$
+DECLARE
+    "@batchId" INTEGER := (SELECT p."batchId" FROM bulk."payment" p WHERE p."paymentId" = "@paymentId");
 BEGIN
     PERFORM bulk."payment.edit"(
         "@actorId",
@@ -44,6 +46,25 @@ BEGIN
             "retryId" = NULL
         WHERE
             bulk."queue"."paymentId" = "@paymentId";
+    END IF;
+
+    IF NOT EXISTS (
+        SELECT
+            1
+        FROM
+            bulk."payment" p
+        JOIN
+            bulk."queue" q ON p."paymentId" = q."paymentId"
+        WHERE
+            p."batchId" = "@batchId" AND
+            q."retryId" IS NOT NULL
+    ) THEN
+        UPDATE
+            bulk."batch"
+        SET
+            "batchStatusId" = (SELECT bs."batchStatusId" FROM bulk."batchStatus" bs WHERE bs."name" = 'done')
+        WHERE
+            bulk."batch"."batchId" = "@batchId";
     END IF;
 
     RETURN QUERY
