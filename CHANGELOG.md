@@ -1,3 +1,13 @@
+<a name="0.18.2"></a>
+## [0.18.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.1...v0.18.2) (2017-03-06)
+
+
+### Bug Fixes
+
+* update batch status after batch processing ([6018b1c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6018b1c))
+
+
+
 <a name="0.18.1"></a>
 ## [0.18.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.0...v0.18.1) (2017-03-06)
 
