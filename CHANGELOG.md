@@ -1,3 +1,13 @@
+<a name="0.18.3"></a>
+## [0.18.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.2...v0.18.3) (2017-03-07)
+
+
+### Bug Fixes
+
+* set bulk payment to paid in case [@error](https://github.com/error) is null or '' ([519cb67](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/519cb67))
+
+
+
 <a name="0.18.2"></a>
 ## [0.18.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.1...v0.18.2) (2017-03-06)
 
