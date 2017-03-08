@@ -1,3 +1,13 @@
+<a name="0.18.4"></a>
+## [0.18.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.3...v0.18.4) (2017-03-08)
+
+
+### Bug Fixes
+
+* typo ([a6fca61](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a6fca61))
+
+
+
 <a name="0.18.3"></a>
 ## [0.18.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.2...v0.18.3) (2017-03-07)
 
