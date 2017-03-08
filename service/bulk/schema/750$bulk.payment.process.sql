@@ -32,7 +32,7 @@ BEGIN
         json_agg((SELECT x FROM (SELECT
             "@paymentId" as "paymentId",
             CASE
-            WHEN(COALESCE("@error", '') != '')
+            WHEN(COALESCE("@error", '') = '')
             THEN (SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE ps."name" = 'paid')
             ELSE (SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE ps."name" = 'failed') END as "paymentStatusId",
             "@error" as "info") x
