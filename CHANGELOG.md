@@ -1,3 +1,13 @@
+<a name="0.18.6"></a>
+## [0.18.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.5...v0.18.6) (2017-03-09)
+
+
+### Bug Fixes
+
+* prevent insertion of the disabled payments in the payments queue ([b69c300](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b69c300))
+
+
+
 <a name="0.18.5"></a>
 ## [0.18.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.4...v0.18.5) (2017-03-09)
 
