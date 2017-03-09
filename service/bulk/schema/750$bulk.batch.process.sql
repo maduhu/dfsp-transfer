@@ -38,7 +38,7 @@ BEGIN
             NOW()
         FROM bulk."payment" p
         WHERE p."batchId" = "@batchId"
-        AND p."statusId" != (SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE ps."name" = 'disabled')
+        AND p."paymentStatusId" != (SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE ps."name" = 'disabled')
         RETURNING 1
     )
     SELECT COUNT(*) FROM rows INTO "@queued";
