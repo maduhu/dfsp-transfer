@@ -1,3 +1,13 @@
+<a name="0.18.5"></a>
+## [0.18.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.4...v0.18.5) (2017-03-09)
+
+
+### Bug Fixes
+
+* bulk.payment.process to handle case when the [@error](https://github.com/error) is either null or empty string ([56c6601](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/56c6601))
+
+
+
 <a name="0.18.4"></a>
 ## [0.18.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.3...v0.18.4) (2017-03-08)
 
