@@ -39,7 +39,7 @@ BEGIN
             ))
     );
 
-    IF ("@error" IS NULL) THEN
+    IF (COALESCE("@error", '') = '') THEN
         UPDATE
             bulk."queue"
         SET
