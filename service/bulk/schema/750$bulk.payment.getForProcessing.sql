@@ -5,7 +5,7 @@ RETURNS TABLE (
     "paymentId" BIGINT,
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
-    "userNumber" VARCHAR(25),
+    "identifier" VARCHAR(25),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" TIMESTAMP,
@@ -25,7 +25,7 @@ BEGIN
         p."paymentId",
         p."batchId",
         p."sequenceNumber",
-        p."userNumber",
+        p."identifier",
         p."firstName",
         p."lastName",
         p."dob",
@@ -35,7 +35,7 @@ BEGIN
         p."info",
         p."createdAt",
         p."updatedAt"
-    FROM 
+    FROM
         bulk."payment" p
     JOIN
         bulk."queue" q ON q."paymentId" = p."paymentId"

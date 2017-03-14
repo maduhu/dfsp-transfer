@@ -1,7 +1,7 @@
 ﻿CREATE TABLE transfer."invoiceNotification" (
     "invoiceNotificationId" SERIAL,
     "invoiceUrl" VARCHAR(100),
-    "userNumber" VARCHAR(50),
+    "identifier" VARCHAR(50),
     "statusCode" VARCHAR(5),
     "memo" VARCHAR(200),
     CONSTRAINT "pkTransferInvoiceNotification" PRIMARY KEY ("invoiceNotificationId"),

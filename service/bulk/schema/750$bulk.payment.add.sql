@@ -11,7 +11,7 @@ $BODY$
 DECLARE
     "@paymentStatusId" SMALLINT:= (SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE ps."name" = 'new');
     "@count" INT;
-    "@paymentsCount" INT:= json_array_length("@payments"); 
+    "@paymentsCount" INT:= json_array_length("@payments");
 BEGIN
     IF "@actorId" IS NULL THEN
         RAISE EXCEPTION 'bulk.actorIdMissing';
@@ -26,12 +26,12 @@ BEGIN
         RAISE EXCEPTION 'bulk.emptyPayments';
     END IF;
 
-    WITH 
+    WITH
     p AS (
         INSERT INTO bulk."payment" (
             "batchId",
             "sequenceNumber",
-            "userNumber",
+            "identifier",
             "firstName",
             "lastName",
             "dob",
@@ -41,7 +41,7 @@ BEGIN
             "createdAt",
             "updatedAt"
         )
-        SELECT 
+        SELECT
             "@batchId",
             *,
             "@paymentStatusId" as "paymentStatusId",
@@ -50,7 +50,7 @@ BEGIN
         FROM
             json_to_recordset("@payments") AS x(
                 "sequenceNumber" INTEGER,
-                "userNumber" VARCHAR(25),
+                "identifier" VARCHAR(25),
                 "firstName" VARCHAR(255),
                 "lastName" VARCHAR(255),
                 "dob" TIMESTAMP,
@@ -64,7 +64,7 @@ BEGIN
             "paymentId",
             "batchId",
             "sequenceNumber" ,
-            "userNumber",
+            "identifier",
             "firstName",
             "lastName",
             "dob",
@@ -78,7 +78,7 @@ BEGIN
             "paymentId",
             "batchId",
             "sequenceNumber" ,
-            "userNumber",
+            "identifier",
             "firstName",
             "lastName",
             "dob",
@@ -90,7 +90,7 @@ BEGIN
             p
         RETURNING *
     )
-    
+
     SELECT count(p.*) FROM p INTO "@count";
 
     RETURN QUERY
@@ -98,5 +98,5 @@ BEGIN
         "@count" as "insertedRows",
         true AS "isSingleResult";
 END;
-$BODY$ 
+$BODY$
 LANGUAGE plpgsql

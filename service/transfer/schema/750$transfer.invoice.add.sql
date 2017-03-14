@@ -4,7 +4,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@currencyCode" varchar,
     "@currencySymbol" varchar,
     "@amount" numeric,
-    "@userNumber" varchar,
+    "@identifier" varchar,
     "@invoiceInfo" varchar
 )
 RETURNS TABLE (
@@ -16,7 +16,7 @@ RETURNS TABLE (
     "currencySymbol" varchar,
     "amount" numeric,
     "status" varchar,
-    "userNumber" varchar,
+    "identifier" varchar,
     "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
@@ -30,7 +30,7 @@ $BODY$
             "currencyCode",
             "currencySymbol",
             "amount",
-            "userNumber",
+            "identifier",
             "statusCode",
             "invoiceInfo"
         )
@@ -40,7 +40,7 @@ $BODY$
             ,"@currencyCode"
             ,"@currencySymbol"
             ,"@amount"
-            ,"@userNumber"
+            ,"@identifier"
             ,'p'
             ,"@invoiceInfo";
 

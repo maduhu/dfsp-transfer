@@ -5,7 +5,7 @@ CREATE OR REPLACE FUNCTION transfer."invoiceNotification.edit" (
 RETURNS TABLE (
     "invoiceNotificationId" integer,
     "invoiceUrl" varchar,
-    "userNumber" varchar,
+    "identifier" varchar,
     "status" varchar,
     "memo" varchar,
     "isSingleResult" boolean

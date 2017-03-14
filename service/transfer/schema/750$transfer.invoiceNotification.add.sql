@@ -1,12 +1,12 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.add" (
     "@invoiceUrl" varchar,
-    "@userNumber" varchar,
+    "@identifier" varchar,
     "@memo" varchar
 )
 RETURNS TABLE (
     "invoiceNotificationId" integer,
     "invoiceUrl" varchar,
-    "userNumber" varchar,
+    "identifier" varchar,
     "status" varchar,
     "memo" varchar,
     "isSingleResult" boolean
@@ -18,13 +18,13 @@ BEGIN
     INSERT INTO
     transfer."invoiceNotification" (
         "invoiceUrl",
-        "userNumber",
+        "identifier",
         "statusCode",
         "memo"
     )
     SELECT
         "@invoiceUrl"
-        ,"@userNumber"
+        ,"@identifier"
         ,'p'
         ,"@memo";
 

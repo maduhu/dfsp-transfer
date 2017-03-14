@@ -14,7 +14,7 @@ RETURNS TABLE (
     "paymentId" BIGINT,
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
-    "userNumber" VARCHAR(25),
+    "identifier" VARCHAR(25),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" timestamp,
@@ -34,7 +34,7 @@ BEGIN
         p."paymentId",
         p."batchId",
         p."sequenceNumber",
-        p."userNumber",
+        p."identifier",
         p."firstName",
         p."lastName",
         p."dob",
@@ -46,15 +46,15 @@ BEGIN
         b."name",
         p."createdAt",
         p."updatedAt"
-    FROM 
+    FROM
         bulk."payment" AS p
     JOIN
         bulk."batch" b ON b."batchId" = p."batchId"
     WHERE
-    	(CASE 
-         	WHEN "@paymentId" IS NOT NULL THEN 
+    	(CASE
+         	WHEN "@paymentId" IS NOT NULL THEN
          		p."paymentId" IN (SELECT UNNEST("@paymentId"))
-         	ELSE 
+         	ELSE
                 ("@batchId" IS NULL OR p."batchId" = "@batchId")
                 AND ("@nationalId" IS NULL OR p."nationalId" = "@nationalId")
                 AND ("@paymentStatusId" IS NULL OR p."paymentStatusId" = ANY("@paymentStatusId"))

@@ -6,7 +6,7 @@
     "currencySymbol" VARCHAR(3),
     "amount" NUMERIC,
     "statusCode" VARCHAR(5),
-    "userNumber" VARCHAR(100),
+    "identifier" VARCHAR(100),
     "invoiceInfo" VARCHAR(100),
     CONSTRAINT "pkTransferInvoice" PRIMARY KEY ("invoiceId"),
     CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("statusCode")
