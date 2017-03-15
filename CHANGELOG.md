@@ -1,3 +1,14 @@
+<a name="0.18.8"></a>
+## [0.18.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.7...v0.18.8) (2017-03-15)
+
+
+### Bug Fixes
+
+* add identifier types ([ce77cd6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/ce77cd6))
+* add possibility to inspect db ([b3d9de6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b3d9de6))
+
+
+
 <a name="0.18.7"></a>
 ## [0.18.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.6...v0.18.7) (2017-03-09)
 
