@@ -1,11 +1,11 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.fetch" (
-    "@userNumber" varchar,
+    "@identifier" varchar,
     "@statusCode" varchar(5)
 )
 RETURNS TABLE (
     "invoiceNotificationId" integer,
     "invoiceUrl" varchar,
-    "userNumber" varchar,
+    "identifier" varchar,
     "status" varchar,
     "memo" varchar
 ) AS
@@ -15,7 +15,7 @@ BEGIN
     SELECT
         tin."invoiceNotificationId" AS "invoiceNotificationId",
         tin."invoiceUrl" AS "invoiceUrl",
-        tin."userNumber" AS "userNumber",
+        tin."identifier" AS "identifier",
         tis."description" AS "status",
         tin."memo" AS "memo"
     FROM
@@ -23,7 +23,7 @@ BEGIN
     JOIN
         transfer."invoiceStatus" tis ON tin."statusCode" = tis."code"
     WHERE
-        tin."userNumber" = "@userNumber"
+        tin."identifier" = "@identifier"
         AND ("@statusCode" IS NULL OR tis."code" = "@statusCode");
 END;
 $body$

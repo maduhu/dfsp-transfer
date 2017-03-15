@@ -10,7 +10,7 @@ RETURNS TABLE (
     "currencySymbol" varchar,
     "amount" numeric,
     "status" varchar,
-    "userNumber" varchar,
+    "identifier" varchar,
     "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
@@ -29,7 +29,7 @@ BEGIN
         ti."currencySymbol" AS "currencySymbol",
         ti."amount" AS "amount",
         tis."description" AS "status",
-        ti."userNumber" AS "userNumber",
+        ti."identifier" AS "identifier",
         ti."invoiceInfo" AS "invoiceInfo",
         CAST(1 AS BOOLEAN) AS "isSingleResult"
     FROM

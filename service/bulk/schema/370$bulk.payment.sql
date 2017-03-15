@@ -2,7 +2,7 @@ CREATE TABLE bulk."payment"  (
     "paymentId" BIGSERIAL,
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
-    "userNumber" VARCHAR(25),
+    "identifier" VARCHAR(25),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" timestamp without time zone,

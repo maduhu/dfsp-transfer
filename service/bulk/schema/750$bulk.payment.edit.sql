@@ -6,7 +6,7 @@ RETURNS TABLE (
     "payments" json
 ) AS
 $body$
-DECLARE 
+DECLARE
     "@paymentIds" BIGINT[];
     "@paymentsCount" INT:= json_array_length("@payments");
 BEGIN
@@ -25,7 +25,7 @@ BEGIN
         "paymentId",
         "batchId",
         "sequenceNumber",
-        "userNumber",
+        "identifier",
         "firstName",
         "lastName",
         "dob",
@@ -40,7 +40,7 @@ BEGIN
         p."paymentId",
         p."batchId",
         p."sequenceNumber",
-        p."userNumber",
+        p."identifier",
         p."firstName",
         p."lastName",
         p."dob",
@@ -52,12 +52,12 @@ BEGIN
     FROM bulk."payment" AS p
     WHERE "paymentId" IN (SELECT jp."paymentId" FROM json_to_recordset("@payments") AS jp("paymentId" INTEGER));
 
-WITH 
+WITH
     np AS (
         UPDATE bulk."payment" AS p SET
             "batchId" = COALESCE(jp."batchId", p."batchId"),
             "sequenceNumber" = COALESCE(jp."sequenceNumber", p."sequenceNumber"),
-            "userNumber" = COALESCE(jp."userNumber", p."userNumber"),
+            "identifier" = COALESCE(jp."identifier", p."identifier"),
             "firstName" = COALESCE(jp."firstName", p."firstName"),
             "lastName" = COALESCE(jp."lastName", p."lastName"),
             "dob" = COALESCE(jp."dob", p."dob"),
@@ -71,7 +71,7 @@ WITH
                 "paymentId" INTEGER,
                 "batchId" INTEGER,
                 "sequenceNumber" INTEGER,
-                "userNumber" VARCHAR(25),
+                "identifier" VARCHAR(25),
                 "firstName" VARCHAR(255),
                 "lastName" VARCHAR(255),
                 "dob" TIMESTAMP,
@@ -87,9 +87,9 @@ WITH
     SELECT array(SELECT np."paymentId" FROM np) INTO "@paymentIds";
 
     RETURN QUERY
-    SELECT 
+    SELECT
         json_agg(p) as "payments"
-    FROM 
+    FROM
         bulk."payment" p
     WHERE
         "paymentId" IN (SELECT(UNNEST("@paymentIds")));

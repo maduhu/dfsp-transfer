@@ -11,7 +11,7 @@ RETURNS TABLE (
     "currencySymbol" varchar,
     "amount" numeric,
     "status" varchar,
-    "userNumber" varchar,
+    "identifier" varchar,
     "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
