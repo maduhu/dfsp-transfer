@@ -30,7 +30,7 @@ module.exports = function (opt, cache) {
           }
         }, (error, assert) => {
           assert.equals(error.message, 'Fill the error message here', 'bulk.batch.add failed  invalid param type for name')
-        }),
+        })
       ])
 
         // Procedure definition: bulk."batch.add" ("@name" varchar, "@actorId" varchar, "@fileName" varchar, "@originalFileName" varchar)
