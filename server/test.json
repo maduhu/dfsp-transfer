@@ -12,7 +12,7 @@
   "workerBus": {
     "logLevel": "error"
   },
-  "performance": {
+  "_performance": {
     "id": "dfsp-transfer",
     "influx": {
       "host": "influxdb",
@@ -30,5 +30,8 @@
     "permission": {
       "requireSession": true
     }
+  },
+  "transfer": {
+    "socketTimeout": 2222
   }
 }
