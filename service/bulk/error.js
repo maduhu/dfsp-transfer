@@ -2,6 +2,10 @@ var create = require('ut-error').define
 var defaultErrorCode = 400
 module.exports = [
   {
+    type: 'bulk',
+    message: 'bulk error'
+  },
+  {
     id: 'ActorIdMissingError',
     type: 'bulk.actorIdMissing',
     message: 'Missing actorId',
