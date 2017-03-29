@@ -38,7 +38,7 @@ BEGIN
     END IF;
     IF "@batchStatusId" IS NOT NULL THEN
         IF NOT EXISTS (SELECT 1 FROM bulk."batchStatus" AS bs WHERE bs."batchStatusId" = "@batchStatusId") THEN
-            RAISE EXCEPTION 'bulk.statusIdNotFound';
+            RAISE EXCEPTION 'bulk.batchStatusIdNotFound';
         END IF;
      END IF;
 
