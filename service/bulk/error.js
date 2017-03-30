@@ -58,6 +58,12 @@ module.exports = [
     type: 'bulk.batchIdMissing',
     message: 'Missing input batchId',
     statusCode: 422
+  },
+  {
+    id: 'EmptyListWithPayments',
+    type: 'bulk.emptyPayments',
+    message: 'Empty list with payments',
+    statusCode: 422
   }
 ].reduce((exporting, error) => {
   var typePath = error.type.split('.')

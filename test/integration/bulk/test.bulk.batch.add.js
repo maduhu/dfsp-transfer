@@ -9,7 +9,7 @@ const RANDOM_NUMBER = Math.floor(Math.random() * 10)
 
 test({
   type: 'integration',
-  name: 'DFSP bulk add test',
+  name: 'Bulk batch add test',
   server: config.server,
   serverConfig: config.serverConfig,
   client: config.client,
