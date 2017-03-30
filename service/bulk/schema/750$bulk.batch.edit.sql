@@ -90,12 +90,14 @@ BEGIN
                 "batchId",
                 "fileName",
                 "originalFileName",
+                "info",
                 "createdAt"
             )
         VALUES (
                 "@batchId",
                 "@fileName",
                 "@originalFileName",
+                '',
                 now()
         );
     ELSE

@@ -5,7 +5,9 @@ const TIMESTAMP = (new Date()).getTime()
 const NAME = 'Batch-' + TIMESTAMP
 const ACTOR_ID = '' + Math.floor(Math.random() * 10)
 const FILE_NAME = 'File-' + TIMESTAMP
+const FILE_NAME_NEW = 'New File Name'
 const ORIGINAL_FILE_NAME = 'OriginalFile-' + TIMESTAMP
+const ORIGINAL_FILE_NAME_NEW = 'New Original File Name'
 const INCORRECT_BATCH_ID = -1
 const INCORRECT_BATCH_STATUS_ID = -1
 const BATCH_STATUS_ID_NEW = 3
@@ -311,9 +313,199 @@ test({
         assert.true(result.originalFileName === ORIGINAL_FILE_NAME, 'Check the originalFileName value')
 
         assert.true((typeof result.uploadInfo === 'string'), 'Check uploadInfo result type - string')
-        assert.true((result.uploadInfo === INFO), 'Check uploadInfo result value - empty')
+        assert.true((result.uploadInfo === INFO), ' Check uploadInfo result value')
 
         assert.true(result.validatedAt === null, 'Check that validatedAt is not set')
+      }
+    },
+    {
+      name: 'Check Missing original file name exception',
+      method: 'bulk.batch.edit',
+      params: (context) => {
+        return {
+          actorId: ACTOR_ID,
+          batchId: context['Add new batch in order to test edit batch'].batchId,
+          fileName: FILE_NAME_NEW
+        }
+      },
+      error: function (error, assert) {
+        assert.true(error instanceof utError.get('bulk.missingOriginalFileName'), error.errorPrint)
+        assert.equal(error.errorPrint, 'Missing original file name', error.errorPrint)
+      }
+    },
+    {
+      name: 'Edit fileName and originalFileName',
+      method: 'bulk.batch.edit',
+      params: (context) => {
+        return {
+          actorId: ACTOR_ID,
+          batchId: context['Add new batch in order to test edit batch'].batchId,
+          fileName: FILE_NAME_NEW,
+          originalFileName: ORIGINAL_FILE_NAME_NEW
+        }
+      },
+      result: function (result, assert) {
+        assert.true((typeof result.account === 'string'), 'Check account result type - string')
+        assert.true((result.account === TEST_ACCOUNT), 'Check account result value')
+
+        assert.true((typeof result.actorId === 'string'), 'Check actorId result type - string')
+        assert.true((result.actorId === ACTOR_ID), 'Check actorId result value')
+
+        assert.true((typeof result.batchId === 'number'), 'Check batchId result type - number')
+        assert.true((result.batchId === this['Add new batch in order to test edit batch'].batchId), 'Check batchId result value')
+
+        assert.true((typeof result.batchInfo === 'string'), 'Check batchInfo result type - string')
+        assert.true((result.batchInfo === INFO), 'Check batchInfo result value')
+
+        assert.true((typeof result.batchStatusId === 'number'), 'Check batchStatusId result type - number')
+        assert.true((result.batchStatusId === BATCH_STATUS_ID_NEW), 'Check batchStatusId result value - new=3')
+
+        assert.false(isNaN(Date.parse(result.expirationDate)), 'Check if the returned result is a Date')
+
+        assert.true(typeof result.fileName === 'string', 'Check the fileName type - string')
+        assert.true(result.fileName === FILE_NAME_NEW, 'Check the fileName value')
+
+        assert.true(typeof result.name === 'string', 'Check the name type - string')
+        assert.true(result.name === NAME, 'Check the name value')
+
+        assert.true(typeof result.originalFileName === 'string', 'Check the originalFileName type - string')
+        assert.true(result.originalFileName === ORIGINAL_FILE_NAME_NEW, 'Check the originalFileName value')
+
+        assert.true((typeof result.uploadInfo === 'string'), 'Check uploadInfo result type - string')
+        assert.true((result.uploadInfo === ''), 'uploadInfo should be reset after creation of the new upload record')
+
+        assert.true(result.validatedAt === null, 'Check that validatedAt is not set')
+      }
+    },
+    {
+      name: 'Check that when you edit fileName and originalFileName uploadInfo can not be changed',
+      method: 'bulk.batch.edit',
+      params: (context) => {
+        return {
+          actorId: ACTOR_ID,
+          batchId: context['Add new batch in order to test edit batch'].batchId,
+          fileName: FILE_NAME_NEW,
+          originalFileName: ORIGINAL_FILE_NAME_NEW,
+          uploadInfo: INFO
+        }
+      },
+      result: function (result, assert) {
+        assert.true((typeof result.account === 'string'), 'Check account result type - string')
+        assert.true((result.account === TEST_ACCOUNT), 'Check account result value')
+
+        assert.true((typeof result.actorId === 'string'), 'Check actorId result type - string')
+        assert.true((result.actorId === ACTOR_ID), 'Check actorId result value')
+
+        assert.true((typeof result.batchId === 'number'), 'Check batchId result type - number')
+        assert.true((result.batchId === this['Add new batch in order to test edit batch'].batchId), 'Check batchId result value')
+
+        assert.true((typeof result.batchInfo === 'string'), 'Check batchInfo result type - string')
+        assert.true((result.batchInfo === INFO), 'Check batchInfo result value')
+
+        assert.true((typeof result.batchStatusId === 'number'), 'Check batchStatusId result type - number')
+        assert.true((result.batchStatusId === BATCH_STATUS_ID_NEW), 'Check batchStatusId result value - new=3')
+
+        assert.false(isNaN(Date.parse(result.expirationDate)), 'Check if the returned result is a Date')
+
+        assert.true(typeof result.fileName === 'string', 'Check the fileName type - string')
+        assert.true(result.fileName === FILE_NAME_NEW, 'Check the fileName value')
+
+        assert.true(typeof result.name === 'string', 'Check the name type - string')
+        assert.true(result.name === NAME, 'Check the name value')
+
+        assert.true(typeof result.originalFileName === 'string', 'Check the originalFileName type - string')
+        assert.true(result.originalFileName === ORIGINAL_FILE_NAME_NEW, 'Check the originalFileName value')
+
+        assert.true((typeof result.uploadInfo === 'string'), 'Check uploadInfo result type - string')
+        assert.true((result.uploadInfo === ''), 'uploadInfo should not be taken from the input param')
+
+        assert.true(result.validatedAt === null, 'Check that validatedAt is not set')
+      }
+    },
+    {
+      name: 'Edit upload info',
+      method: 'bulk.batch.edit',
+      params: (context) => {
+        return {
+          actorId: ACTOR_ID,
+          batchId: context['Add new batch in order to test edit batch'].batchId,
+          uploadInfo: INFO
+        }
+      },
+      result: function (result, assert) {
+        assert.true((typeof result.account === 'string'), 'Check account result type - string')
+        assert.true((result.account === TEST_ACCOUNT), 'Check account result value')
+
+        assert.true((typeof result.actorId === 'string'), 'Check actorId result type - string')
+        assert.true((result.actorId === ACTOR_ID), 'Check actorId result value')
+
+        assert.true((typeof result.batchId === 'number'), 'Check batchId result type - number')
+        assert.true((result.batchId === this['Add new batch in order to test edit batch'].batchId), 'Check batchId result value')
+
+        assert.true((typeof result.batchInfo === 'string'), 'Check batchInfo result type - string')
+        assert.true((result.batchInfo === INFO), 'Check batchInfo result value')
+
+        assert.true((typeof result.batchStatusId === 'number'), 'Check batchStatusId result type - number')
+        assert.true((result.batchStatusId === BATCH_STATUS_ID_NEW), 'Check batchStatusId result value - new=3')
+
+        assert.false(isNaN(Date.parse(result.expirationDate)), 'Check if the returned result is a Date')
+
+        assert.true(typeof result.fileName === 'string', 'Check the fileName type - string')
+        assert.true(result.fileName === FILE_NAME_NEW, 'Check the fileName value')
+
+        assert.true(typeof result.name === 'string', 'Check the name type - string')
+        assert.true(result.name === NAME, 'Check the name value')
+
+        assert.true(typeof result.originalFileName === 'string', 'Check the originalFileName type - string')
+        assert.true(result.originalFileName === ORIGINAL_FILE_NAME_NEW, 'Check the originalFileName value')
+
+        assert.true((typeof result.uploadInfo === 'string'), 'Check uploadInfo result type - string')
+        assert.true((result.uploadInfo === INFO), 'uploadInfo should be taken from the input param')
+
+        assert.true(result.validatedAt === null, 'Check that validatedAt is not set')
+      }
+    },
+    {
+      name: 'Edit validatedAt date',
+      method: 'bulk.batch.edit',
+      params: (context) => {
+        return {
+          actorId: ACTOR_ID,
+          batchId: context['Add new batch in order to test edit batch'].batchId,
+          validatedAt: TEST_DATE
+        }
+      },
+      result: function (result, assert) {
+        assert.true((typeof result.account === 'string'), 'Check account result type - string')
+        assert.true((result.account === TEST_ACCOUNT), 'Check account result value')
+
+        assert.true((typeof result.actorId === 'string'), 'Check actorId result type - string')
+        assert.true((result.actorId === ACTOR_ID), 'Check actorId result value')
+
+        assert.true((typeof result.batchId === 'number'), 'Check batchId result type - number')
+        assert.true((result.batchId === this['Add new batch in order to test edit batch'].batchId), 'Check batchId result value')
+
+        assert.true((typeof result.batchInfo === 'string'), 'Check batchInfo result type - string')
+        assert.true((result.batchInfo === INFO), 'Check batchInfo result value')
+
+        assert.true((typeof result.batchStatusId === 'number'), 'Check batchStatusId result type - number')
+        assert.true((result.batchStatusId === BATCH_STATUS_ID_NEW), 'Check batchStatusId result value - new=3')
+
+        assert.false(isNaN(Date.parse(result.expirationDate)), 'Check if the returned result is a Date')
+
+        assert.true(typeof result.fileName === 'string', 'Check the fileName type - string')
+        assert.true(result.fileName === FILE_NAME_NEW, 'Check the fileName value')
+
+        assert.true(typeof result.name === 'string', 'Check the name type - string')
+        assert.true(result.name === NAME, 'Check the name value')
+
+        assert.true(typeof result.originalFileName === 'string', 'Check the originalFileName type - string')
+        assert.true(result.originalFileName === ORIGINAL_FILE_NAME_NEW, 'Check the originalFileName value')
+
+        assert.true((typeof result.uploadInfo === 'string'), 'Check uploadInfo result type - string')
+        assert.true((result.uploadInfo === INFO), 'uploadInfo should be taken from the input param')
+
+        assert.false(isNaN(Date.parse(result.validatedAt)), 'Check that validatedAt is set')
       }
     }
     ])

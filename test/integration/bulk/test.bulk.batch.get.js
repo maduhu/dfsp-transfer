@@ -11,7 +11,7 @@ const ZERO_PAYMENTS = '0'
 
 test({
   type: 'integration',
-  name: 'DFSP bulk fetch test',
+  name: 'DFSP bulk get test',
   server: config.server,
   serverConfig: config.serverConfig,
   client: config.client,
