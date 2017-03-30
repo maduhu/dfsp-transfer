@@ -77,7 +77,7 @@ test({
       }
     },
     {
-      name: 'Add payment',
+      name: 'Add payments',
       method: 'bulk.payment.add',
       params: (context) => {
         return {
