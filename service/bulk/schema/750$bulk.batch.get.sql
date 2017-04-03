@@ -19,6 +19,9 @@ RETURNS TABLE (
 ) AS
 $body$
 BEGIN
+  IF "@batchId" IS NULL THEN
+     RAISE EXCEPTION 'bulk.batchIdMissing';
+  END IF;
   IF NOT EXISTS (SELECT 1 FROM bulk."batch" AS b WHERE b."batchId" = "@batchId") THEN
     RAISE EXCEPTION 'bulk.batchNotFound';
   END IF;

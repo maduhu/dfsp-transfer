@@ -2,6 +2,10 @@ var create = require('ut-error').define
 var defaultErrorCode = 400
 module.exports = [
   {
+    type: 'bulk',
+    message: 'bulk error'
+  },
+  {
     id: 'ActorIdMissingError',
     type: 'bulk.actorIdMissing',
     message: 'Missing actorId',
@@ -53,6 +57,12 @@ module.exports = [
     id: 'MissingBatchId',
     type: 'bulk.batchIdMissing',
     message: 'Missing input batchId',
+    statusCode: 422
+  },
+  {
+    id: 'EmptyListWithPayments',
+    type: 'bulk.emptyPayments',
+    message: 'Empty list with payments',
     statusCode: 422
   }
 ].reduce((exporting, error) => {

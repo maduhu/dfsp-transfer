@@ -1,0 +1,17 @@
+[{
+	"sequenceNumber": 1,
+	"identifier": "17500419",
+	"firstName": "bob",
+	"lastName": "dylan",
+	"dob": "1999-12-10",
+	"nationalId": "123456789",
+	"amount": 12.45
+}, {
+	"sequenceNumber": 2,
+	"identifier": "48607986",
+	"firstName": "alice",
+	"lastName": "cooper",
+	"dob": "1989-03-22",
+	"nationalId": "987654321",
+	"amount": 13.78
+}]

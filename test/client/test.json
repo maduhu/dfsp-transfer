@@ -15,10 +15,10 @@
         "logLevel": "error",
         "uri": "/rpc",
         "url": "http://127.0.0.1:8018",
-        "namespace": ["transfer"],
+        "namespace": ["transfer", "bulk"],
         "method": "post"
     },
-    "performance": {
+    "_performance": {
         "id": "dfsp-transfer",
         "influx": {
             "host": "influxdb",
