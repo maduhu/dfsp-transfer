@@ -1,3 +1,24 @@
+<a name="0.18.10"></a>
+## [0.18.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.9...v0.18.10) (2017-04-03)
+
+
+### Bug Fixes
+
+* add integration tests ([18606e3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/18606e3))
+* add integration tests for bulk.batch.get/fetch ([34e43ca](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/34e43ca))
+* add more tests ([8d4294c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/8d4294c))
+* add more tests for batch/payments add and paymentStatus.fetch ([c2da3ff](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c2da3ff))
+* add more tests for bulk.payment.edit ([9ef0ef8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/9ef0ef8))
+* add more tests related to the payment.get ([c0c3f58](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c0c3f58))
+* add tests for bulk.batch.edit ([cf78795](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/cf78795))
+* add tests for bulk.batch.ready ([2f08c78](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/2f08c78))
+* add tests for bulk.payment.fetch ([7372822](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/7372822))
+* fix error messages ([89dba58](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/89dba58))
+* fix linting ([10b1d2f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/10b1d2f))
+* remove unused code ([e48aba1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e48aba1))
+
+
+
 <a name="0.18.9"></a>
 ## [0.18.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.8...v0.18.9) (2017-04-03)
 
