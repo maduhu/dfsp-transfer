@@ -1,3 +1,13 @@
+<a name="0.18.9"></a>
+## [0.18.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.8...v0.18.9) (2017-04-03)
+
+
+### Bug Fixes
+
+* update ut-port-httpserver ([6fd7db7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6fd7db7))
+
+
+
 <a name="0.18.8"></a>
 ## [0.18.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.7...v0.18.8) (2017-03-15)
 
