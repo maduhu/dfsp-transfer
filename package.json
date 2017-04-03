@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "joi": "9.1.1",
-    "ut-port-httpserver": "8.1.8",
+    "ut-port-httpserver": "8.7.1",
     "ut-port-jsonrpc": "^5.5.9",
     "ut-port-script": "^5.4.7",
     "ut-port-postgres": "^5.7.5",
