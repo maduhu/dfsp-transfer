@@ -1,3 +1,13 @@
+<a name="0.18.11"></a>
+## [0.18.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.10...v0.18.11) (2017-04-04)
+
+
+### Bug Fixes
+
+* add return statement to the run functions ([2a10d94](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/2a10d94))
+
+
+
 <a name="0.18.10"></a>
 ## [0.18.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.9...v0.18.10) (2017-04-03)
 
