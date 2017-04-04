@@ -17,7 +17,7 @@ test({
   client: config.client,
   clientConfig: config.clientConfig,
   steps: function (test, bus, run) {
-    run(test, bus, [{
+    return run(test, bus, [{
       name: 'Add new batch - for bulk batch get',
       method: 'bulk.batch.add',
       params: (context) => {
