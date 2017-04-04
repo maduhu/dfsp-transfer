@@ -15,7 +15,7 @@ test({
   client: config.client,
   clientConfig: config.clientConfig,
   steps: function (test, bus, run) {
-    run(test, bus, [{
+    return run(test, bus, [{
       name: 'Missing input params - Raise exception for missing name',
       method: 'bulk.batch.add',
       params: (context) => {

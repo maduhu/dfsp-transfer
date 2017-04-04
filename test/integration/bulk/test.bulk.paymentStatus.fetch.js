@@ -9,7 +9,7 @@ test({
   client: config.client,
   clientConfig: config.clientConfig,
   steps: function (test, bus, run) {
-    run(test, bus, [{
+    return run(test, bus, [{
       name: 'Fetch batch statuses',
       method: 'bulk.paymentStatus.fetch',
       params: (context) => {

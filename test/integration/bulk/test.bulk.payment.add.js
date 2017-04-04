@@ -16,7 +16,7 @@ test({
   client: config.client,
   clientConfig: config.clientConfig,
   steps: function (test, bus, run) {
-    run(test, bus, [{
+    return run(test, bus, [{
       name: 'Create batch to link payments with',
       method: 'bulk.batch.add',
       params: (context) => {
