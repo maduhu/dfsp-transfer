@@ -1,3 +1,13 @@
+<a name="0.18.12"></a>
+## [0.18.12](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.11...v0.18.12) (2017-04-05)
+
+
+### Bug Fixes
+
+* remove identity mock ([0fe3d5f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0fe3d5f))
+
+
+
 <a name="0.18.11"></a>
 ## [0.18.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.10...v0.18.11) (2017-04-04)
 
