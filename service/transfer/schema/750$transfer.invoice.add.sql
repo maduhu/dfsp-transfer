@@ -49,7 +49,7 @@ BEGIN
         RAISE EXCEPTION 'transfer.invoiceTypeIsMissing';
     END IF;
 
-    WITH 
+    WITH
     ti AS (
             INSERT INTO transfer.invoice (
             "account",
@@ -75,10 +75,10 @@ BEGIN
     )
 
         SELECT ti."invoiceId" FROM ti INTO "@invoiceId";
-        RETURN QUERY 
-            SELECT 
+        RETURN QUERY
+            SELECT
                 *
-            FROM 
+            FROM
                 transfer."invoice.get" ("@invoiceId");
     END
 $BODY$ LANGUAGE plpgsql

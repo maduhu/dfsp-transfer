@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.edit" (
     "@invoiceNotificationId" INTEGER,
-    "@status" VARCHAR
+    "@invoiceNotificationStatusId" VARCHAR
 )
 RETURNS TABLE (
     "invoiceNotificationId" INTEGER,
@@ -12,10 +12,17 @@ RETURNS TABLE (
 ) AS
 $body$
 BEGIN
+    IF "@invoiceNotificationId" IS NULL THEN
+        RAISE EXCEPTION 'transfer.invoiceNotificationIdMissing';
+    END IF;
+    IF "@invoiceNotificationStatusId" IS NULL THEN
+        RAISE EXCEPTION 'transfer.invoiceNotificationStatusIdMissing';
+    END IF;
+
     UPDATE
         transfer."invoiceNotification" AS t
     SET
-        "invoiceNotificationStatusId" = (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = "@status")
+        "invoiceNotificationStatusId" = "@invoiceNotificationStatusId"
     WHERE
         t."invoiceNotificationId" = "@invoiceNotificationId";
 

@@ -25,16 +25,16 @@ inot AS (
         "memo"
     )
     SELECT
-        "@invoiceUrl"
-        ,"@identifier"
-        ,(SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = 'pending')
-        ,"@memo"
+        "@invoiceUrl",
+        "@identifier",
+        (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = 'pending'),
+        "@memo"
 )
 
     SELECT inot."invoiceNotificationId" FROM ti INTO "@invoiceNotificationId";
 
     RETURN QUERY
-    SELECT 
+    SELECT
         *
     FROM
         transfer."invoiceNotification.get"("@invoiceNotificationId") ;
