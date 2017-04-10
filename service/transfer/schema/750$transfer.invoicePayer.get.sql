@@ -15,15 +15,15 @@ BEGIN
   END IF;
   RETURN QUERY
     SELECT
-        "invoicePayerId" AS "invoicePayerId",
-        "invoiceId" AS "invoiceId",
-        "identifier" AS "identifier",
-        "createdAt" AS "createdAt",
+        ip."invoicePayerId" AS "invoicePayerId",
+        ip."invoiceId" AS "invoiceId",
+        ip."identifier" AS "identifier",
+        ip."createdAt" AS "createdAt",
         true AS "isSingleResult"
     FROM
-        transfer."invoicePayer"
+        transfer."invoicePayer" ip
     WHERE
-        "invoicePayerId" = "@invoicePayerId";
+        ip."invoicePayerId" = "@invoicePayerId";
 END;
 $body$
 LANGUAGE 'plpgsql';

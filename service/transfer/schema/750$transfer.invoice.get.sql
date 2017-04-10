@@ -31,7 +31,7 @@ BEGIN
         ti."amount" AS "amount",
         tis."name" AS "status",
         tit."name" AS "invoiceType",
-        ti."identifier" AS "merchantIdentifier",
+        ti."merchantIdentifier" AS "merchantIdentifier",
         ti."invoiceInfo" AS "invoiceInfo",
         true AS "isSingleResult"
     FROM

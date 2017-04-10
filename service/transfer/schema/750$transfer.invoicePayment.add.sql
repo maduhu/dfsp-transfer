@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION transfer."invoicePayment.add" (
-    "@invoicePayerId" INTEGER
+    "@invoicePayerId" BIGINT
 )
 RETURNS TABLE (
     "invoicePaymentId" BIGINT,
@@ -18,21 +18,27 @@ BEGIN
 
     WITH
     ip AS (
-            INSERT INTO transfer.invoicePayment (
-                "invoicePayerId",
-                "createdAt"
+        INSERT INTO transfer."invoicePayment" (
+            "invoicePayerId",
+            "createdAt"
         )
-            SELECT
-                "@invoicePayerId"
-                ,NOW() as "createdAt"
+        VALUES (
+            "@invoicePayerId",
+            NOW()
+        )
+        RETURNING *
     )
+    SELECT
+        ip."invoicePaymentId"
+    INTO
+        "@invoicePaymentId"
+    FROM
+        ip;
 
-    SELECT ip."invoicePaymentId" FROM ip INTO "@invoicePaymentId";
-
-    RETURN QUERY 
-        SELECT 
+    RETURN QUERY
+        SELECT
             *
-        FROM 
+        FROM
             transfer."invoicePayment.get" ("@invoicePayerId");
     END
 $BODY$ LANGUAGE plpgsql

@@ -13,7 +13,7 @@ $body$
 BEGIN
     SELECT * FROM transfer."invoiceNotification.edit"(
         "@invoiceNotificationId",
-        (SELECT is."invoiceStatusId" FROM transfer."invoiceStatus" is WHERE is."name" = 'executed')
+        (SELECT tis."invoiceStatusId" FROM transfer."invoiceStatus" tis WHERE tis."name" = 'executed')
     );
 END;
 $body$

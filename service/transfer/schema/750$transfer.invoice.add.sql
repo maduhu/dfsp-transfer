@@ -49,14 +49,14 @@ BEGIN
     IF "@invoiceType" IS NULL THEN
         RAISE EXCEPTION 'transfer.invoiceTypeMissing';
     END IF;
-    IF ("@invoiceType" = 'type1' AND "@identifier" IS NULL) THEN
+    IF ("@invoiceType" = 'standard' AND "@identifier" IS NULL) THEN
         RAISE EXCEPTION 'transfer.identifierMissing';
     END IF;
 
 
     WITH
     ti AS (
-            INSERT INTO transfer.invoice (
+        INSERT INTO transfer."invoice" (
             "account",
             "name",
             "currencyCode",
@@ -64,30 +64,35 @@ BEGIN
             "amount",
             "merchantIdentifier",
             "invoiceStatusId",
-            "typeId",
-            "invoiceInfo"
+            "invoiceTypeId",
+            "invoiceInfo",
+            "createdAt"
         )
-        SELECT
-            "@account"
-            ,"@name"
-            ,"@currencyCode"
-            ,"@currencySymbol"
-            ,"@amount"
-            ,"@merchantIdentifier"
-            , (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" WHERE s."name" = 'pending')
-            , (SELECT it."invoiceTypeId" FROM transfer."invoiceType" it WHERE it."name" = "@invoiceType")
-            ,"@invoiceInfo"
+        VALUES (
+            "@account",
+            "@name",
+            "@currencyCode",
+            "@currencySymbol",
+            "@amount",
+            "@merchantIdentifier",
+            (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = 'pending'),
+            (SELECT it."invoiceTypeId" FROM transfer."invoiceType" it WHERE it."name" = "@invoiceType"),
+            "@invoiceInfo",
+            NOW()
+        )
+        RETURNING *
     )
-    SELECT ti."invoiceId" FROM ti INTO "@invoiceId";
+    SELECT
+        ti."invoiceId"
+    INTO
+        "@invoiceId"
+    FROM
+        ti;
 
-    IF "@invoiceType" = 'type1' THEN
-        PERFORM transfer."invoicePayer.add"("@invoiceId", "@identifier")
+    IF "@invoiceType" = 'standard' THEN
+        PERFORM transfer."invoicePayer.add"("@invoiceId", "@identifier");
     END IF;
 
-    RETURN QUERY
-        SELECT
-            *
-        FROM
-            transfer."invoice.get" ("@invoiceId");
-    END
+    RETURN QUERY SELECT * FROM transfer."invoice.get" ("@invoiceId");
+END
 $BODY$ LANGUAGE plpgsql

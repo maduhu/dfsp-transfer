@@ -11,7 +11,7 @@ ON CONFLICT ("invoiceStatusId") DO UPDATE SET "name" = EXCLUDED.name, "descripti
 INSERT INTO
    transfer."invoiceType" ("invoiceTypeId", "name", "description")
 VALUES
-  (1, 'type1', 'Old invoices'),
-  (2, 'type2', 'Not assigned one-time invoice'),
-  (3, 'type3', 'Not assigned multi-payer invoice')
+  (1, 'standard', 'Standard invoice'),
+  (2, 'pending', 'Not assigned one-time invoice'),
+  (3, 'product', 'Not assigned multi-payer invoice')
 ON CONFLICT ("invoiceTypeId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;

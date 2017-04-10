@@ -23,23 +23,28 @@ BEGIN
 
     WITH
     ip AS (
-            INSERT INTO transfer.invoicePayer (
-                "invoiceId",
-                "identifier",
-                "createdAt"
+        INSERT INTO transfer."invoicePayer" (
+            "invoiceId",
+            "identifier",
+            "createdAt"
         )
-            SELECT
-                "@invoiceId"
-                ,"@identifier"
-                ,NOW() as "createdAt"
+        VALUES (
+            "@invoiceId",
+            "@identifier",
+            NOW()
+        )
+        RETURNING *
     )
+    SELECT
+        ip."invoicePayerId"
+    INTO
+        "@invoicePayerId"
+    FROM ip;
 
-    SELECT ip."invoicePayerId" FROM ip INTO "@invoicePayerId";
-
-    RETURN QUERY 
-        SELECT 
+    RETURN QUERY
+        SELECT
             *
-        FROM 
+        FROM
             transfer."invoicePayer.get" ("@invoicePayerId");
     END
 $BODY$ LANGUAGE plpgsql
