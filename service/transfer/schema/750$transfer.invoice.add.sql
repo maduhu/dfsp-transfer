@@ -5,7 +5,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@currencySymbol" varchar,
     "@amount" numeric,
     "@merchantIdentifier" varchar,
-    "@invoiceTypeCode" varchar,
+    "@invoiceType" varchar,
     "@invoiceInfo" varchar
 )
 RETURNS TABLE (
@@ -45,9 +45,12 @@ BEGIN
     IF "@merchantIdentifier" IS NULL THEN
         RAISE EXCEPTION 'transfer.merchantIdentifierIsMissing';
     END IF;
-    IF "@invoiceTypeCode" IS NULL THEN
-        RAISE EXCEPTION 'transfer.invoiceTypeCodeIsMissing';
+    IF "@invoiceType" IS NULL THEN
+        RAISE EXCEPTION 'transfer.invoiceTypeIsMissing';
     END IF;
+
+    WITH 
+    ti AS (
             INSERT INTO transfer.invoice (
             "account",
             "name",
@@ -55,8 +58,8 @@ BEGIN
             "currencySymbol",
             "amount",
             "merchantIdentifier",
-            "statusCode",
-            "invoiceTypeCode",
+            "invoiceStatusId",
+            "typeId",
             "invoiceInfo"
         )
         SELECT
@@ -66,12 +69,16 @@ BEGIN
             ,"@currencySymbol"
             ,"@amount"
             ,"@merchantIdentifier"
-            ,'p'
-            ,"@invoiceTypeCode"
-            ,"@invoiceInfo";
+            , (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" WHERE s."name" = 'pending')
+            , (SELECT it."invoiceTypeId" FROM transfer."invoiceType" it WHERE it."name" = "@invoiceType")
+            ,"@invoiceInfo"
+    )
 
-        "@invoiceId" := (SELECT currval('transfer."invoice_invoiceId_seq"'));
-
-        RETURN QUERY SELECT * FROM transfer."invoice.get" ("@invoiceId");
+        SELECT ti."invoiceId" FROM ti INTO "@invoiceId";
+        RETURN QUERY 
+            SELECT 
+                *
+            FROM 
+                transfer."invoice.get" ("@invoiceId");
     END
 $BODY$ LANGUAGE plpgsql

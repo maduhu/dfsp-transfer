@@ -4,7 +4,8 @@ CREATE OR REPLACE FUNCTION transfer."invoicePayment.get" (
 RETURNS TABLE (
     "invoicePaymentId" BIGINT,
     "invoicePayerId" BIGINT,
-    "createdAt" TIMESTAMP
+    "createdAt" TIMESTAMP,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 BEGIN
@@ -15,7 +16,8 @@ BEGIN
     SELECT
         "invoicePaymentId" AS "invoicePaymentId",
         "invoicePayerId" AS "invoicePayerId",
-        "createdAt" AS "createdAt"
+        "createdAt" AS "createdAt",
+        true AS "isSingleResult"
     FROM
         transfer."invoicePayment"
     WHERE

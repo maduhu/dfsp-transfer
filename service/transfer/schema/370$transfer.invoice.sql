@@ -6,14 +6,14 @@
     "currencyCode" VARCHAR(3),
     "currencySymbol" VARCHAR(3),
     "amount" NUMERIC,
-    "statusCode" VARCHAR(5),
-    "invoiceTypeCode" VARCHAR(5),
+    "invoiceStatusId" INTEGER,
+    "invoiceTypeId" INTEGER,
     "invoiceInfo" VARCHAR(100),
     "createdAt" timestamp,
     CONSTRAINT "pkTransferInvoice" PRIMARY KEY ("invoiceId"),
-    CONSTRAINT "fkTransferInvoice_TransferInvoiceType" FOREIGN KEY ("invoiceTypeCode") REFERENCES transfer."invoiceType"("invoiceTypeCode"),
-    CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("statusCode")
-        REFERENCES transfer."invoiceStatus"(code)
+    CONSTRAINT "fkTransferInvoice_TransferInvoiceType" FOREIGN KEY ("invoiceTypeId") REFERENCES transfer."invoiceType"("invoiceTypeId"),
+    CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("invoiceStatusId")
+        REFERENCES transfer."invoiceStatus"("invoiceStatusId")
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
         NOT DEFERRABLE

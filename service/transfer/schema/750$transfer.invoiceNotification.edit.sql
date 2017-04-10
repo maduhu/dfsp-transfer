@@ -1,21 +1,21 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.edit" (
-    "@invoiceNotificationId" integer,
-    "@statusCode" char
+    "@invoiceNotificationId" INTEGER,
+    "@status" VARCHAR
 )
 RETURNS TABLE (
-    "invoiceNotificationId" integer,
-    "invoiceUrl" varchar,
-    "identifier" varchar,
-    "status" varchar,
-    "memo" varchar,
-    "isSingleResult" boolean
+    "invoiceNotificationId" INTEGER,
+    "invoiceUrl" VARCHAR,
+    "identifier" VARCHAR,
+    "status" VARCHAR,
+    "memo" VARCHAR,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 BEGIN
     UPDATE
         transfer."invoiceNotification" AS t
     SET
-        "statusCode" = "@statusCode"
+        "invoiceNotificationStatusId" = (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = "@status")
     WHERE
         t."invoiceNotificationId" = "@invoiceNotificationId";
 

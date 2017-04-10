@@ -5,7 +5,8 @@ RETURNS TABLE (
     "invoicePayerId" BIGINT,
     "invoiceId" INTEGER,
     "identifier" VARCHAR(25),
-    "createdAt" TIMESTAMP
+    "createdAt" TIMESTAMP,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 BEGIN
@@ -17,7 +18,8 @@ BEGIN
         "invoicePayerId" AS "invoicePayerId",
         "invoiceId" AS "invoiceId",
         "identifier" AS "identifier",
-        "createdAt" AS "createdAt"
+        "createdAt" AS "createdAt",
+        true AS "isSingleResult"
     FROM
         transfer."invoicePayer"
     WHERE

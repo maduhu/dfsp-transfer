@@ -1,6 +1,6 @@
 CREATE TABLE transfer."invoiceType" (
-    "invoiceTypeCode" CHAR(5),
+    "invoiceTypeId" SERIAL,
     "name" VARCHAR(50),
     "description" VARCHAR(100),
-    CONSTRAINT "pkTransferInvoiceType" PRIMARY KEY ("invoiceTypeCode")
+    CONSTRAINT "pkTransferInvoiceType" PRIMARY KEY ("invoiceTypeId")
 )

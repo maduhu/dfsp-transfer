@@ -29,17 +29,17 @@ BEGIN
         ti."currencyCode" AS "currencyCode",
         ti."currencySymbol" AS "currencySymbol",
         ti."amount" AS "amount",
-        tis."description" AS "status",
+        tis."name" AS "status",
         tit."name" AS "invoiceType",
         ti."identifier" AS "merchantIdentifier",
         ti."invoiceInfo" AS "invoiceInfo",
-        CAST(1 AS BOOLEAN) AS "isSingleResult"
+        true AS "isSingleResult"
     FROM
         transfer."invoice" AS ti
     JOIN
-        transfer."invoiceStatus" tis ON ti."statusCode" = tis."code"
+        transfer."invoiceStatus" tis ON ti."invoiceStatusId" = tis."invoiceStatusId"
     JOIN
-        transfer."invoiceType" tit ON ti."invoiceTypeCode" = tit."invoiceTypeCode"
+        transfer."invoiceType" tit ON ti."invoiceTypeId" = tit."invoiceTypeId"
     WHERE
         ti."invoiceId" = "@invoiceId";
 END;

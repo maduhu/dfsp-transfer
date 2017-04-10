@@ -31,8 +31,7 @@ BEGIN
 
     RETURN QUERY 
         SELECT 
-            *,
-            true AS "isSingleResult"
+            *
         FROM 
             transfer."invoicePayment.get" ("@invoicePayerId");
     END
