@@ -1,7 +1,7 @@
 ﻿CREATE TABLE transfer."invoice" (
     "invoiceId" SERIAL,
     "account" VARCHAR(100),
-    "identifier" VARCHAR(100),
+    "merchantIdentifier" VARCHAR(100),
     "name" VARCHAR(100),
     "currencyCode" VARCHAR(3),
     "currencySymbol" VARCHAR(3),

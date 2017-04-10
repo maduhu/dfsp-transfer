@@ -10,7 +10,8 @@ RETURNS TABLE (
     "currencySymbol" varchar,
     "amount" numeric,
     "status" varchar,
-    "identifier" varchar,
+    "invoiceType" varchar,
+    "merchantIdentifier" varchar,
     "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
@@ -29,13 +30,16 @@ BEGIN
         ti."currencySymbol" AS "currencySymbol",
         ti."amount" AS "amount",
         tis."description" AS "status",
-        ti."identifier" AS "identifier",
+        tit."name" AS "invoiceType",
+        ti."identifier" AS "merchantIdentifier",
         ti."invoiceInfo" AS "invoiceInfo",
         CAST(1 AS BOOLEAN) AS "isSingleResult"
     FROM
         transfer."invoice" AS ti
     JOIN
         transfer."invoiceStatus" tis ON ti."statusCode" = tis."code"
+    JOIN
+        transfer."invoiceType" tit ON ti."invoiceTypeCode" = tit."invoiceTypeCode"
     WHERE
         ti."invoiceId" = "@invoiceId";
 END;
