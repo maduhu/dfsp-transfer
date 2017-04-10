@@ -34,7 +34,7 @@ BEGIN
                 ,NOW() as "createdAt"
     )
 
-    SELECT ip."invoicePayerId" FROM ip INTO  "@invoicePayerId";
+    SELECT ip."invoicePayerId" FROM ip INTO "@invoicePayerId";
 
     RETURN QUERY 
         SELECT 
