@@ -11,8 +11,8 @@
     "invoiceInfo" VARCHAR(100),
     "createdAt" timestamp,
     CONSTRAINT "pkTransferInvoice" PRIMARY KEY ("invoiceId"),
-    CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("statusCode") REFERENCES transfer."invoiceStatus"("code")
-    CONSTRAINT "fkTransferInvoice_TransferInvoiceType" FOREIGN KEY ("invoiceTypeCode") REFERENCES transfer."invoiceType"("invoiceTypeCode")
+    CONSTRAINT "fkTransferInvoice_TransferInvoiceType" FOREIGN KEY ("invoiceTypeCode") REFERENCES transfer."invoiceType"("invoiceTypeCode"),
+    CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("statusCode")
         REFERENCES transfer."invoiceStatus"(code)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION

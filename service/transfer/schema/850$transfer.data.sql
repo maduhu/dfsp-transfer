@@ -1,6 +1,6 @@
 ﻿  -- Insert invoice statuses
 INSERT INTO
-   transfer."invoiceStatus" ("code" "description")
+   transfer."invoiceStatus" ("code", "description")
 VALUES
   ('e', 'executed'),
   ('a', 'approved'),
@@ -13,5 +13,5 @@ INSERT INTO
 VALUES
   ('t1', 'type1', 'Old invoices'),
   ('t2', 'type2', 'Not assigned one-time invoice'),
-  ('t3', 'type3', 'Not assigned multi-payer invoice'),
-ON CONFLICT ("invoiceTypeCode") DO UPDATE SET  "name" = EXCLUDED.name, "description" = EXCLUDED.description;
+  ('t3', 'type3', 'Not assigned multi-payer invoice')
+ON CONFLICT ("invoiceTypeCode") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
