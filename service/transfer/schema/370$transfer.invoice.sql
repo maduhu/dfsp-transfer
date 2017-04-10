@@ -1,15 +1,18 @@
 ﻿CREATE TABLE transfer."invoice" (
     "invoiceId" SERIAL,
     "account" VARCHAR(100),
+    "identifier" VARCHAR(100),
     "name" VARCHAR(100),
     "currencyCode" VARCHAR(3),
     "currencySymbol" VARCHAR(3),
     "amount" NUMERIC,
     "statusCode" VARCHAR(5),
-    "identifier" VARCHAR(100),
+    "invoiceTypeCode" VARCHAR(5),
     "invoiceInfo" VARCHAR(100),
+    "createdAt" timestamp,
     CONSTRAINT "pkTransferInvoice" PRIMARY KEY ("invoiceId"),
-    CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("statusCode")
+    CONSTRAINT "fkTransferInvoice_TransferInvoiceStatus" FOREIGN KEY ("statusCode") REFERENCES transfer."invoiceStatus"("code")
+    CONSTRAINT "fkTransferInvoice_TransferInvoiceType" FOREIGN KEY ("invoiceTypeCode") REFERENCES transfer."invoiceType"("invoiceTypeCode")
         REFERENCES transfer."invoiceStatus"(code)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
