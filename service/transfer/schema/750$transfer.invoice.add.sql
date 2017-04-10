@@ -5,6 +5,7 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@currencySymbol" varchar,
     "@amount" numeric,
     "@merchantIdentifier" varchar,
+    "@identifier" varchar,
     "@invoiceType" varchar,
     "@invoiceInfo" varchar
 )
@@ -28,26 +29,30 @@ DECLARE "@invoiceId" int;
 
 BEGIN
     IF "@account" IS NULL THEN
-        RAISE EXCEPTION 'transfer.accountIsMissing';
+        RAISE EXCEPTION 'transfer.accountMissing';
     END IF;
     IF "@name" IS NULL THEN
-        RAISE EXCEPTION 'transfer.nameIsMissing';
+        RAISE EXCEPTION 'transfer.nameMissing';
     END IF;
     IF "@currencyCode" IS NULL THEN
-        RAISE EXCEPTION 'transfer.currencyCodeIsMissing';
+        RAISE EXCEPTION 'transfer.currencyCodeMissing';
     END IF;
     IF "@currencySymbol" IS NULL THEN
-        RAISE EXCEPTION 'transfer.currencySymbolIsMissing';
+        RAISE EXCEPTION 'transfer.currencySymbolMissing';
     END IF;
     IF "@amount" IS NULL THEN
-        RAISE EXCEPTION 'transfer.amountIsMissing';
+        RAISE EXCEPTION 'transfer.amountMissing';
     END IF;
     IF "@merchantIdentifier" IS NULL THEN
-        RAISE EXCEPTION 'transfer.merchantIdentifierIsMissing';
+        RAISE EXCEPTION 'transfer.merchantIdentifierMissing';
     END IF;
     IF "@invoiceType" IS NULL THEN
-        RAISE EXCEPTION 'transfer.invoiceTypeIsMissing';
+        RAISE EXCEPTION 'transfer.invoiceTypeMissing';
     END IF;
+    IF ("@invoiceType" = 'type1' AND "@identifier" IS NULL) THEN
+        RAISE EXCEPTION 'transfer.identifierMissing';
+    END IF;
+
 
     WITH
     ti AS (
@@ -73,12 +78,16 @@ BEGIN
             , (SELECT it."invoiceTypeId" FROM transfer."invoiceType" it WHERE it."name" = "@invoiceType")
             ,"@invoiceInfo"
     )
+    SELECT ti."invoiceId" FROM ti INTO "@invoiceId";
 
-        SELECT ti."invoiceId" FROM ti INTO "@invoiceId";
-        RETURN QUERY
-            SELECT
-                *
-            FROM
-                transfer."invoice.get" ("@invoiceId");
+    IF "@invoiceType" = 'type1' THEN
+        PERFORM transfer."invoicePayer.add"("@invoiceId", "@identifier")
+    END IF;
+
+    RETURN QUERY
+        SELECT
+            *
+        FROM
+            transfer."invoice.get" ("@invoiceId");
     END
 $BODY$ LANGUAGE plpgsql
