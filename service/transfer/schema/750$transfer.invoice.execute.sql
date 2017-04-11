@@ -52,6 +52,9 @@ BEGIN
             "@invoicePayerId"
         FROM
             transfer."invoicePayer" ip WHERE ip."invoiceId" = "@invoiceId";
+        IF ("@invoicePayerId" IS NULL) THEN
+            RAISE EXCEPTION 'transfer.invoicePayerNotFound';
+        END IF;
     ELSE
         IF ("@identifier" IS NULL) THEN
             RAISE EXCEPTION 'transfer.identifierMissing';
