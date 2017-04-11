@@ -15,10 +15,10 @@ DECLARE "@invoicePayerId" BIGINT;
 
 BEGIN
     IF "@invoiceId" IS NULL THEN
-        RAISE EXCEPTION 'transfer.invoiceIdIsMissing';
+        RAISE EXCEPTION 'transfer.invoiceIdMissing';
     END IF;
     IF "@identifier" IS NULL THEN
-        RAISE EXCEPTION 'transfer.identifierIsMissing';
+        RAISE EXCEPTION 'transfer.identifierMissing';
     END IF;
 
     WITH

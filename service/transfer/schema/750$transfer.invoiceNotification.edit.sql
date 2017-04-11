@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.edit" (
     "@invoiceNotificationId" INTEGER,
-    "@invoiceNotificationStatusId" VARCHAR
+    "@invoiceNotificationStatusId" INTEGER
 )
 RETURNS TABLE (
     "invoiceNotificationId" INTEGER,

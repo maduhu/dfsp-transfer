@@ -56,10 +56,10 @@ BEGIN
         IF ("@identifier" IS NULL) THEN
             RAISE EXCEPTION 'transfer.identifierMissing';
         END IF;
-        INSERT INTO
-            "@invoicePayerId"
         SELECT
             i."invoicePayerId"
+        INTO
+            "@invoicePayerId"
         FROM
             (SELECT * FROM transfer."invoicePayer.add" ("@invoiceId", "@identifier")) AS i;
     END IF;

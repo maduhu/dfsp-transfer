@@ -1,4 +1,4 @@
-// var error = require('./error')
+require('./error')
 var path = require('path')
 var Ws = require('ws')
 var joi = require('joi')
