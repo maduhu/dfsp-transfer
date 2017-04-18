@@ -4,7 +4,9 @@ CREATE OR REPLACE FUNCTION transfer."invoice.add" (
     "@currencyCode" varchar,
     "@currencySymbol" varchar,
     "@amount" numeric,
+    "@merchantIdentifier" varchar,
     "@identifier" varchar,
+    "@invoiceType" varchar,
     "@invoiceInfo" varchar
 )
 RETURNS TABLE (
@@ -16,36 +18,81 @@ RETURNS TABLE (
     "currencySymbol" varchar,
     "amount" numeric,
     "status" varchar,
-    "identifier" varchar,
+    "invoiceType" varchar,
+    "merchantIdentifier" varchar,
     "invoiceInfo" varchar,
     "isSingleResult" boolean
 ) AS
 $BODY$
-	DECLARE "@invoiceId" int;
 
-    BEGIN
-        INSERT INTO transfer.invoice (
+DECLARE "@invoiceId" int;
+
+BEGIN
+    IF "@account" IS NULL THEN
+        RAISE EXCEPTION 'transfer.accountMissing';
+    END IF;
+    IF "@name" IS NULL THEN
+        RAISE EXCEPTION 'transfer.nameMissing';
+    END IF;
+    IF "@currencyCode" IS NULL THEN
+        RAISE EXCEPTION 'transfer.currencyCodeMissing';
+    END IF;
+    IF "@currencySymbol" IS NULL THEN
+        RAISE EXCEPTION 'transfer.currencySymbolMissing';
+    END IF;
+    IF "@amount" IS NULL THEN
+        RAISE EXCEPTION 'transfer.amountMissing';
+    END IF;
+    IF "@merchantIdentifier" IS NULL THEN
+        RAISE EXCEPTION 'transfer.merchantIdentifierMissing';
+    END IF;
+    IF "@invoiceType" IS NULL THEN
+        RAISE EXCEPTION 'transfer.invoiceTypeMissing';
+    END IF;
+    IF ("@invoiceType" = 'standard' AND "@identifier" IS NULL) THEN
+        RAISE EXCEPTION 'transfer.identifierMissing';
+    END IF;
+
+
+    WITH
+    ti AS (
+        INSERT INTO transfer."invoice" (
             "account",
             "name",
             "currencyCode",
             "currencySymbol",
             "amount",
-            "identifier",
-            "statusCode",
-            "invoiceInfo"
+            "merchantIdentifier",
+            "invoiceStatusId",
+            "invoiceTypeId",
+            "invoiceInfo",
+            "createdAt"
         )
-        SELECT
-            "@account"
-            ,"@name"
-            ,"@currencyCode"
-            ,"@currencySymbol"
-            ,"@amount"
-            ,"@identifier"
-            ,'p'
-            ,"@invoiceInfo";
+        VALUES (
+            "@account",
+            "@name",
+            "@currencyCode",
+            "@currencySymbol",
+            "@amount",
+            "@merchantIdentifier",
+            (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = 'pending'),
+            (SELECT it."invoiceTypeId" FROM transfer."invoiceType" it WHERE it."name" = "@invoiceType"),
+            "@invoiceInfo",
+            NOW()
+        )
+        RETURNING *
+    )
+    SELECT
+        ti."invoiceId"
+    INTO
+        "@invoiceId"
+    FROM
+        ti;
 
-        "@invoiceId" := (SELECT currval('transfer."invoice_invoiceId_seq"'));
+    IF "@invoiceType" = 'standard' THEN
+        PERFORM transfer."invoicePayer.add"("@invoiceId", "@identifier");
+    END IF;
 
-        RETURN QUERY SELECT * FROM transfer."invoice.get" ("@invoiceId");
-    END
+    RETURN QUERY SELECT * FROM transfer."invoice.get" ("@invoiceId");
+END
 $BODY$ LANGUAGE plpgsql

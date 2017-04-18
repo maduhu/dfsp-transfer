@@ -1,13 +1,13 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.get" (
-    "@invoiceNotificationId" integer
+    "@invoiceNotificationId" INTEGER
 )
 RETURNS TABLE (
-    "invoiceNotificationId" integer,
-    "invoiceUrl" varchar,
-    "identifier" varchar,
-    "status" varchar,
-    "memo" varchar,
-    "isSingleResult" boolean
+    "invoiceNotificationId" INTEGER,
+    "invoiceUrl" VARCHAR,
+    "identifier" VARCHAR,
+    "status" VARCHAR,
+    "memo" VARCHAR,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 BEGIN
@@ -19,13 +19,13 @@ BEGIN
         tin."invoiceNotificationId" AS "invoiceNotificationId",
         tin."invoiceUrl" AS "invoiceUrl",
         tin."identifier" AS "identifier",
-        tis."description" AS "status",
+        tis."name" AS "status",
         tin."memo" AS "memo",
         CAST(1 as BOOLEAN)
     FROM
         transfer."invoiceNotification" AS tin
     JOIN
-        transfer."invoiceStatus" tis ON tin."statusCode" = tis."code"
+        transfer."invoiceStatus" tis ON tin."invoiceNotificationStatusId" = tis."invoiceStatusId"
     WHERE
        tin."invoiceNotificationId" = "@invoiceNotificationId";
 END;

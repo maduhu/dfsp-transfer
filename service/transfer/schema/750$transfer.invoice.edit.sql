@@ -1,26 +1,34 @@
 CREATE OR REPLACE FUNCTION transfer."invoice.edit" (
-    "@invoiceId" integer,
-    "@statusCode" char
+    "@invoiceId" INTEGER,
+    "@invoiceStatusId" INTEGER
 )
 RETURNS TABLE (
-    "type" varchar,
-    "invoiceId" integer,
-    "account" varchar,
-    "name" varchar,
-    "currencyCode" varchar,
-    "currencySymbol" varchar,
-    "amount" numeric,
-    "status" varchar,
-    "identifier" varchar,
-    "invoiceInfo" varchar,
-    "isSingleResult" boolean
+    "type" VARCHAR,
+    "invoiceId" INTEGER,
+    "account" VARCHAR,
+    "name" VARCHAR,
+    "currencyCode" VARCHAR,
+    "currencySymbol" VARCHAR,
+    "amount" NUMERIC,
+    "status" VARCHAR,
+    "invoiceType" VARCHAR,
+    "merchantIdentifier" VARCHAR,
+    "invoiceInfo" VARCHAR,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 BEGIN
+    IF "@invoiceId" IS NULL THEN
+        RAISE EXCEPTION 'transfer.invoiceIdMissing';
+    END IF;
+    IF "@invoiceStatusId" IS NULL THEN
+        RAISE EXCEPTION 'transfer.invoiceStatusIdMissing';
+    END IF;
+
     UPDATE
         transfer."invoice" AS t
     SET
-        "statusCode" = "@statusCode"
+        "invoiceStatusId" = "@invoiceStatusId"
     WHERE
         t."invoiceId" = "@invoiceId";
 

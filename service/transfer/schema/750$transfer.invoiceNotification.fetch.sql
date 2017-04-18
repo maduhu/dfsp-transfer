@@ -1,13 +1,13 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.fetch" (
-    "@identifier" varchar,
-    "@statusCode" varchar(5)
+    "@identifier" VARCHAR,
+    "@status" VARCHAR
 )
 RETURNS TABLE (
-    "invoiceNotificationId" integer,
-    "invoiceUrl" varchar,
-    "identifier" varchar,
-    "status" varchar,
-    "memo" varchar
+    "invoiceNotificationId" INTEGER,
+    "invoiceUrl" VARCHAR,
+    "identifier" VARCHAR,
+    "status" VARCHAR,
+    "memo" VARCHAR
 ) AS
 $body$
 BEGIN
@@ -16,15 +16,15 @@ BEGIN
         tin."invoiceNotificationId" AS "invoiceNotificationId",
         tin."invoiceUrl" AS "invoiceUrl",
         tin."identifier" AS "identifier",
-        tis."description" AS "status",
+        tis."name" AS "status",
         tin."memo" AS "memo"
     FROM
         transfer."invoiceNotification" AS tin
     JOIN
-        transfer."invoiceStatus" tis ON tin."statusCode" = tis."code"
+        transfer."invoiceStatus" tis ON tin."invoiceNotificationStatusId" = tis."invoiceStatusId"
     WHERE
         tin."identifier" = "@identifier"
-        AND ("@statusCode" IS NULL OR tis."code" = "@statusCode");
+        AND ("@status" IS NULL OR tis."invoiceStatusId" = (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = "@status"));
 END;
 $body$
 LANGUAGE 'plpgsql';

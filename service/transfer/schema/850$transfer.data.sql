@@ -1,28 +1,17 @@
-﻿-- invoice status
+﻿  -- Insert invoice statuses
 INSERT INTO
-  transfer."invoiceStatus" ("code", "description")
-SELECT
-  'e', 'executed'
-WHERE
-  NOT EXISTS (SELECT 1 FROM transfer."invoiceStatus" WHERE code='e');
+   transfer."invoiceStatus" ("invoiceStatusId", "name", "description")
+VALUES
+  (1, 'executed', 'Invoice has been executed'),
+  (2, 'approved', 'Invoice has been approved'),
+  (3, 'pending', 'Invoice is pending'),
+  (4, 'rejected', 'Invoice has been rejected')
+ON CONFLICT ("invoiceStatusId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;
 
 INSERT INTO
-  transfer."invoiceStatus" ("code", "description")
-SELECT
-  'a', 'approved'
-WHERE
-  NOT EXISTS (SELECT 1 FROM transfer."invoiceStatus" WHERE code='a');
-
-INSERT INTO
-  transfer."invoiceStatus" ("code", "description")
-SELECT
-  'p', 'pending'
-WHERE
-  NOT EXISTS (SELECT 1 FROM transfer."invoiceStatus" WHERE code='p');
-
-INSERT INTO
-  transfer."invoiceStatus" ("code", "description")
-SELECT
-  'r', 'rejected'
-WHERE
-  NOT EXISTS (SELECT 1 FROM transfer."invoiceStatus" WHERE code='r');
+   transfer."invoiceType" ("invoiceTypeId", "name", "description")
+VALUES
+  (1, 'standard', 'Standard invoice'),
+  (2, 'pending', 'Not assigned one-time invoice'),
+  (3, 'product', 'Not assigned multi-payer invoice')
+ON CONFLICT ("invoiceTypeId") DO UPDATE SET "name" = EXCLUDED.name, "description" = EXCLUDED.description;

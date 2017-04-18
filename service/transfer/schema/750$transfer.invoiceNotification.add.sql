@@ -1,37 +1,45 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.add" (
-    "@invoiceUrl" varchar,
-    "@identifier" varchar,
-    "@memo" varchar
+    "@invoiceUrl" VARCHAR,
+    "@identifier" VARCHAR,
+    "@memo" VARCHAR
 )
 RETURNS TABLE (
-    "invoiceNotificationId" integer,
-    "invoiceUrl" varchar,
-    "identifier" varchar,
-    "status" varchar,
-    "memo" varchar,
-    "isSingleResult" boolean
+    "invoiceNotificationId" INTEGER,
+    "invoiceUrl" VARCHAR,
+    "identifier" VARCHAR,
+    "status" VARCHAR,
+    "memo" VARCHAR,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 	DECLARE
-      "@invoiceNotificationId" int;
+      "@invoiceNotificationId" INT;
 BEGIN
+WITH
+inot AS (
     INSERT INTO
     transfer."invoiceNotification" (
         "invoiceUrl",
         "identifier",
-        "statusCode",
+        "invoiceNotificationStatusId",
         "memo"
     )
-    SELECT
-        "@invoiceUrl"
-        ,"@identifier"
-        ,'p'
-        ,"@memo";
+    VALUES (
+        "@invoiceUrl",
+        "@identifier",
+        (SELECT s."invoiceStatusId" FROM transfer."invoiceStatus" s WHERE s."name" = 'pending'),
+        "@memo"
+    )
+     RETURNING *
+)
 
-    "@invoiceNotificationId" := (SELECT currval('transfer."invoiceNotification_invoiceNotificationId_seq"'));
+    SELECT inot."invoiceNotificationId" FROM inot INTO "@invoiceNotificationId";
 
     RETURN QUERY
-    SELECT * FROM transfer."invoiceNotification.get"("@invoiceNotificationId") ;
+    SELECT
+        *
+    FROM
+        transfer."invoiceNotification.get"("@invoiceNotificationId") ;
 END;
 $body$
 LANGUAGE 'plpgsql';

@@ -31,6 +31,20 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
+  'invoice.execute': {
+    auth: false,
+    description: 'Transfer invoice execute',
+    notes: 'TraTransfer invoice execute',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoice.reject': {
+    auth: false,
+    description: 'Transfer invoice reject',
+    notes: 'TraTransfer invoice reject',
+    params: joi.any(),
+    result: joi.any()
+  },
   'invoiceNotification.add': {
     auth: false,
     description: 'Transfer add invoice',
@@ -49,6 +63,20 @@ module.exports = {
     auth: false,
     description: 'Transfer invoiceNotification edit',
     notes: 'TraTransfer invoiceNotification edit',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoiceNotification.execute': {
+    auth: false,
+    description: 'Transfer invoiceNotification execute',
+    notes: 'TraTransfer invoiceNotification execute',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoiceNotification.reject': {
+    auth: false,
+    description: 'Transfer invoiceNotification reject',
+    notes: 'TraTransfer invoiceNotification reject',
     params: joi.any(),
     result: joi.any()
   },
