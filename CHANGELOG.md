@@ -1,3 +1,30 @@
+<a name="0.19.0"></a>
+# [0.19.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.12...v0.19.0) (2017-04-18)
+
+
+### Bug Fixes
+
+* add approve and reject db functions for invoices and invoiceNotifications ([5aa39e1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/5aa39e1))
+* add errors and fix queries ([0b8d5ed](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/0b8d5ed))
+* add exception ([b03ea11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b03ea11))
+* add invoicePayer for standard invoices ([92842c4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/92842c4))
+* add invoicePayer table ([354a99a](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/354a99a))
+* add invoicePayer.add/.get ([bcdc30f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/bcdc30f))
+* add invoicePayment.get/.add ([e2e4312](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e2e4312))
+* add some changest to the tables ([87ba1e7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/87ba1e7))
+* fix invoiceNotificationReject to return result ([82daeba](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/82daeba))
+* refactor invoice, invoice.add/.get ([d1650ee](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d1650ee))
+* rework all procedures to work with ids instead of codes ([f616a29](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f616a29))
+* rework invoice table ([47b6df1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/47b6df1))
+* transfer invoices ([a8d0334](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a8d0334))
+
+
+### Features
+
+* version bump for pending invoices ([d26faa9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d26faa9))
+
+
+
 <a name="0.18.12"></a>
 ## [0.18.12](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.11...v0.18.12) (2017-04-05)
 
