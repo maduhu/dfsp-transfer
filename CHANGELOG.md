@@ -1,3 +1,14 @@
+<a name="0.19.1"></a>
+## [0.19.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.19.0...v0.19.1) (2017-04-21)
+
+
+### Bug Fixes
+
+* add shrinkwrap ([7b21cdf](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/7b21cdf))
+* shrinkwrap private nexus links ([fc6bbf0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/fc6bbf0))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.18.12...v0.19.0) (2017-04-18)
 
