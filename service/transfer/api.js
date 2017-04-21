@@ -34,14 +34,21 @@ module.exports = {
   'invoice.execute': {
     auth: false,
     description: 'Transfer invoice execute',
-    notes: 'TraTransfer invoice execute',
+    notes: 'Transfer invoice execute',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoice.fetch': {
+    auth: false,
+    description: 'Transfer invoice fetch',
+    notes: 'Transfer invoice fetch',
     params: joi.any(),
     result: joi.any()
   },
   'invoice.reject': {
     auth: false,
     description: 'Transfer invoice reject',
-    notes: 'TraTransfer invoice reject',
+    notes: 'Transfer invoice reject',
     params: joi.any(),
     result: joi.any()
   },
@@ -55,38 +62,59 @@ module.exports = {
   'invoiceNotification.fetch': {
     auth: false,
     description: 'Transfer invoiceNotification fetch',
-    notes: 'TraTransfer invoiceNotification fetch',
+    notes: 'Transfer invoiceNotification fetch',
     params: joi.any(),
     result: joi.any()
   },
   'invoiceNotification.edit': {
     auth: false,
     description: 'Transfer invoiceNotification edit',
-    notes: 'TraTransfer invoiceNotification edit',
+    notes: 'Transfer invoiceNotification edit',
     params: joi.any(),
     result: joi.any()
   },
   'invoiceNotification.execute': {
     auth: false,
     description: 'Transfer invoiceNotification execute',
-    notes: 'TraTransfer invoiceNotification execute',
+    notes: 'Transfer invoiceNotification execute',
     params: joi.any(),
     result: joi.any()
   },
   'invoiceNotification.reject': {
     auth: false,
     description: 'Transfer invoiceNotification reject',
-    notes: 'TraTransfer invoiceNotification reject',
+    notes: 'Transfer invoiceNotification reject',
     params: joi.any(),
     result: joi.any()
   },
   'invoiceNotification.get': {
     auth: false,
     description: 'Transfer invoiceNotification get',
-    notes: 'TraTransfer invoiceNotification get',
+    notes: 'Transfer invoiceNotification get',
     params: joi.object().keys({
       invoiceNotificationId: joi.string().required()
     }),
+    result: joi.any()
+  },
+  'invoicePayer.add': {
+    auth: false,
+    description: 'Transfer invoicePayer add',
+    notes: 'Transfer invoicePayer add',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoicePayer.fetch': {
+    auth: false,
+    description: 'Transfer invoicePayer fetch',
+    notes: 'Transfer invoicePayer fetch',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoicePayer.get': {
+    auth: false,
+    description: 'Transfer invoicePayer get',
+    notes: 'Transfer invoicePayer get',
+    params: joi.any(),
     result: joi.any()
   }
 }
