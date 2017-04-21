@@ -15,7 +15,6 @@ RETURNS TABLE (
     "status" varchar,
     "invoiceType" varchar,
     "merchantIdentifier" varchar,
-    "identifier" varchar,
     "invoiceInfo" varchar
 ) AS
 $body$
@@ -32,7 +31,6 @@ BEGIN
         tis."name" AS "status",
         tit."name" AS "invoiceType",
         ti."merchantIdentifier" AS "merchantIdentifier",
-        tip."identifier" AS "identifier",
         ti."invoiceInfo" AS "invoiceInfo"
     FROM
         transfer."invoice" AS ti
@@ -40,8 +38,6 @@ BEGIN
         transfer."invoiceStatus" tis ON ti."invoiceStatusId" = tis."invoiceStatusId"
     JOIN
         transfer."invoiceType" tit ON ti."invoiceTypeId" = tit."invoiceTypeId"
-    JOIN
-        transfer."invoicePayer" tip ON ti."invoiceId" = tip."invoiceId"
     WHERE
         ti."merchantIdentifier" = "@merchantIdentifier"
             AND
