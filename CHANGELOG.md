@@ -1,3 +1,19 @@
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.19.1...v0.20.0) (2017-04-28)
+
+
+### Bug Fixes
+
+* add db methods to api; fix type mismatch ([25f2627](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/25f2627))
+* fix invoice.fetch and add invoicePayer.fetch ([15e9582](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/15e9582))
+
+
+### Features
+
+* add invoice.cancel, invoice.fetch and invoiceNotification.cancel db functions ([25d70ad](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/25d70ad))
+
+
+
 <a name="0.19.1"></a>
 ## [0.19.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.19.0...v0.19.1) (2017-04-21)
 
