@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION transfer."invoice.reject" (
+CREATE OR REPLACE FUNCTION transfer."invoice.cancel" (
     "@invoiceId" INTEGER
 )
 RETURNS TABLE (
@@ -17,8 +17,8 @@ RETURNS TABLE (
 ) AS
 $body$
     DECLARE
-        "@invoiceStatusName" VARCHAR;
-        "@invoiceTypeName" VARCHAR;
+        "@invoiceStatusName" VARCHAR(50);
+        "@invoiceTypeName" INTEGER;
     BEGIN
         SELECT
             tis."name",
@@ -48,7 +48,7 @@ $body$
         RETURN QUERY
             SELECT * FROM  transfer."invoice.edit"(
                 "@invoiceId",
-                (SELECT tis."invoiceStatusId" FROM transfer."invoiceStatus" tis WHERE tis."name" = 'rejected')
+                (SELECT tis."invoiceStatusId" FROM transfer."invoiceStatus" tis WHERE tis."name" = 'cancelled')
             );
     END;
 $body$
