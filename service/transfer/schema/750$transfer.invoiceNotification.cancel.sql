@@ -1,5 +1,5 @@
 CREATE OR REPLACE FUNCTION transfer."invoiceNotification.cancel" (
-    "@invoiceUrl" INTEGER
+    "@invoiceUrl" VARCHAR
 )
 RETURNS TABLE (
     "invoiceNotificationId" INTEGER,
@@ -19,7 +19,7 @@ BEGIN
             FROM
                 transfer."invoiceNotification" tin
             WHERE
-                tin."invoiceUrl" = '@invoiceUrl'
+                tin."invoiceUrl" = "@invoiceUrl"
         ),
         (
             SELECT

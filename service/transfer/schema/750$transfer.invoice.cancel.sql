@@ -18,7 +18,7 @@ RETURNS TABLE (
 $body$
     DECLARE
         "@invoiceStatusName" VARCHAR(50);
-        "@invoiceTypeName" INTEGER;
+        "@invoiceTypeName" VARCHAR;
     BEGIN
         SELECT
             tis."name",

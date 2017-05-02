@@ -45,6 +45,13 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
+  'invoice.cancel': {
+    auth: false,
+    description: 'Transfer invoice cancel',
+    notes: 'Transfer invoice cancel',
+    params: joi.any(),
+    result: joi.any()
+  },
   'invoice.reject': {
     auth: false,
     description: 'Transfer invoice reject',
@@ -84,6 +91,13 @@ module.exports = {
     auth: false,
     description: 'Transfer invoiceNotification reject',
     notes: 'Transfer invoiceNotification reject',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'invoiceNotification.cancel': {
+    auth: false,
+    description: 'Transfer invoiceNotification cancel',
+    notes: 'Transfer invoiceNotification cancel',
     params: joi.any(),
     result: joi.any()
   },
