@@ -1,3 +1,13 @@
+<a name="0.20.1"></a>
+## [0.20.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.0...v0.20.1) (2017-05-02)
+
+
+### Bug Fixes
+
+* invoice cancellation typos ([b8573b0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/b8573b0))
+
+
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.19.1...v0.20.0) (2017-04-28)
 
