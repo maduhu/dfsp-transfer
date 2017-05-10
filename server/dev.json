@@ -9,6 +9,7 @@
     }
   },
   "stdOut": {
+    "useColor": false,
     "mode": "dev"
   },
   "log": {
