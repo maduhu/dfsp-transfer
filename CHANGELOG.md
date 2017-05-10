@@ -1,3 +1,13 @@
+<a name="0.20.3"></a>
+## [0.20.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.2...v0.20.3) (2017-05-10)
+
+
+### Bug Fixes
+
+* change logmode to long ([4284b99](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4284b99))
+
+
+
 <a name="0.20.2"></a>
 ## [0.20.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.1...v0.20.2) (2017-05-10)
 
