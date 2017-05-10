@@ -1,3 +1,13 @@
+<a name="0.20.2"></a>
+## [0.20.2](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.1...v0.20.2) (2017-05-10)
+
+
+### Bug Fixes
+
+* remove colors from stdout by default ([aa24c7b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/aa24c7b))
+
+
+
 <a name="0.20.1"></a>
 ## [0.20.1](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.0...v0.20.1) (2017-05-02)
 

@@ -1,6 +1,6 @@
 {
   "name": "@leveloneproject/dfsp-transfer",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "dependencies": {
     "abstract-leveldown": {
       "version": "2.6.1",
