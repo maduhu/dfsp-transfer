@@ -1,6 +1,6 @@
 {
   "name": "@leveloneproject/dfsp-transfer",
-  "version": "0.20.3",
+  "version": "0.20.4",
   "description": "DFSP Transfer service",
   "main": "index.js",
   "scripts": {

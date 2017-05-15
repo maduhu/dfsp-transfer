@@ -1,3 +1,13 @@
+<a name="0.20.4"></a>
+## [0.20.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.3...v0.20.4) (2017-05-15)
+
+
+### Bug Fixes
+
+* elk ([8877056](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/8877056))
+
+
+
 <a name="0.20.3"></a>
 ## [0.20.3](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.2...v0.20.3) (2017-05-10)
 
