@@ -45,7 +45,8 @@
     "ut-error": "^5.4.2",
     "ut-port-http": "^6.4.1",
     "ws": "1.1.1",
-    "pm2": "2.0.18"
+    "pm2": "2.0.18",
+    "ut-log-dfsp": "^5.0.1"
   },
   "devDependencies": {
     "blue-tape": "1.0.0",
