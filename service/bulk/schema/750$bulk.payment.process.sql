@@ -8,6 +8,8 @@ RETURNS TABLE (
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
     "identifier" VARCHAR(25),
+    "creditAccount" VARCHAR(255),
+    "spspServer" VARCHAR(255),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" timestamp,

@@ -5,6 +5,8 @@ CREATE TABLE bulk."paymentHistory"  (
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
     "identifier" VARCHAR(25),
+    "account" VARCHAR(255),
+    "spspServer" VARCHAR(255),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" timestamp without time zone,

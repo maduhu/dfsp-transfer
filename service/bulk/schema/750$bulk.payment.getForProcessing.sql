@@ -6,6 +6,8 @@ RETURNS TABLE (
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
     "identifier" VARCHAR(25),
+    "account" VARCHAR(255),
+    "spspServer" VARCHAR(255),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" TIMESTAMP,
@@ -21,11 +23,13 @@ DECLARE
     "@maxRetry" INTEGER := (SELECT MAX(bulk."retry"."retryId") FROM bulk."retry");
 BEGIN
     RETURN QUERY
-    SELECT DISTINCT ON (p."paymentId")
+    SELECT
         p."paymentId",
         p."batchId",
         p."sequenceNumber",
         p."identifier",
+        p."account",
+        p."spspServer",
         p."firstName",
         p."lastName",
         p."dob",
@@ -48,8 +52,9 @@ BEGIN
         AND LEAST(b."expirationDate", q."updatedAt" + (r.interval * interval '1 minute')) < NOW()
         OR (r."retryId" < "@maxRetry" AND b."expirationDate" < NOW())
         OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW())
+    GROUP BY p."paymentId"
     ORDER BY
-        p."paymentId", q."queueId"
+        ROW_NUMBER() OVER (PARTITION BY p."spspServer" ORDER BY p."paymentId"), max(q."queueId")
     LIMIT "@count";
 END;
 $body$
