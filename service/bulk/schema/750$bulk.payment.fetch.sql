@@ -15,8 +15,6 @@ RETURNS TABLE (
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
     "identifier" VARCHAR(25),
-    "account" VARCHAR(255),
-    "spspServer" VARCHAR(255),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" timestamp,
@@ -25,6 +23,7 @@ RETURNS TABLE (
     "paymentStatusId" SMALLINT,
     "status" VARCHAR(100),
     "info" TEXT,
+    "payee" JSON,
     "name" VARCHAR(100),
     "createdAt" timestamp,
     "updatedAt" timestamp
@@ -37,8 +36,6 @@ BEGIN
         p."batchId",
         p."sequenceNumber",
         p."identifier",
-        p."account",
-        p."spspServer",
         p."firstName",
         p."lastName",
         p."dob",
@@ -47,6 +44,7 @@ BEGIN
         p."paymentStatusId",
         (SELECT ps."name" FROM bulk."paymentStatus" ps WHERE ps."paymentStatusId" = p."paymentStatusId") AS "status",
         p."info",
+        p."payee",
         b."name",
         p."createdAt",
         p."updatedAt"

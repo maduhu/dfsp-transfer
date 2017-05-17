@@ -6,8 +6,6 @@ RETURNS TABLE (
     "batchId" INTEGER,
     "sequenceNumber" INTEGER,
     "identifier" VARCHAR(25),
-    "account" VARCHAR(255),
-    "spspServer" VARCHAR(255),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
     "dob" TIMESTAMP,
@@ -15,6 +13,7 @@ RETURNS TABLE (
     "amount" NUMERIC(19,2),
     "paymentStatusId" SMALLINT,
     "info" TEXT,
+    "payee" JSON,
     "createdAt" TIMESTAMP,
     "updatedAt" TIMESTAMP
 ) AS
@@ -28,8 +27,6 @@ BEGIN
         p."batchId",
         p."sequenceNumber",
         p."identifier",
-        p."account",
-        p."spspServer",
         p."firstName",
         p."lastName",
         p."dob",
@@ -37,6 +34,7 @@ BEGIN
         p."amount",
         p."paymentStatusId",
         p."info",
+        p."payee",
         p."createdAt",
         p."updatedAt"
     FROM
@@ -54,7 +52,7 @@ BEGIN
         OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW())
     GROUP BY p."paymentId"
     ORDER BY
-        ROW_NUMBER() OVER (PARTITION BY p."spspServer" ORDER BY p."paymentId"), max(q."queueId")
+        ROW_NUMBER() OVER (PARTITION BY p."payee"->>'spspServer' ORDER BY p."paymentId"), max(q."queueId")
     LIMIT "@count";
 END;
 $body$

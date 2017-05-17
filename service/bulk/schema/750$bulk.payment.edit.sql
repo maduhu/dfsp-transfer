@@ -26,8 +26,6 @@ BEGIN
         "batchId",
         "sequenceNumber",
         "identifier",
-        "account",
-        "spspServer",
         "firstName",
         "lastName",
         "dob",
@@ -35,6 +33,7 @@ BEGIN
         "amount",
         "paymentStatusId",
         "info",
+        "payee",
         "createdAt"
     )
     SELECT
@@ -43,8 +42,6 @@ BEGIN
         p."batchId",
         p."sequenceNumber",
         p."identifier",
-        p."account",
-        p."spspServer",
         p."firstName",
         p."lastName",
         p."dob",
@@ -52,6 +49,7 @@ BEGIN
         p."amount",
         p."paymentStatusId",
         p."info",
+        p."payee",
         NOW()
     FROM bulk."payment" AS p
     WHERE "paymentId" IN (SELECT jp."paymentId" FROM json_to_recordset("@payments") AS jp("paymentId" INTEGER));
@@ -62,8 +60,6 @@ WITH
             "batchId" = COALESCE(jp."batchId", p."batchId"),
             "sequenceNumber" = COALESCE(jp."sequenceNumber", p."sequenceNumber"),
             "identifier" = COALESCE(jp."identifier", p."identifier"),
-            "account" = COALESCE(jp."account", p."account"),
-            "spspServer" = COALESCE(jp."spspServer", p."spspServer"),
             "firstName" = COALESCE(jp."firstName", p."firstName"),
             "lastName" = COALESCE(jp."lastName", p."lastName"),
             "dob" = COALESCE(jp."dob", p."dob"),
@@ -71,6 +67,7 @@ WITH
             "amount" = COALESCE(jp."amount", p."amount"),
             "paymentStatusId" = COALESCE(jp."paymentStatusId", p."paymentStatusId"),
             "info" = COALESCE(jp."info", p."info"),
+            "payee" = COALESCE(jp."payee", p."payee"),
             "updatedAt" = NOW()
         FROM
             json_to_recordset("@payments") AS jp(
@@ -78,15 +75,14 @@ WITH
                 "batchId" INTEGER,
                 "sequenceNumber" INTEGER,
                 "identifier" VARCHAR(25),
-                "account" VARCHAR(255),
-                "spspServer" VARCHAR(255),
                 "firstName" VARCHAR(255),
                 "lastName" VARCHAR(255),
                 "dob" TIMESTAMP,
                 "nationalId" VARCHAR(255),
                 "amount" NUMERIC(19,2),
                 "paymentStatusId" INTEGER,
-                "info" TEXT
+                "info" TEXT,
+                "payee" JSON
             )
         WHERE jp."paymentId" = p."paymentId"
         RETURNING p.*
