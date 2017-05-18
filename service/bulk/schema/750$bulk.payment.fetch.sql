@@ -11,25 +11,18 @@ CREATE OR REPLACE FUNCTION bulk."payment.fetch" (
     "@pageNumber" INTEGER
 )
 RETURNS TABLE (
-    "paymentId" BIGINT,
-    "batchId" INTEGER,
-    "sequenceNumber" INTEGER,
-    "identifier" VARCHAR(25),
-    "firstName" VARCHAR(255),
-    "lastName" VARCHAR(255),
-    "dob" timestamp,
-    "nationalId" VARCHAR(255),
-    "amount" numeric(19,2),
-    "paymentStatusId" SMALLINT,
-    "status" VARCHAR(100),
-    "info" TEXT,
-    "name" VARCHAR(100),
-    "createdAt" timestamp,
-    "updatedAt" timestamp
+    "data" JSON,
+    "pagination" JSON,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
+DECLARE
+    "@pageSize" INTEGER := COALESCE("@pageSize", 25);
+    "@pageNumber" INTEGER := COALESCE("@pageNumber", 1);
+    "@payments" JSON;
+    "@pagination" JSON;
 BEGIN
-    RETURN QUERY
+WITH a as (
     SELECT
         p."paymentId",
         p."batchId",
@@ -64,7 +57,30 @@ BEGIN
                 AND ("@name" IS NULL OR p."firstName" ~* "@name" OR p."lastName" ~* "@name")
         END)
     ORDER BY p."paymentId"
-    LIMIT "@pageSize" OFFSET ("@pageNumber" - 1) * "@pageSize";
+)
+
+    SELECT
+        json_agg(row_to_json(aa)) as "payments",
+        json_build_object(
+            'pageNumber', "@pageNumber",
+            'pageSize', (SELECT COUNT(aa.*)),
+            'pagesTotal', (SELECT CEIL(COUNT(a)::numeric / "@pageSize") FROM a),
+            'recordsTotal', (SELECT COUNT(a) FROM a)
+        ) AS "pagination"
+    FROM
+    (
+        SELECT a.*
+        FROM a
+        LIMIT "@pageSize" OFFSET ("@pageNumber" - 1) * "@pageSize"
+    ) aa
+    INTO "@payments", "@pagination";
+
+RETURN QUERY
+SELECT
+    "@payments" AS "data",
+    "@pagination" AS "pagination",
+    true AS "isSingleResult";
+
 END;
 $body$
 LANGUAGE 'plpgsql';

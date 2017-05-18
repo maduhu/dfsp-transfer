@@ -61,12 +61,12 @@ test({
       },
       result: function (result, assert) {
         var recordsMap = new Map()
-        result.forEach((element) => {
+        result.data.forEach((element) => {
           recordsMap.set(element.identifier, element)
         })
         PAYMENTS.forEach((payment) => {
           let matchedResultPayment = recordsMap.get(payment.identifier)
-          assert.true((typeof matchedResultPayment.paymentId === 'string'), 'Check paymentId type')
+          assert.true((typeof matchedResultPayment.paymentId === 'number'), 'Check paymentId type')
           assert.true((typeof matchedResultPayment.batchId === 'number'), 'Check batchId type')
           assert.equal(matchedResultPayment.batchId, this['Create batch to link the payments with'].batchId, 'Check the batchId value')
 
@@ -87,8 +87,8 @@ test({
           assert.true((typeof matchedResultPayment.nationalId === 'string'), 'Check nationalId type')
           assert.equal(matchedResultPayment.nationalId, payment.nationalId, 'Check nationalId value')
 
-          assert.true((typeof matchedResultPayment.amount === 'string'), 'Check amount type')
-          assert.equal(matchedResultPayment.amount, payment.amount.toString(), 'Check amount value')
+          assert.true((typeof matchedResultPayment.amount === 'number'), 'Check amount type')
+          assert.equal(matchedResultPayment.amount, payment.amount, 'Check amount value')
 
           assert.true((typeof matchedResultPayment.paymentStatusId === 'number'), 'Check paymentStatusId type')
           assert.equal(matchedResultPayment.paymentStatusId, PAYMENT_STATUS_NEW, 'Check paymentStatusId value')
@@ -109,10 +109,10 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(result.length > 0, 'Check that there are results co-responding to the given search pattern')
-        if (result.length > 0) {
-          result.forEach((record) => {
-            assert.true((typeof record.paymentId === 'string'), 'Check paymentId type')
+        assert.true(result.data.length > 0, 'Check that there are results co-responding to the given search pattern')
+        if (result.data.length > 0) {
+          result.data.forEach((record) => {
+            assert.true((typeof record.paymentId === 'number'), 'Check paymentId type')
             assert.true((typeof record.batchId === 'number'), 'Check batchId type')
             assert.true((typeof record.sequenceNumber === 'number'), 'Check sequenceNumber type')
             assert.true((typeof record.identifier === 'string'), 'Check identifier type')
@@ -120,7 +120,7 @@ test({
             assert.true((typeof record.lastName === 'string'), 'Check lastName type')
             assert.false(isNaN(Date.parse(record.dob)), 'Check if the returned dob is a Date')
             assert.true((typeof record.nationalId === 'string'), 'Check nationalId type')
-            assert.true((typeof record.amount === 'string'), 'Check amount type')
+            assert.true((typeof record.amount === 'number'), 'Check amount type')
             assert.true((typeof record.paymentStatusId === 'number'), 'Check paymentStatusId type')
             assert.false(isNaN(Date.parse(record.createdAt)), 'Check if the returned createdAt is a Date')
             assert.false(isNaN(Date.parse(record.updatedAt)), 'Check if the returned updatedAt is a Date')
@@ -137,10 +137,10 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(result.length > 0, 'Check that there are results co-responding to the given search pattern')
+        assert.true(result.data.length > 0, 'Check that there are results co-responding to the given search pattern')
         if (result.length > 0) {
-          result.forEach((record) => {
-            assert.true((typeof record.paymentId === 'string'), 'Check paymentId type')
+          result.data.forEach((record) => {
+            assert.true((typeof record.paymentId === 'number'), 'Check paymentId type')
             assert.true((typeof record.batchId === 'number'), 'Check batchId type')
             assert.true((typeof record.sequenceNumber === 'number'), 'Check sequenceNumber type')
             assert.true((typeof record.identifier === 'string'), 'Check identifier type')
@@ -148,7 +148,7 @@ test({
             assert.true((typeof record.lastName === 'string'), 'Check lastName type')
             assert.false(isNaN(Date.parse(record.dob)), 'Check if the returned dob is a Date')
             assert.true((typeof record.nationalId === 'string'), 'Check nationalId type')
-            assert.true((typeof record.amount === 'string'), 'Check amount type')
+            assert.true((typeof record.amount === 'number'), 'Check amount type')
             assert.true((typeof record.paymentStatusId === 'number'), 'Check paymentStatusId type')
             assert.false(isNaN(Date.parse(record.createdAt)), 'Check if the returned createdAt is a Date')
             assert.false(isNaN(Date.parse(record.updatedAt)), 'Check if the returned updatedAt is a Date')
@@ -165,10 +165,10 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(result.length === 1, 'Check that there is only one result matching to the given paymentId')
-        if (result.length === 1) {
-          let record = result[0]
-          assert.true((typeof record.paymentId === 'string'), 'Check paymentId type')
+        assert.true(result.data.length === 1, 'Check that there is only one result matching to the given paymentId')
+        if (result.data.length === 1) {
+          let record = result.data[0]
+          assert.true((typeof record.paymentId === 'number'), 'Check paymentId type')
           assert.true((typeof record.batchId === 'number'), 'Check batchId type')
           assert.true((typeof record.sequenceNumber === 'number'), 'Check sequenceNumber type')
           assert.true((typeof record.identifier === 'string'), 'Check identifier type')
@@ -176,7 +176,7 @@ test({
           assert.true((typeof record.lastName === 'string'), 'Check lastName type')
           assert.false(isNaN(Date.parse(record.dob)), 'Check if the returned dob is a Date')
           assert.true((typeof record.nationalId === 'string'), 'Check nationalId type')
-          assert.true((typeof record.amount === 'string'), 'Check amount type')
+          assert.true((typeof record.amount === 'number'), 'Check amount type')
           assert.true((typeof record.paymentStatusId === 'number'), 'Check paymentStatusId type')
           assert.false(isNaN(Date.parse(record.createdAt)), 'Check if the returned createdAt is a Date')
           assert.false(isNaN(Date.parse(record.updatedAt)), 'Check if the returned updatedAt is a Date')
@@ -192,10 +192,10 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(result.length > 0, 'Check that there is only one result matching to the given paymentId')
-        if (result.length > 0) {
-          let record = result[0]
-          assert.true((typeof record.paymentId === 'string'), 'Check paymentId type')
+        assert.true(result.data.length > 0, 'Check that there is only one result matching to the given paymentId')
+        if (result.data.length > 0) {
+          let record = result.data[0]
+          assert.true((typeof record.paymentId === 'number'), 'Check paymentId type')
           assert.true((typeof record.batchId === 'number'), 'Check batchId type')
           assert.true((typeof record.sequenceNumber === 'number'), 'Check sequenceNumber type')
           assert.true((typeof record.identifier === 'string'), 'Check identifier type')
@@ -203,7 +203,7 @@ test({
           assert.true((typeof record.lastName === 'string'), 'Check lastName type')
           assert.false(isNaN(Date.parse(record.dob)), 'Check if the returned dob is a Date')
           assert.true((typeof record.nationalId === 'string'), 'Check nationalId type')
-          assert.true((typeof record.amount === 'string'), 'Check amount type')
+          assert.true((typeof record.amount === 'number'), 'Check amount type')
           assert.true((typeof record.paymentStatusId === 'number'), 'Check paymentStatusId type')
           assert.false(isNaN(Date.parse(record.createdAt)), 'Check if the returned createdAt is a Date')
           assert.false(isNaN(Date.parse(record.updatedAt)), 'Check if the returned updatedAt is a Date')
@@ -219,10 +219,10 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(result.length > 0, 'Check that there is only one result matching to the given paymentId')
-        if (result.length > 0) {
-          let record = result[0]
-          assert.true((typeof record.paymentId === 'string'), 'Check paymentId type')
+        assert.true(result.data.length > 0, 'Check that there is only one result matching to the given paymentId')
+        if (result.data.length > 0) {
+          let record = result.data[0]
+          assert.true((typeof record.paymentId === 'number'), 'Check paymentId type')
           assert.true((typeof record.batchId === 'number'), 'Check batchId type')
           assert.true((typeof record.sequenceNumber === 'number'), 'Check sequenceNumber type')
           assert.true((typeof record.identifier === 'string'), 'Check identifier type')
@@ -230,7 +230,7 @@ test({
           assert.true((typeof record.lastName === 'string'), 'Check lastName type')
           assert.false(isNaN(Date.parse(record.dob)), 'Check if the returned dob is a Date')
           assert.true((typeof record.nationalId === 'string'), 'Check nationalId type')
-          assert.true((typeof record.amount === 'string'), 'Check amount type')
+          assert.true((typeof record.amount === 'number'), 'Check amount type')
           assert.true((typeof record.paymentStatusId === 'number'), 'Check paymentStatusId type')
           assert.false(isNaN(Date.parse(record.createdAt)), 'Check if the returned createdAt is a Date')
           assert.false(isNaN(Date.parse(record.updatedAt)), 'Check if the returned updatedAt is a Date')
@@ -252,10 +252,10 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(result.length > 0, 'Check that there are results matching to this date period')
-        if (result.length > 0) {
-          let record = result[0]
-          assert.true((typeof record.paymentId === 'string'), 'Check paymentId type')
+        assert.true(result.data.length > 0, 'Check that there are results matching to this date period')
+        if (result.data.length > 0) {
+          let record = result.data[0]
+          assert.true((typeof record.paymentId === 'number'), 'Check paymentId type')
           assert.true((typeof record.batchId === 'number'), 'Check batchId type')
           assert.true((typeof record.sequenceNumber === 'number'), 'Check sequenceNumber type')
           assert.true((typeof record.identifier === 'string'), 'Check identifier type')
@@ -263,7 +263,7 @@ test({
           assert.true((typeof record.lastName === 'string'), 'Check lastName type')
           assert.false(isNaN(Date.parse(record.dob)), 'Check if the returned dob is a Date')
           assert.true((typeof record.nationalId === 'string'), 'Check nationalId type')
-          assert.true((typeof record.amount === 'string'), 'Check amount type')
+          assert.true((typeof record.amount === 'number'), 'Check amount type')
           assert.true((typeof record.paymentStatusId === 'number'), 'Check paymentStatusId type')
           assert.false(isNaN(Date.parse(record.createdAt)), 'Check if the returned createdAt is a Date')
           assert.false(isNaN(Date.parse(record.updatedAt)), 'Check if the returned updatedAt is a Date')
@@ -309,7 +309,7 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.equal(result.length, 5, 'Check that db returns correct page size')
+        assert.equal(result.data.length, 5, 'Check that db returns correct page size')
       }
     },
     {
@@ -323,7 +323,7 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.equal(result.length, 5, 'Check that db returns correct page size')
+        assert.equal(result.data.length, 5, 'Check that db returns correct page size')
       }
     }
     ])
