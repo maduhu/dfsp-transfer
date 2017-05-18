@@ -2,7 +2,8 @@ CREATE OR REPLACE FUNCTION bulk."batch.getTotalAmount" (
     "@batchId" integer
 )
 RETURNS TABLE (
-    "totalAmount" numeric(19,2)
+    "totalAmount" numeric(19,2),
+    "isSingleResult" boolean
 ) AS
 $body$
 BEGIN
@@ -14,7 +15,8 @@ BEGIN
   END IF;
   RETURN QUERY
     SELECT
-        COALESCE(SUM(p."amount"), 0)
+        COALESCE(SUM(p."amount"), 0) as "totalAmount",
+        true as "isSingleResult"
     FROM
         bulk."payment" AS p
     WHERE

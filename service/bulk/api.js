@@ -21,17 +21,17 @@ module.exports = {
     params: joi.any(),
     result: joi.any()
   },
-  'batch.get': {
-    auth: false,
-    description: 'Bulk batch get',
-    notes: 'Bulk batch get',
-    params: joi.any(),
-    result: joi.any()
-  },
   'batch.getTotalAmount': {
     auth: false,
     description: 'Get total amount to be paid for batch',
     notes: 'Bulk batch get total amount',
+    params: joi.any(),
+    result: joi.any()
+  },
+  'batch.get': {
+    auth: false,
+    description: 'Bulk batch get',
+    notes: 'Bulk batch get',
     params: joi.any(),
     result: joi.any()
   },
