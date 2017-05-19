@@ -36,6 +36,7 @@ WITH a as (
         p."paymentStatusId",
         (SELECT ps."name" FROM bulk."paymentStatus" ps WHERE ps."paymentStatusId" = p."paymentStatusId") AS "status",
         p."info",
+        p."payee",
         b."name",
         p."createdAt",
         p."updatedAt"

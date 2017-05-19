@@ -1,3 +1,26 @@
+<a name="0.20.6"></a>
+## [0.20.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.5...v0.20.6) (2017-05-19)
+
+
+### Bug Fixes
+
+* add new procedure to calculate the total amount to be paid for batch ([c838dcc](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c838dcc))
+* distribute bulk payments on round-robin principle and add spspServer and account to payments ([db3d124](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/db3d124))
+* persist whole payee.get response in payment table ([e463c03](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e463c03))
+* refactor getTotalAmount to return single result ([a3ae09b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a3ae09b))
+
+
+
+<a name="0.20.5"></a>
+## [0.20.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.4...v0.20.5) (2017-05-19)
+
+
+### Bug Fixes
+
+* add metrics ([a0b2c48](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a0b2c48))
+
+
+
 <a name="0.20.4"></a>
 ## [0.20.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.3...v0.20.4) (2017-05-15)
 

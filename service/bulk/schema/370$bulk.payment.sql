@@ -10,6 +10,7 @@ CREATE TABLE bulk."payment"  (
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
     "info" TEXT,
+    "payee" JSON,
     "createdAt" timestamp without time zone NOT NULL,
     "updatedAt" timestamp without time zone NOT NULL,
     CONSTRAINT "pkBulkPayment" PRIMARY KEY ("paymentId"),
