@@ -23,6 +23,7 @@ RETURNS TABLE (
     "paymentStatusId" SMALLINT,
     "status" VARCHAR(100),
     "info" TEXT,
+    "payee" JSON,
     "name" VARCHAR(100),
     "createdAt" timestamp,
     "updatedAt" timestamp
@@ -43,6 +44,7 @@ BEGIN
         p."paymentStatusId",
         (SELECT ps."name" FROM bulk."paymentStatus" ps WHERE ps."paymentStatusId" = p."paymentStatusId") AS "status",
         p."info",
+        p."payee",
         b."name",
         p."createdAt",
         p."updatedAt"

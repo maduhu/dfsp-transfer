@@ -15,6 +15,7 @@ RETURNS TABLE (
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
     "info" TEXT,
+    "payee" JSON,
     "name" VARCHAR(100),
     "createdAt" timestamp,
     "updatedAt" timestamp,

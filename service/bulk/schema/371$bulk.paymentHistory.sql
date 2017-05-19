@@ -12,6 +12,7 @@ CREATE TABLE bulk."paymentHistory"  (
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
     "info" TEXT,
+    "payee" JSON,
     "createdAt" timestamp without time zone NOT NULL,
     CONSTRAINT "pkBulkPaymentHistory" PRIMARY KEY ("paymentHistoryId"),
     CONSTRAINT "fkBulkPaymentHistory_bulkPayment" FOREIGN KEY ("paymentId") REFERENCES bulk."payment"("paymentId"),

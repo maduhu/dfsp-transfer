@@ -13,6 +13,7 @@ RETURNS TABLE (
     "amount" NUMERIC(19,2),
     "paymentStatusId" SMALLINT,
     "info" TEXT,
+    "payee" JSON,
     "createdAt" TIMESTAMP,
     "updatedAt" TIMESTAMP
 ) AS
@@ -21,7 +22,7 @@ DECLARE
     "@maxRetry" INTEGER := (SELECT MAX(bulk."retry"."retryId") FROM bulk."retry");
 BEGIN
     RETURN QUERY
-    SELECT DISTINCT ON (p."paymentId")
+    SELECT
         p."paymentId",
         p."batchId",
         p."sequenceNumber",
@@ -33,6 +34,7 @@ BEGIN
         p."amount",
         p."paymentStatusId",
         p."info",
+        p."payee",
         p."createdAt",
         p."updatedAt"
     FROM
@@ -48,8 +50,9 @@ BEGIN
         AND LEAST(b."expirationDate", q."updatedAt" + (r.interval * interval '1 minute')) < NOW()
         OR (r."retryId" < "@maxRetry" AND b."expirationDate" < NOW())
         OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW())
+    GROUP BY p."paymentId"
     ORDER BY
-        p."paymentId", q."queueId"
+        ROW_NUMBER() OVER (PARTITION BY p."payee"->>'spspServer' ORDER BY p."paymentId"), max(q."queueId")
     LIMIT "@count";
 END;
 $body$
