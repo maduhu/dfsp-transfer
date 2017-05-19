@@ -66,9 +66,9 @@ test({
         }
       },
       result: function (result, assert) {
-        fetchedPayments = result
-        result.forEach((row) => {
-          assert.true((typeof row.paymentId === 'string'), 'Check paymentId type')
+        fetchedPayments = result.data
+        fetchedPayments.forEach((row) => {
+          assert.true((typeof row.paymentId === 'number'), 'Check paymentId type')
           assert.true((typeof row.batchId === 'number'), 'Check batchId type')
           assert.equal(row.batchId, this['Create batch to link the payments with'].batchId, 'Check the batchId value')
           assert.true((typeof row.sequenceNumber === 'number'), 'Check sequenceNumber type')
@@ -77,7 +77,7 @@ test({
           assert.true((typeof row.lastName === 'string'), 'Check lastName type')
           assert.false(isNaN(Date.parse(row.dob)), 'Check if the returned dob is a Date')
           assert.true((typeof row.nationalId === 'string'), 'Check nationalId type')
-          assert.true((typeof row.amount === 'string'), 'Check amount type')
+          assert.true((typeof row.amount === 'number'), 'Check amount type')
           assert.true((typeof row.paymentStatusId === 'number'), 'Check paymentStatusId type')
           assert.true((typeof row.status === 'string'), 'Check status type')
           assert.equal(row.info, null, 'Check that payment info is empty')
