@@ -1,3 +1,13 @@
+<a name="0.20.7"></a>
+## [0.20.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.6...v0.20.7) (2017-05-19)
+
+
+### Bug Fixes
+
+* return data and pagination for payment.fetch ([bf26261](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/bf26261))
+
+
+
 <a name="0.20.6"></a>
 ## [0.20.6](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.5...v0.20.6) (2017-05-19)
 
