@@ -1,3 +1,13 @@
+<a name="0.20.8"></a>
+## [0.20.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.7...v0.20.8) (2017-05-19)
+
+
+### Bug Fixes
+
+* circle.yml ([c8bdd07](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c8bdd07))
+
+
+
 <a name="0.20.7"></a>
 ## [0.20.7](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.6...v0.20.7) (2017-05-19)
 
