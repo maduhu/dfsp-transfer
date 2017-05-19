@@ -1,3 +1,13 @@
+<a name="0.20.5"></a>
+## [0.20.5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.4...v0.20.5) (2017-05-19)
+
+
+### Bug Fixes
+
+* add metrics ([a0b2c48](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/a0b2c48))
+
+
+
 <a name="0.20.4"></a>
 ## [0.20.4](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.3...v0.20.4) (2017-05-15)
 
