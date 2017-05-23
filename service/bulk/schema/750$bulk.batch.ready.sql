@@ -5,6 +5,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.ready" (
 RETURNS TABLE (
     "batchId" integer,
     "account" varchar(100),
+    "startDate" timestamp,
     "expirationDate" timestamp,
     "name" varchar(100),
     "batchStatusId" smallint,
@@ -21,7 +22,7 @@ BEGIN
     RETURN QUERY
     SELECT *
     FROM
-       bulk."batch.edit"("@batchId", NULL, NULL, NULL, (SELECT bs."batchStatusId" FROM bulk."batchStatus" bs WHERE bs."name" = 'ready'), NULL, NULL, "@actorId", NULL, NULL, NULL);
+       bulk."batch.edit"("@batchId", NULL, NULL, NULL, NULL, (SELECT bs."batchStatusId" FROM bulk."batchStatus" bs WHERE bs."name" = 'ready'), NULL, NULL, "@actorId", NULL, NULL, NULL);
 END;
 $body$
 LANGUAGE 'plpgsql';

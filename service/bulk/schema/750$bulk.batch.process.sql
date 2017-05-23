@@ -1,6 +1,7 @@
 CREATE OR REPLACE FUNCTION bulk."batch.process" (
     "@batchId" INTEGER,
     "@actorId" VARCHAR(25),
+    "@startDate" TIMESTAMP,
     "@expirationDate" TIMESTAMP,
     "@account" VARCHAR(100)
 )
@@ -15,6 +16,7 @@ BEGIN
     PERFORM bulk."batch.edit"(
         "@batchId",
         "@account",
+        "@startDate",
         "@expirationDate",
         NULL,
         (SELECT bs."batchStatusId" FROM bulk."batchStatus" bs WHERE bs."name" = 'processing'),

@@ -2,6 +2,7 @@ CREATE TABLE bulk."batchHistory"  (
     "batchHistoryId" SERIAL,
     "name" VARCHAR(100) NOT NULL,
     "account" VARCHAR(100),
+    "startDate" timestamp without time zone,
     "expirationDate" timestamp without time zone,
     "batchId" INTEGER,
     "batchStatusId" SMALLINT,

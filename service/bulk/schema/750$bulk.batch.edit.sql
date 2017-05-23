@@ -1,6 +1,7 @@
 CREATE OR REPLACE FUNCTION bulk."batch.edit" (
     "@batchId" integer,
     "@account" varchar(100),
+    "@startDate" timestamp,
     "@expirationDate" timestamp,
     "@name" varchar(100),
     "@batchStatusId" integer,
@@ -14,6 +15,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.edit" (
 RETURNS TABLE (
     "batchId" integer,
     "account" varchar(100),
+    "startDate" timestamp,
     "expirationDate" timestamp,
     "name" varchar(100),
     "batchStatusId" smallint,
@@ -45,6 +47,7 @@ BEGIN
     INSERT INTO bulk."batchHistory" (
         "name",
         "account",
+        "startDate",
         "expirationDate",
         "batchId",
         "batchStatusId",
@@ -56,6 +59,7 @@ BEGIN
     SELECT
         b."name",
         b."account",
+        b."startDate",
         b."expirationDate",
         b."batchId",
         b."batchStatusId",
@@ -72,6 +76,7 @@ BEGIN
         bulk."batch" AS b
     SET
         "account" = COALESCE("@account", b."account"),
+        "startDate" = COALESCE("@startDate", b."startDate"),
         "expirationDate" = COALESCE("@expirationDate", b."expirationDate"),
         "name" = COALESCE("@name", b."name"),
         "batchStatusId" = COALESCE("@batchStatusId", b."batchStatusId"),
@@ -122,6 +127,7 @@ BEGIN
     SELECT
         b."batchId" as "batchId",
         b."account" as "account",
+        b."startDate" as "startDate",
         b."expirationDate" as "expirationDate",
         b."name" as "name",
         b."batchStatusId" as "batchStatusId",
