@@ -48,8 +48,9 @@ BEGIN
     WHERE
         p."paymentStatusId" = ANY(SELECT ps."paymentStatusId" FROM bulk."paymentStatus" ps WHERE ps."name" != 'paid')
         AND LEAST(b."expirationDate", q."updatedAt" + (r.interval * interval '1 minute')) < NOW()
-        OR (r."retryId" < "@maxRetry" AND b."expirationDate" < NOW())
-        OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW())
+        AND (b."startDate" <= NOW())
+        OR (r."retryId" < "@maxRetry" AND b."expirationDate" < NOW() AND b."startDate" <= NOW())
+        OR (r."retryId" = "@maxRetry" AND b."expirationDate" > NOW() AND b."startDate" <= NOW())
     GROUP BY p."paymentId"
     ORDER BY
         ROW_NUMBER() OVER (PARTITION BY p."payee"->>'spspServer' ORDER BY p."paymentId"), max(q."queueId")

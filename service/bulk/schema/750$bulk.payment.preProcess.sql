@@ -18,6 +18,7 @@ RETURNS TABLE (
     "createdAt" TIMESTAMP,
     "updatedAt" TIMESTAMP,
     "account" VARCHAR(100),
+    "startDate" TIMESTAMP WITHOUT TIME ZONE,
     "expirationDate" TIMESTAMP WITHOUT TIME ZONE,
     "actorId" VARCHAR(25),
     "isSingleResult" boolean
@@ -56,6 +57,7 @@ BEGIN
         "@payment"."createdAt",
         "@payment"."updatedAt",
         "@payment"."account",
+        "@payment"."startDate",
         "@payment"."expirationDate",
         "@payment"."actorId",
         "@payment"."isSingleResult"

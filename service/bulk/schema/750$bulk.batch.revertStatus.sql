@@ -6,6 +6,7 @@ CREATE OR REPLACE FUNCTION bulk."batch.revertStatus" (
 RETURNS TABLE (
     "batchId" integer,
     "account" varchar(100),
+    "startDate" timestamp,
     "expirationDate" timestamp,
     "name" varchar(100),
     "batchStatusId" smallint,
@@ -24,6 +25,7 @@ BEGIN
     FROM
         bulk."batch.edit"(
             "@batchId",
+            NULL,
             NULL,
             NULL,
             NULL,

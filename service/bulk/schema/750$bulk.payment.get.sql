@@ -18,6 +18,7 @@ RETURNS TABLE (
     "createdAt" timestamp,
     "updatedAt" timestamp,
     "account" VARCHAR(100),
+    "startDate" timestamp without time zone,
     "expirationDate" timestamp without time zone,
     "actorId" VARCHAR(25),
     "isSingleResult" boolean
@@ -42,6 +43,7 @@ BEGIN
         p."createdAt",
         p."updatedAt",
         b."account",
+        b."startDate",
         b."expirationDate",
         b."actorId",
         true
