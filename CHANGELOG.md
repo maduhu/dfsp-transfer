@@ -1,3 +1,15 @@
+<a name="0.20.9"></a>
+## [0.20.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.8...v0.20.9) (2017-05-29)
+
+
+### Bug Fixes
+
+* add startDate to bulk payments related tables ([e133f99](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e133f99))
+* dependencies and shrinkwrap ([19d0958](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/19d0958))
+* update startDate conditions ([d03f021](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/d03f021))
+
+
+
 <a name="0.20.8"></a>
 ## [0.20.8](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.7...v0.20.8) (2017-05-19)
 
