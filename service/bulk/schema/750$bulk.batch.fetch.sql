@@ -3,33 +3,28 @@ CREATE OR REPLACE FUNCTION bulk."batch.fetch" (
     "@name" VARCHAR,
     "@batchStatusId" INTEGER,
     "@fromDate" TIMESTAMP,
-    "@toDate" TIMESTAMP
+    "@toDate" TIMESTAMP,
+    "@pageSize" INTEGER,
+    "@pageNumber" INTEGER
 )
 RETURNS TABLE (
-    "batchId" INTEGER,
-    "name" VARCHAR(100),
-    -- "account" VARCHAR(25),
-    "startDate" TIMESTAMP,
-    "expirationDate" TIMESTAMP,
-    "batchStatusId" SMALLINT,
-    "status" VARCHAR(100),
-    -- "actorId" VARCHAR(25),
-    -- "info" TEXT,
-    -- "fileName" VARCHAR(256),
-    -- "originalFileName" VARCHAR(256),
-    "createdAt" TIMESTAMP,
-    "lastValidation" TIMESTAMP,
-    "paymentsCount" BIGINT
+    "data" JSON,
+    "pagination" JSON,
+    "isSingleResult" BOOLEAN
 ) AS
 $body$
 DECLARE
+    "@pageSize" INTEGER := COALESCE("@pageSize", 25);
+    "@pageNumber" INTEGER := COALESCE("@pageNumber", 1);
+    "@batches" JSON;
+    "@pagination" JSON;
     "@validationStatuses" SMALLINT[]:= ARRAY(
         SELECT bs."batchStatusId"
         FROM bulk."batchStatus" bs
         WHERE bs."name" IN ('rejected', 'returned', 'approved')
     );
 BEGIN
-    RETURN QUERY
+WITH a as (
     SELECT
         b."batchId",
         b."name",
@@ -77,7 +72,30 @@ BEGIN
         --         up."uploadId" DESC
         --     LIMIT 1
         -- );
-    ORDER BY b."batchId" DESC;
+    ORDER BY b."batchId" DESC
+)
+    SELECT
+        json_agg(row_to_json(aa)) as "payments",
+        json_build_object(
+            'pageNumber', "@pageNumber",
+            'pageSize', (SELECT COUNT(aa.*)),
+            'pageTotal', (SELECT CEIL(COUNT(a)::numeric / "@pageSize") FROM a),
+            'recordsTotal', (SELECT COUNT(a) FROM a)
+        ) AS "pagination"
+    FROM
+    (
+        SELECT a.*
+        FROM a
+        LIMIT "@pageSize" OFFSET ("@pageNumber" - 1) * "@pageSize"
+    ) aa
+    INTO "@batches", "@pagination";
+
+RETURN QUERY
+SELECT
+    "@batches" AS "data",
+    "@pagination" AS "pagination",
+    true AS "isSingleResult";
+    
 END;
 $body$
 LANGUAGE 'plpgsql';
