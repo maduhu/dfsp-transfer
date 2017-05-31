@@ -79,7 +79,7 @@ WITH a as (
         json_build_object(
             'pageNumber', "@pageNumber",
             'pageSize', (SELECT COUNT(aa.*)),
-            'pageTotal', (SELECT CEIL(COUNT(a)::numeric / "@pageSize") FROM a),
+            'pagesTotal', (SELECT CEIL(COUNT(a)::numeric / "@pageSize") FROM a),
             'recordsTotal', (SELECT COUNT(a) FROM a)
         ) AS "pagination"
     FROM
