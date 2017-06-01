@@ -77,7 +77,7 @@ WITH
                 "identifier" VARCHAR(25),
                 "firstName" VARCHAR(255),
                 "lastName" VARCHAR(255),
-                "dob" TIMESTAMP,
+                "dob" DATE,
                 "nationalId" VARCHAR(255),
                 "amount" NUMERIC(19,2),
                 "paymentStatusId" INTEGER,

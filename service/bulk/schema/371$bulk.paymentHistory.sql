@@ -7,7 +7,7 @@ CREATE TABLE bulk."paymentHistory"  (
     "identifier" VARCHAR(25),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
-    "dob" timestamp without time zone,
+    "dob" DATE,
     "nationalId" VARCHAR(255),
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,

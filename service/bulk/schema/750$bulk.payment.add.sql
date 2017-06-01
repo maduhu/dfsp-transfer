@@ -53,7 +53,7 @@ BEGIN
                 "identifier" VARCHAR(25),
                 "firstName" VARCHAR(255),
                 "lastName" VARCHAR(255),
-                "dob" TIMESTAMP,
+                "dob" DATE,
                 "nationalId" VARCHAR(255),
                 "amount" numeric(19,2)
             )
