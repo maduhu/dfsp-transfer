@@ -1,3 +1,13 @@
+<a name="0.20.10"></a>
+## [0.20.10](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.9...v0.20.10) (2017-06-01)
+
+
+### Bug Fixes
+
+* switch dob from timestamp to date ([cb0f034](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/cb0f034))
+
+
+
 <a name="0.20.9"></a>
 ## [0.20.9](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.8...v0.20.9) (2017-05-29)
 
