@@ -10,7 +10,7 @@ RETURNS TABLE (
     "identifier" VARCHAR(25),
     "firstName" VARCHAR(255),
     "lastName" VARCHAR(255),
-    "dob" DATE,
+    "dob" VARCHAR,
     "nationalId" VARCHAR(255),
     "amount" numeric(19,2),
     "paymentStatusId" SMALLINT,
