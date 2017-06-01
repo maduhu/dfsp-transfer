@@ -75,7 +75,7 @@ WITH a as (
     ORDER BY b."batchId" DESC
 )
     SELECT
-        json_agg(row_to_json(aa)) as "payments",
+        json_agg(row_to_json(aa)) as "batches",
         json_build_object(
             'pageNumber', "@pageNumber",
             'pageSize', (SELECT COUNT(aa.*)),
