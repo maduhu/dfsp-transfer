@@ -64,7 +64,7 @@ WITH a as (
         json_agg(row_to_json(aa)) as "payments",
         json_build_object(
             'pageNumber', "@pageNumber",
-            'pageSize', (SELECT COUNT(aa.*)),
+            'pageSize', "@pageSize",
             'pagesTotal', (SELECT CEIL(COUNT(a)::numeric / "@pageSize") FROM a),
             'recordsTotal', (SELECT COUNT(a) FROM a)
         ) AS "pagination"
