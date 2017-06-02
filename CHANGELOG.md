@@ -1,3 +1,13 @@
+<a name="0.20.12"></a>
+## [0.20.12](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.11...v0.20.12) (2017-06-02)
+
+
+### Bug Fixes
+
+* return page size instead of fetched rows (fixes issue on last page) ([2395c2b](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/2395c2b))
+
+
+
 <a name="0.20.11"></a>
 ## [0.20.11](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.10...v0.20.11) (2017-06-01)
 
