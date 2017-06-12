@@ -1,3 +1,13 @@
+<a name="0.20.13"></a>
+## [0.20.13](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.12...v0.20.13) (2017-06-12)
+
+
+### Bug Fixes
+
+* remove shrinkwrap ([c8aa5ba](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c8aa5ba))
+
+
+
 <a name="0.20.12"></a>
 ## [0.20.12](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.11...v0.20.12) (2017-06-02)
 
