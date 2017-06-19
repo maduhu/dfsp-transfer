@@ -41,8 +41,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array')
-        assert.true(result.length > 0, 'Check if the returned result is not empty')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -54,8 +58,12 @@ test({
         }
       },
       result: (result, assert) => {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - original name')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - original name')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - original name')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - original name')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -67,8 +75,12 @@ test({
         }
       },
       result: (result, assert) => {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - name to uppercase')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - name to uppercase')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - name to uppercase')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - name to uppercase')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -80,8 +92,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - name to lowercase')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - name to lowercase')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - name to lowercase')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - name to lowercase')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -93,8 +109,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - inserted name')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - inserted name')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - inserted name')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - inserted name')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -106,8 +126,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - inserted batchStatusId')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - inserted batchStatusId')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - inserted batchStatusId')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - inserted batchStatusId')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -119,8 +143,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - fromDate')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - fromDate')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - fromDate')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - fromDate')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -132,8 +160,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - toDate')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - toDate')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - toDate')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - toDate')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     },
     {
@@ -146,8 +178,12 @@ test({
         }
       },
       result: function (result, assert) {
-        assert.true(Array.isArray(result), 'Check if the returned result is array - (fromDate - toDate)')
-        assert.true(result.length > 0, 'Check if the returned result is not empty - (fromDate - toDate)')
+        assert.true(Array.isArray(result.data), 'Check if the returned result is array - (fromDate - toDate)')
+        assert.true(result.data.length > 0, 'Check if the returned result is not empty - (fromDate - toDate)')
+        assert.equal(result.pagination.pageNumber, 1, 'Check if the returned page number is the first one')
+        assert.true(result.pagination.pageSize > 0, 'Check if the returned page size is greater than 0')
+        assert.true(result.pagination.pagesTotal > 0, 'Check if the returned pages total is greater than 0')
+        assert.true(result.pagination.recordsTotal > 0, 'Check if the returned records total are greater than 0')
       }
     }
     ])
