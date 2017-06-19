@@ -1,3 +1,17 @@
+<a name="0.20.14"></a>
+## [0.20.14](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.13...v0.20.14) (2017-06-19)
+
+
+### Bug Fixes
+
+* add bulk batch fetch pagination ([4007ced](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4007ced))
+* add new line ([c53905c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/c53905c))
+* fix typo ([9f8796e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/9f8796e))
+* fix typo and enhance tests ([4d4a2d5](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4d4a2d5))
+* return original page size on last page ([21ec12c](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/21ec12c))
+
+
+
 <a name="0.20.13"></a>
 ## [0.20.13](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.12...v0.20.13) (2017-06-12)
 
