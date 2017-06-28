@@ -90,8 +90,8 @@ module.exports = [
     statusCode: 422
   },
   {
-    id: 'InvoiceNotificationStatusIdMissingError',
-    type: 'transfer.invoiceNotificationStatusIdMissing',
+    id: 'InvoicestatusIdMissingError',
+    type: 'transfer.invoicestatusIdMissing',
     message: 'Invoice notification status id is missing',
     statusCode: 422
   },
