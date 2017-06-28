@@ -1,3 +1,15 @@
+<a name="0.20.16"></a>
+## [0.20.16](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.15...v0.20.16) (2017-06-28)
+
+
+### Bug Fixes
+
+* remove shrinkwrap file ([e70de3e](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/e70de3e))
+* update ut-bus and ut-port-httpserver ([f6aedec](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f6aedec))
+* ut-bus version ([4296f85](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4296f85))
+
+
+
 <a name="0.20.15"></a>
 ## [0.20.15](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.14...v0.20.15) (2017-06-20)
 
