@@ -6,6 +6,11 @@ module.exports = {
   api: ['transfer', 'bulk'],
   imports: ['transfer.start'],
   port: 8018,
+  allowXFF: true,
+  disableXsrf: {
+    http: true,
+    ws: true
+  },
   bundle: 'transfer',
   dist: path.resolve(__dirname, '../dist'),
   routes: {

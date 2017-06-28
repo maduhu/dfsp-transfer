@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "joi": "9.1.1",
-    "ut-port-httpserver": "~8.7.1",
+    "ut-port-httpserver": "~8.11.4",
     "ut-port-jsonrpc": "^5.6.4",
     "ut-port-script": "^5.5.1",
     "ut-port-postgres": "^5.7.7",
@@ -41,7 +41,7 @@
     "ut-port-performance": "^5.4.7",
     "ut-port-console": "~6.2.13",
     "ut-run": "^8.1.0",
-    "ut-bus": "^5.9.0",
+    "ut-bus": "^5.12.1",
     "ut-error": "^5.4.2",
     "ut-port-http": "^6.4.1",
     "ws": "1.1.1",

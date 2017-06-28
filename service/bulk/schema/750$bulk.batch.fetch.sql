@@ -92,10 +92,10 @@ WITH a as (
 
 RETURN QUERY
 SELECT
-    "@batches" AS "data",
+    COALESCE("@batches", '[]') AS "data",
     "@pagination" AS "pagination",
     true AS "isSingleResult";
-    
+
 END;
 $body$
 LANGUAGE 'plpgsql';
