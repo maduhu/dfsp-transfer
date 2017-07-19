@@ -1,3 +1,14 @@
+<a name="0.20.18"></a>
+## [0.20.18](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.17...v0.20.18) (2017-07-19)
+
+
+### Bug Fixes
+
+* circleci configuration ([6eecb36](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/6eecb36))
+* remove shrinkwrap file ([09b7733](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/09b7733))
+
+
+
 <a name="0.20.17"></a>
 ## [0.20.17](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.16...v0.20.17) (2017-07-19)
 
