@@ -1,3 +1,14 @@
+<a name="0.20.17"></a>
+## [0.20.17](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.16...v0.20.17) (2017-07-19)
+
+
+### Bug Fixes
+
+* make possible to agent to reject cashOut requests ([af9d394](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/af9d394))
+* remove shrinkwrap file ([5ab1c1f](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/5ab1c1f))
+
+
+
 <a name="0.20.16"></a>
 ## [0.20.16](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.15...v0.20.16) (2017-06-28)
 
