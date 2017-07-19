@@ -89,7 +89,7 @@ BEGIN
     FROM
         ti;
 
-    IF "@invoiceType" = 'standard' THEN
+    IF ("@invoiceType" = 'standard' OR "@invoiceType" = 'cashOut') THEN
         PERFORM transfer."invoicePayer.add"("@invoiceId", "@identifier");
     END IF;
 

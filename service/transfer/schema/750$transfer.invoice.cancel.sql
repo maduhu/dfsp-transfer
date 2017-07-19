@@ -41,7 +41,7 @@ $body$
         IF ("@invoiceStatusName" != 'pending') THEN
             RAISE EXCEPTION 'transfer.invoiceNotPending';
         END IF;
-        IF ("@invoiceTypeName" != 'standard') THEN
+        IF ("@invoiceTypeName" != 'standard' AND "@invoiceTypeName" != 'cashOut') THEN
             RAISE EXCEPTION 'transfer.invoiceNotStandard';
         END IF;
 
