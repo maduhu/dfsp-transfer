@@ -1,3 +1,13 @@
+<a name="0.20.20"></a>
+## [0.20.20](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.19...v0.20.20) (2017-08-15)
+
+
+### Bug Fixes
+
+* remove index_test file ([1aad818](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/1aad818))
+
+
+
 <a name="0.20.19"></a>
 ## [0.20.19](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.18...v0.20.19) (2017-07-21)
 
