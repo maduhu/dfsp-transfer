@@ -1,3 +1,13 @@
+<a name="0.20.23"></a>
+## [0.20.23](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.22...v0.20.23) (2017-08-17)
+
+
+### Bug Fixes
+
+* test wrong password on sql inspect ([9aedbed](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/9aedbed))
+
+
+
 <a name="0.20.22"></a>
 ## [0.20.22](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.21...v0.20.22) (2017-08-17)
 
