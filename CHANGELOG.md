@@ -1,3 +1,13 @@
+<a name="0.20.22"></a>
+## [0.20.22](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.21...v0.20.22) (2017-08-17)
+
+
+### Bug Fixes
+
+* remove unused conditions to increase code coverage ([f4b6608](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/f4b6608))
+
+
+
 <a name="0.20.21"></a>
 ## [0.20.21](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.20...v0.20.21) (2017-08-17)
 
