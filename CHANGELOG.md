@@ -1,3 +1,13 @@
+<a name="0.20.21"></a>
+## [0.20.21](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.20...v0.20.21) (2017-08-17)
+
+
+### Bug Fixes
+
+* remove unused method ([4f53c29](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/commit/4f53c29))
+
+
+
 <a name="0.20.20"></a>
 ## [0.20.20](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.19...v0.20.20) (2017-08-15)
 
