@@ -1,3 +1,8 @@
+<a name="0.20.24"></a>
+## [0.20.24](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.23...v0.20.24) (2017-10-13)
+
+
+
 <a name="0.20.23"></a>
 ## [0.20.23](https://github.com/softwaregroup-bg/@leveloneproject/dfsp-transfer/compare/v0.20.22...v0.20.23) (2017-08-17)
 
